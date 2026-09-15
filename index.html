@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <!DOCTYPE html>
 
+<!DOCTYPE html>
+
 <html lang="ko">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="#F97316" name="theme-color"/>
 <title>제주 3일 여행 플래너</title>
-
 <meta content="제주 3일 여행의 먹거리, 놀거리, 카페, 상세 일정과 패스 혜택을 한눈에 확인하는 여행 플래너" name="description"/><link href="./css/style.css" rel="stylesheet"/></head>
 <body>
 <header class="wrap">
@@ -24,7 +25,7 @@
 <button class="tab active" data-target="food">🍜 먹거리</button>
 <button class="tab" data-target="play">🎡 놀거리</button>
 <button class="tab" data-target="cafe">☕ 카페</button>
-<button class="tab" data-target="pass">🎟️ 패스 혜택</button></nav>
+<button class="tab" data-target="detail" type="button">🗓️ 상세 일정</button><button class="tab" data-target="pass">🎟️ 패스 혜택</button></nav>
 </header>
 <main class="wrap">
 <section class="category food active" id="food">
@@ -134,7 +135,7 @@
 </article>
 </div>
 </section>
-<section class="detail-schedule" id="detail-schedule">
+<section class="detail-schedule category" id="detail">
 <div class="detail-head">
 <h3>상세 일정</h3>
 <p>일차 버튼을 누르면 해당 날짜의 전체 스케줄이 순서대로 표시됩니다.</p>
@@ -443,6 +444,5 @@
 </section>
 </main>
 <footer class="wrap">🍊 JEJU TRIP · 3 DAYS · GITHUB PAGES EDITION</footer>
-
 <script defer="" src="./js/app.js"></script></body>
 </html>

@@ -2105,3 +2105,66 @@ footer{
     display:none;
   }
 }
+
+
+/* =========================================================
+   v2 · DETAIL SCHEDULE AS A DEDICATED TAB
+   ========================================================= */
+
+.tab[data-target="detail"]{
+  border-color:#F1B56B !important;
+  color:#B85B10 !important;
+}
+.tab[data-target="detail"].active{
+  color:#9F4508 !important;
+  background:linear-gradient(180deg,#FFF4E7,#FFE5C7) !important;
+  border-color:#F97316 !important;
+  box-shadow:
+    0 0 0 2px rgba(249,115,22,.09),
+    0 8px 20px rgba(207,83,9,.10) !important;
+}
+
+/* The detail schedule is now a normal tab category */
+#detail.detail-schedule{
+  margin-top:18px;
+}
+#detail.category:not(.active){
+  display:none !important;
+}
+#detail.category.active{
+  display:block !important;
+}
+
+/* Desktop: five equal tabs */
+@media(min-width:621px){
+  .tabs{
+    grid-template-columns:repeat(5,minmax(0,1fr)) !important;
+  }
+}
+
+/* Mobile: four main category buttons in 2x2 + detail schedule full-width + pass */
+@media(max-width:620px){
+  .tabs{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  }
+  .tab[data-target="detail"]{
+    grid-column:1/-1;
+  }
+}
+
+/* Very narrow phones */
+@media(max-width:390px){
+  .tab[data-target="detail"]{
+    grid-column:1/-1;
+  }
+}
+
+
+/* v2.1 · mobile tab placement */
+@media(max-width:620px){
+  .tab[data-target="food"]{grid-column:1;grid-row:1}
+  .tab[data-target="play"]{grid-column:2;grid-row:1}
+  .tab[data-target="cafe"]{grid-column:1;grid-row:2}
+  .tab[data-target="pass"]{grid-column:2;grid-row:2}
+  .tab[data-target="detail"]{grid-column:1/-1;grid-row:3}
+}
