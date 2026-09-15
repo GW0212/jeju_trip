@@ -28,3 +28,14 @@ js/app.js
 - prefers-reduced-motion 접근성 대응
 
 외부 프레임워크나 CDN 없이 동작하므로 GitHub Pages에 그대로 배포할 수 있습니다.
+
+파비콘
+------
+- favicon.ico
+- images/favicon-16.png
+- images/favicon-32.png
+- images/favicon-64.png
+- images/favicon-192.png
+- images/favicon-512.png
+- images/apple-touch-icon.png
+- site.webmanifest

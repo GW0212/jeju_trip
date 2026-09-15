@@ -2168,3 +2168,96 @@ footer{
   .tab[data-target="pass"]{grid-column:2;grid-row:2}
   .tab[data-target="detail"]{grid-column:1/-1;grid-row:3}
 }
+
+
+/* =========================================================
+   DISCOUNT AMOUNT GRID
+   ========================================================= */
+.benefit-price-clear{
+  margin-top:8px;
+  font-size:12px;
+  font-weight:950;
+  color:#3C2B21;
+}
+.discount-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:7px;
+  margin-top:10px;
+}
+.discount-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  min-height:42px;
+  padding:9px 10px;
+  border:1px solid #EEDFD2;
+  border-radius:10px;
+  background:#FFFDF9;
+}
+.discount-label{
+  min-width:0;
+  color:#7A675B;
+  font-size:9.5px;
+  font-weight:800;
+  line-height:1.35;
+}
+.discount-value{
+  flex:0 0 auto;
+  text-align:right;
+  color:#3C2A20;
+  font-size:10.5px;
+  line-height:1.35;
+}
+.discount-row.discount{
+  background:#FFF6EC;
+  border-color:#F2D1AF;
+}
+.discount-row.discount .discount-value{
+  color:#C94F08;
+}
+.discount-row.saving{
+  background:#FFF0E0;
+  border-color:#F5B97E;
+}
+.discount-row.saving .discount-label,
+.discount-row.saving .discount-value{
+  color:#A84007;
+  font-weight:950;
+}
+.discount-row.unknown{
+  background:#FAF8F6;
+  border-style:dashed;
+}
+.discount-row.unknown .discount-value{
+  color:#8B7A70;
+}
+.benefit-note{
+  margin:9px 0 0 !important;
+  padding:8px 9px;
+  border-radius:9px;
+  background:#FBF7F3;
+  color:#806E62 !important;
+  font-size:9.5px !important;
+  line-height:1.5 !important;
+}
+@media(max-width:620px){
+  .discount-grid{
+    grid-template-columns:1fr;
+    gap:5px;
+  }
+  .discount-row{
+    min-height:38px;
+    padding:8px 9px;
+  }
+  .discount-label{
+    font-size:9px;
+  }
+  .discount-value{
+    font-size:9.5px;
+  }
+  .benefit-note{
+    font-size:9px !important;
+  }
+}
