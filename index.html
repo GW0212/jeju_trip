@@ -19,13 +19,19 @@
 
 <!DOCTYPE html>
 
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+
 <html lang="ko">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="#F97316" name="theme-color"/>
 <title>제주 3일 여행 플래너</title>
-<meta content="제주 3일 여행의 먹거리, 놀거리, 카페, 상세 일정과 패스 혜택을 한눈에 확인하는 여행 플래너" name="description"/><link href="./css/style.css" rel="stylesheet"/><link href="./favicon.ico" rel="icon" type="image/x-icon"/><link href="./images/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/><link href="./images/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/><link href="./images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/><link href="./site.webmanifest" rel="manifest"/></head>
+<meta content="제주 3일 여행의 먹거리, 놀거리, 카페, 상세 일정과 패스 혜택을 한눈에 확인하는 여행 플래너" name="description"/><link href="./css/style.css" rel="stylesheet"/><link href="./favicon.ico" rel="icon" type="image/x-icon"/><link href="./images/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/><link href="./images/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/><link href="./images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/><link href="./site.webmanifest" rel="manifest"/><link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet"/></head>
 <body>
 <header class="wrap">
 <section class="hero">
@@ -168,9 +174,9 @@
 </button>
 </div>
 <div class="schedule-panels">
-<article class="schedule-panel active collapsed" id="schedule-day1" role="tabpanel">
-<div class="schedule-panel-head"><button aria-controls="timeline-day1" aria-expanded="false" class="schedule-card-toggle" data-collapse-target="timeline-day1" type="button"><span class="schedule-card-content"><span class="schedule-day-chip">DAY 1</span><span class="schedule-card-title">27일 · 동쪽 → 서귀포</span><span class="schedule-card-action"><span class="collapse-label">펼치기</span><span aria-hidden="true" class="collapse-arrow">▼</span></span></span></button></div>
-<ol class="timeline" hidden="" id="timeline-day1">
+<article class="collapsed active schedule-panel" id="schedule-day1" role="tabpanel">
+<div class="schedule-panel-head"><button aria-controls="schedule-day1-details" aria-expanded="false" class="schedule-card-toggle" data-collapse-target="schedule-day1-details" type="button"><span class="schedule-card-content"><span class="schedule-day-chip">DAY 1</span><span class="schedule-card-title">27일 · 동쪽 → 서귀포</span><span class="schedule-card-action"><span class="collapse-label">펼치기</span><span aria-hidden="true" class="collapse-arrow">▼</span></span></span></button></div>
+<div class="schedule-detail-body" hidden="" id="schedule-day1-details"><div class="route-visual real-map-visual"><div class="route-map-head"><div><strong>DAY 1 · 실제 주행 루트</strong><span>제주공항 → 동부 → 서귀포 → 숙소</span></div><span class="real-map-badge">실제 지도</span></div><div class="route-map-shell"><div class="route-map" data-route-id="schedule-day1" id="schedule-day1-map"></div><div class="route-map-status" id="schedule-day1-map-status">실제 지도와 주행 경로를 불러오는 중입니다.</div></div><div class="route-map-tools"><span class="map-source-label">지도: OpenStreetMap · 경로: OSRM</span><a class="google-route-link" data-google-route="schedule-day1" href="#" rel="noopener noreferrer" target="_blank">Google 지도에서 경로 열기 ↗</a></div><p class="route-caption">번호는 실제 일정 순서입니다. 도로 상황에 따라 실제 주행 경로와 소요시간은 달라질 수 있습니다.</p></div><ol class="timeline" id="timeline-day1">
 <li><span class="time">07:30</span><div><b>제주공항 도착</b><p>07시 30분쯤 공항 도착.</p></div></li>
 <li><span class="time">07:50</span><div><b>짐 수령 · 렌터카 출발</b><p>짐을 받은 뒤 렌터카를 타고 출발.</p></div></li>
 <li><span class="time">아침</span><div><b>먹돌고기국수 제주본점</b><p>첫 식사 후 동쪽 일정 시작.</p></div></li>
@@ -183,11 +189,10 @@
 <li><span class="time">오후</span><div><b>산방산 탄산온천</b><p>온천 이용.</p></div></li>
 <li><span class="time">저녁</span><div><b>사계흑돼지</b><p>저녁 식사.</p></div></li>
 <li><span class="time">숙박</span><div><b>바인스테이</b><p>숙소로 이동 후 1일차 마무리.</p></div></li>
-</ol>
-</article>
-<article class="schedule-panel collapsed" hidden="" id="schedule-day2" role="tabpanel">
-<div class="schedule-panel-head"><button aria-controls="timeline-day2" aria-expanded="false" class="schedule-card-toggle" data-collapse-target="timeline-day2" type="button"><span class="schedule-card-content"><span class="schedule-day-chip">DAY 2</span><span class="schedule-card-title">28일 · 서쪽</span><span class="schedule-card-action"><span class="collapse-label">펼치기</span><span aria-hidden="true" class="collapse-arrow">▼</span></span></span></button></div>
-<ol class="timeline" hidden="" id="timeline-day2">
+</ol></div></article>
+<article class="collapsed schedule-panel" hidden="" id="schedule-day2" role="tabpanel">
+<div class="schedule-panel-head"><button aria-controls="schedule-day2-details" aria-expanded="false" class="schedule-card-toggle" data-collapse-target="schedule-day2-details" type="button"><span class="schedule-card-content"><span class="schedule-day-chip">DAY 2</span><span class="schedule-card-title">28일 · 서쪽</span><span class="schedule-card-action"><span class="collapse-label">펼치기</span><span aria-hidden="true" class="collapse-arrow">▼</span></span></span></button></div>
+<div class="schedule-detail-body" hidden="" id="schedule-day2-details"><div class="route-visual real-map-visual"><div class="route-map-head"><div><strong>DAY 2 · 실제 주행 루트</strong><span>애월 · 한림 · 서쪽 순환</span></div><span class="real-map-badge">실제 지도</span></div><div class="route-map-shell"><div class="route-map" data-route-id="schedule-day2" id="schedule-day2-map"></div><div class="route-map-status" id="schedule-day2-map-status">실제 지도와 주행 경로를 불러오는 중입니다.</div></div><div class="route-map-tools"><span class="map-source-label">지도: OpenStreetMap · 경로: OSRM</span><a class="google-route-link" data-google-route="schedule-day2" href="#" rel="noopener noreferrer" target="_blank">Google 지도에서 경로 열기 ↗</a></div><p class="route-caption">번호는 실제 일정 순서입니다. 도로 상황에 따라 실제 주행 경로와 소요시간은 달라질 수 있습니다.</p></div><ol class="timeline" id="timeline-day2">
 <li><span class="time">09:00</span><div><b>기상</b><p>9시쯤 기상.</p></div></li>
 <li><span class="time">아침</span><div><b>문개어멍</b><p>아침 식사.</p></div></li>
 <li><span class="time">디저트</span><div><b>시소 카이막 애월점</b><p>카이막 디저트.</p></div></li>
@@ -202,11 +207,10 @@
 <li><span class="time">저녁</span><div><b>애월 갈치 암행어사</b><p>저녁 식사.</p></div></li>
 <li><span class="time">야경</span><div><b>해지개</b><p>카페 + 야경.</p></div></li>
 <li><span class="time">마무리</span><div><b>숙소 복귀</b><p>2일차 일정 종료.</p></div></li>
-</ol>
-</article>
-<article class="schedule-panel collapsed" hidden="" id="schedule-day3" role="tabpanel">
-<div class="schedule-panel-head"><button aria-controls="timeline-day3" aria-expanded="false" class="schedule-card-toggle" data-collapse-target="timeline-day3" type="button"><span class="schedule-card-content"><span class="schedule-day-chip">DAY 3</span><span class="schedule-card-title">29일 · 서쪽 + 중앙</span><span class="schedule-card-action"><span class="collapse-label">펼치기</span><span aria-hidden="true" class="collapse-arrow">▼</span></span></span></button></div>
-<ol class="timeline" hidden="" id="timeline-day3">
+</ol></div></article>
+<article class="collapsed schedule-panel" hidden="" id="schedule-day3" role="tabpanel">
+<div class="schedule-panel-head"><button aria-controls="schedule-day3-details" aria-expanded="false" class="schedule-card-toggle" data-collapse-target="schedule-day3-details" type="button"><span class="schedule-card-content"><span class="schedule-day-chip">DAY 3</span><span class="schedule-card-title">29일 · 서쪽 + 중앙</span><span class="schedule-card-action"><span class="collapse-label">펼치기</span><span aria-hidden="true" class="collapse-arrow">▼</span></span></span></button></div>
+<div class="schedule-detail-body" hidden="" id="schedule-day3-details"><div class="route-visual real-map-visual"><div class="route-map-head"><div><strong>DAY 3 · 실제 주행 루트</strong><span>서쪽 → 북동부 → 제주시 → 제주공항</span></div><span class="real-map-badge">실제 지도</span></div><div class="route-map-shell"><div class="route-map" data-route-id="schedule-day3" id="schedule-day3-map"></div><div class="route-map-status" id="schedule-day3-map-status">실제 지도와 주행 경로를 불러오는 중입니다.</div></div><div class="route-map-tools"><span class="map-source-label">지도: OpenStreetMap · 경로: OSRM</span><a class="google-route-link" data-google-route="schedule-day3" href="#" rel="noopener noreferrer" target="_blank">Google 지도에서 경로 열기 ↗</a></div><p class="route-caption">번호는 실제 일정 순서입니다. 도로 상황에 따라 실제 주행 경로와 소요시간은 달라질 수 있습니다.</p></div><ol class="timeline" id="timeline-day3">
 <li><span class="time">09:00</span><div><b>기상</b><p>9시쯤 기상.</p></div></li>
 <li><span class="time">오전</span><div><b>상가리야자숲</b><p>야자숲 구경.</p></div></li>
 <li><span class="time">아침</span><div><b>제주고기국수 모던돔베 공항본점</b><p>아침 식사.</p></div></li>
@@ -225,8 +229,7 @@
 <li><span class="time">17:15</span><div><b>진에어 제주 → 김포</b><p>17시 15분 비행기 탑승.</p></div></li>
 <li><span class="time">18:30</span><div><b>김포공항 도착</b><p>18시 30분쯤 도착.</p></div></li>
 <li><span class="time">귀가</span><div><b>각자 집으로 이동</b><p>여행 종료.</p></div></li>
-</ol>
-</article>
+</ol></div></article>
 </div>
 </section>
 <section class="category pass-category" id="pass">
@@ -374,5 +377,5 @@
 </section>
 </main>
 <footer class="wrap">🍊 JEJU TRIP · 3 DAYS · GITHUB PAGES EDITION</footer>
-<script defer="" src="./js/app.js"></script></body>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script defer="" src="./js/app.js"></script></body>
 </html>
