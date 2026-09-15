@@ -21,10 +21,10 @@
       {name:'천지연폭포', q:'천지연폭포 제주', fallback:[33.2469,126.5544]},
       {name:'산방산 탄산온천', q:'산방산 탄산온천 제주', fallback:[33.2361,126.3042]},
       {name:'사계흑돼지 산방산본점', q:'사계흑돼지 산방산본점 제주', fallback:[33.2285,126.3060]},
-      {name:'바인스테이', q:'제주 바인스테이 소길남길 제주', fallback:[33.4250,126.3700]}
+      {name:'바인스테이', q:'제주 제주시 애월읍 소길남길 45-1 바인스테이', fallback:[33.4250,126.3700], naver:'https://naver.me/F42RoD3p'}
     ],
     'schedule-day2': [
-      {name:'바인스테이', q:'제주 바인스테이 소길남길 제주', fallback:[33.4250,126.3700]},
+      {name:'바인스테이', q:'제주 제주시 애월읍 소길남길 45-1 바인스테이', fallback:[33.4250,126.3700], naver:'https://naver.me/F42RoD3p'},
       {name:'문개어멍', q:'문개어멍 제주', fallback:[33.4200,126.2700]},
       {name:'시소 카이막 애월점', q:'시소 카이막 애월점 제주', fallback:[33.4660,126.3370]},
       {name:'도치돌알파카목장', q:'도치돌알파카목장 제주', fallback:[33.4070,126.3680]},
@@ -37,10 +37,10 @@
       {name:'곽지해수욕장', q:'곽지해수욕장 제주', fallback:[33.4509,126.3047]},
       {name:'애월 갈치 암행어사', q:'애월갈치 암행어사 제주', fallback:[33.4630,126.3110]},
       {name:'해지개', q:'해지개 카페 애월 제주', fallback:[33.4635,126.3090]},
-      {name:'바인스테이', q:'제주 바인스테이 소길남길 제주', fallback:[33.4250,126.3700]}
+      {name:'바인스테이', q:'제주 제주시 애월읍 소길남길 45-1 바인스테이', fallback:[33.4250,126.3700], naver:'https://naver.me/F42RoD3p'}
     ],
     'schedule-day3': [
-      {name:'바인스테이', q:'제주 바인스테이 소길남길 제주', fallback:[33.4250,126.3700]},
+      {name:'바인스테이', q:'제주 제주시 애월읍 소길남길 45-1 바인스테이', fallback:[33.4250,126.3700], naver:'https://naver.me/F42RoD3p'},
       {name:'상가리야자숲', q:'상가리야자숲 제주', fallback:[33.4360,126.3580]},
       {name:'제주고기국수 모던돔베 공항본점', q:'제주고기국수 모던돔베 공항본점 제주', fallback:[33.5000,126.5000]},
       {name:'돈키쥬쥬', q:'돈키쥬쥬 제주', fallback:[33.4550,126.4850]},
@@ -109,13 +109,18 @@
     saveRoadCache();
   }
 
-  function markerIcon(index, total) {
+  function markerIcon(index, total, duplicateEndpoint=false) {
     const cls = index === 0 ? 'start' : (index === total - 1 ? 'end' : '');
+    const duplicateCls = duplicateEndpoint
+      ? (index === 0 ? ' duplicate-start' : (index === total - 1 ? ' duplicate-end' : ''))
+      : '';
     return L.divIcon({
-      className:'route-number-icon',
+      className:`route-number-icon${duplicateCls}`,
       html:`<div class="route-number-marker ${cls}">${index+1}</div>`,
       iconSize:[28,28],
-      iconAnchor:[14,14],
+      iconAnchor: duplicateEndpoint && index === 0
+        ? [27,14]
+        : (duplicateEndpoint && index === total - 1 ? [1,14] : [14,14]),
       popupAnchor:[0,-14]
     });
   }
@@ -218,11 +223,36 @@
 
     const points = getInstantPoints(routeId);
     const bounds = [];
+    const sameEndpoint = points.length > 1
+      && Math.abs(points[0][0] - points[points.length-1][0]) < 0.00001
+      && Math.abs(points[0][1] - points[points.length-1][1]) < 0.00001;
+
     points.forEach((point,i) => {
       bounds.push(point);
-      L.marker(point, {icon:markerIcon(i,points.length)})
+      const isDuplicateEndpoint = sameEndpoint && (i === 0 || i === points.length - 1);
+      const place = places[i];
+      const naverLink = place.naver
+        ? `<br><a href="${place.naver}" target="_blank" rel="noopener noreferrer" class="map-popup-link">네이버 지도 바로가기 ↗</a>`
+        : '';
+
+      const marker = L.marker(point, {
+        icon:markerIcon(i,points.length,isDuplicateEndpoint),
+        zIndexOffset: i === 0 ? 1000 : (i === points.length - 1 ? 900 : 0)
+      })
         .addTo(map)
-        .bindPopup(`<b>${i+1}. ${places[i].name}</b>`);
+        .bindPopup(`<b>${i+1}. ${place.name}</b>${naverLink}`);
+
+      if (i === 0 || i === points.length - 1) {
+        marker.bindTooltip(
+          `${i+1}. ${place.name}`,
+          {
+            permanent:true,
+            direction:i === 0 ? 'top' : 'bottom',
+            offset:i === 0 ? [0,-18] : [0,18],
+            className:i === 0 ? 'route-endpoint-label start-label' : 'route-endpoint-label end-label'
+          }
+        );
+      }
     });
     if (bounds.length) map.fitBounds(bounds, {padding:[30,30], animate:false});
 
