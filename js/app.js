@@ -58,13 +58,58 @@
   };
 
   const maps = new Map();
-  const routeCacheKey = 'jejuTripGeoCacheV1';
+  const liveRouteLayers = new Map();
+  const roadPromises = new Map();
+
+  // Existing v10/v11 geocoding cache is still reused when present.
+  const geoCacheKey = 'jejuTripGeoCacheV1';
   let geoCache = {};
-  try { geoCache = JSON.parse(localStorage.getItem(routeCacheKey) || '{}'); } catch (_) {}
+  try { geoCache = JSON.parse(localStorage.getItem(geoCacheKey) || '{}'); } catch (_) {}
 
-  const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+  // New cache: stores the calculated OSRM road geometry itself.
+  // This survives refresh/reopen in the same browser, so the road line is not recalculated every time.
+  const roadCacheKey = 'jejuTripRoadCacheV2';
+  const ROAD_CACHE_MAX_AGE = 1000 * 60 * 60 * 24 * 30; // 30 days
+  let roadCache = {};
+  try { roadCache = JSON.parse(localStorage.getItem(roadCacheKey) || '{}'); } catch (_) {}
 
-  function markerIcon(index, total){
+  const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+  function saveRoadCache() {
+    try { localStorage.setItem(roadCacheKey, JSON.stringify(roadCache)); } catch (_) {}
+  }
+
+  function routeSignature(points) {
+    return points.map(([lat,lng]) => `${Number(lat).toFixed(5)},${Number(lng).toFixed(5)}`).join('|');
+  }
+
+  function getInstantPoints(routeId) {
+    const places = ROUTES[routeId] || [];
+    return places.map(place => geoCache[place.q] || place.fallback);
+  }
+
+  function getCachedRoad(routeId, points) {
+    const item = roadCache[routeId];
+    if (!item) return null;
+    if (Date.now() - Number(item.savedAt || 0) > ROAD_CACHE_MAX_AGE) return null;
+    if (item.signature !== routeSignature(points)) return null;
+    if (!item.geometry || !Array.isArray(item.geometry.coordinates)) return null;
+    return item;
+  }
+
+  function cacheRoad(routeId, points, road) {
+    if (!road || !road.geometry || !Array.isArray(road.geometry.coordinates)) return;
+    roadCache[routeId] = {
+      signature: routeSignature(points),
+      savedAt: Date.now(),
+      distance: road.distance,
+      duration: road.duration,
+      geometry: road.geometry
+    };
+    saveRoadCache();
+  }
+
+  function markerIcon(index, total) {
     const cls = index === 0 ? 'start' : (index === total - 1 ? 'end' : '');
     return L.divIcon({
       className:'route-number-icon',
@@ -75,160 +120,246 @@
     });
   }
 
-  async function geocodePlace(place){
-    if (geoCache[place.q]) return geoCache[place.q];
-    try{
-      const url='https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&countrycodes=kr&q='+encodeURIComponent(place.q);
-      const res=await fetch(url, {headers:{'Accept':'application/json'}});
-      if(res.ok){
-        const data=await res.json();
-        if(data && data[0]){
-          const point=[Number(data[0].lat), Number(data[0].lon)];
-          geoCache[place.q]=point;
-          try{localStorage.setItem(routeCacheKey, JSON.stringify(geoCache));}catch(_){ }
-          return point;
-        }
+  async function fetchRoadGeometry(points) {
+    const coords = points.map(([lat,lng]) => `${lng},${lat}`).join(';');
+    // simplified is much smaller than full and is visually indistinguishable at Jeju-wide zoom.
+    const url = `https://router.project-osrm.org/route/v1/driving/${coords}?overview=simplified&geometries=geojson&steps=false`;
+    try {
+      const res = await fetch(url, { cache:'no-store' });
+      if (!res.ok) throw new Error('route error');
+      const data = await res.json();
+      if (data.routes && data.routes[0]) {
+        const r = data.routes[0];
+        return { distance:r.distance, duration:r.duration, geometry:r.geometry };
       }
-    }catch(_){ }
-    return place.fallback;
-  }
-
-  async function geocodeRoute(routeId, statusEl){
-    const places=ROUTES[routeId] || [];
-    const points=[];
-    for(let i=0;i<places.length;i++){
-      if(statusEl) statusEl.textContent=`실제 장소 위치 확인 중 · ${i+1}/${places.length}`;
-      const point=await geocodePlace(places[i]);
-      points.push(point);
-      if(!geoCache[places[i].q]) await sleep(300);
-    }
-    return points;
-  }
-
-  async function fetchRoadGeometry(points){
-    const coords=points.map(([lat,lng])=>`${lng},${lat}`).join(';');
-    const url=`https://router.project-osrm.org/route/v1/driving/${coords}?overview=full&geometries=geojson&steps=false`;
-    try{
-      const res=await fetch(url);
-      if(!res.ok) throw new Error('route error');
-      const data=await res.json();
-      if(data.routes && data.routes[0]) return data.routes[0];
-    }catch(_){ }
+    } catch (_) {}
     return null;
   }
 
-  function googleDirectionsUrl(places){
-    if(!places.length) return '#';
-    const origin=encodeURIComponent(places[0].name+' 제주');
-    const destination=encodeURIComponent(places[places.length-1].name+' 제주');
-    const mids=places.slice(1,-1).map(p=>p.name+' 제주').join('|');
-    let url=`https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}&travelmode=driving`;
-    if(mids) url += `&waypoints=${encodeURIComponent(mids)}`;
+  async function ensureRoadData(routeId, points) {
+    const cached = getCachedRoad(routeId, points);
+    if (cached) return cached;
+    if (roadPromises.has(routeId)) return roadPromises.get(routeId);
+
+    const promise = (async () => {
+      const road = await fetchRoadGeometry(points);
+      if (road) cacheRoad(routeId, points, road);
+      roadPromises.delete(routeId);
+      return road;
+    })();
+
+    roadPromises.set(routeId, promise);
+    return promise;
+  }
+
+  function googleDirectionsUrl(places) {
+    if (!places.length) return '#';
+    const origin = encodeURIComponent(places[0].name + ' 제주');
+    const destination = encodeURIComponent(places[places.length-1].name + ' 제주');
+    const mids = places.slice(1,-1).map(p => p.name + ' 제주').join('|');
+    let url = `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}&travelmode=driving`;
+    if (mids) url += `&waypoints=${encodeURIComponent(mids)}`;
     return url;
   }
 
-  async function initRouteMap(routeId){
-    if(maps.has(routeId)){
-      const m=maps.get(routeId);
-      setTimeout(()=>m.invalidateSize(),80);
+  function roadStatusText(road, cached=false) {
+    const km = (road.distance / 1000).toFixed(1);
+    const min = Math.round(road.duration / 60);
+    const time = `${Math.floor(min/60)}시간 ${min%60}분`;
+    return `${cached ? '캐시 경로 · ' : ''}전체 주행 약 ${km}km · 순수 이동 약 ${time}`;
+  }
+
+  function addRoadLayer(map, routeId, road) {
+    const previous = liveRouteLayers.get(routeId);
+    if (previous) {
+      try { map.removeLayer(previous); } catch (_) {}
+    }
+    if (!road || !road.geometry || !Array.isArray(road.geometry.coordinates)) return null;
+    const latlngs = road.geometry.coordinates.map(([lng,lat]) => [lat,lng]);
+    const layer = L.polyline(latlngs, {
+      color:'#F97316', weight:5, opacity:.92, lineJoin:'round', lineCap:'round'
+    }).addTo(map);
+    liveRouteLayers.set(routeId, layer);
+    return layer;
+  }
+
+  async function initRouteMap(routeId) {
+    if (maps.has(routeId)) {
+      const m = maps.get(routeId);
+      setTimeout(() => m.invalidateSize(), 50);
       return;
     }
-    if(typeof L==='undefined') return;
+    if (typeof L === 'undefined') return;
 
-    const mapEl=document.getElementById(`${routeId}-map`);
-    const statusEl=document.getElementById(`${routeId}-map-status`);
-    if(!mapEl) return;
+    const mapEl = document.getElementById(`${routeId}-map`);
+    const statusEl = document.getElementById(`${routeId}-map-status`);
+    if (!mapEl) return;
 
-    const map=L.map(mapEl,{zoomControl:true,scrollWheelZoom:true,preferCanvas:true}).setView([33.38,126.53],9);
+    // Map shell + markers are rendered immediately. No geocoding wait.
+    const map = L.map(mapEl, {
+      zoomControl:true,
+      scrollWheelZoom:true,
+      preferCanvas:true,
+      fadeAnimation:false,
+      markerZoomAnimation:false
+    }).setView([33.38,126.53],9);
     maps.set(routeId,map);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom:19,
+      updateWhenIdle:true,
+      keepBuffer:3,
       attribution:'&copy; OpenStreetMap contributors'
     }).addTo(map);
 
-    const places=ROUTES[routeId] || [];
-    const gLink=document.querySelector(`[data-google-route="${routeId}"]`);
-    if(gLink) gLink.href=googleDirectionsUrl(places);
+    const places = ROUTES[routeId] || [];
+    const gLink = document.querySelector(`[data-google-route="${routeId}"]`);
+    if (gLink) gLink.href = googleDirectionsUrl(places);
 
-    const points=await geocodeRoute(routeId,statusEl);
-    const bounds=[];
-    points.forEach((point,i)=>{
+    const points = getInstantPoints(routeId);
+    const bounds = [];
+    points.forEach((point,i) => {
       bounds.push(point);
-      L.marker(point,{icon:markerIcon(i,points.length)})
+      L.marker(point, {icon:markerIcon(i,points.length)})
         .addTo(map)
         .bindPopup(`<b>${i+1}. ${places[i].name}</b>`);
     });
+    if (bounds.length) map.fitBounds(bounds, {padding:[30,30], animate:false});
 
-    if(bounds.length) map.fitBounds(bounds,{padding:[36,36]});
-    if(statusEl) statusEl.textContent='실제 도로 경로 계산 중...';
+    // Show something instantly even on the very first visit.
+    let placeholder = L.polyline(points, {
+      color:'#FDBA74', weight:4, opacity:.9, dashArray:'7 7', lineJoin:'round'
+    }).addTo(map);
 
-    const road=await fetchRoadGeometry(points);
-    if(road && road.geometry && road.geometry.coordinates){
-      const latlngs=road.geometry.coordinates.map(([lng,lat])=>[lat,lng]);
-      L.polyline(latlngs,{color:'#F97316',weight:5,opacity:.92,lineJoin:'round'}).addTo(map);
-      const km=(road.distance/1000).toFixed(1);
-      const min=Math.round(road.duration/60);
-      if(statusEl) statusEl.textContent=`전체 주행 약 ${km}km · 순수 이동 약 ${Math.floor(min/60)}시간 ${min%60}분`;
-      setTimeout(()=>statusEl && statusEl.classList.add('done'),2200);
-    }else{
-      L.polyline(points,{color:'#F97316',weight:4,opacity:.78,dashArray:'7 7'}).addTo(map);
-      if(statusEl) statusEl.textContent='도로 경로 서버 연결 실패 · 장소 위치를 직선으로 표시했습니다.';
-      setTimeout(()=>statusEl && statusEl.classList.add('done'),3000);
+    const cached = getCachedRoad(routeId, points);
+    if (cached) {
+      try { map.removeLayer(placeholder); } catch (_) {}
+      placeholder = null;
+      addRoadLayer(map, routeId, cached);
+      if (statusEl) {
+        statusEl.textContent = roadStatusText(cached, true);
+        statusEl.classList.add('done');
+      }
+      setTimeout(() => map.invalidateSize(), 30);
+      return;
     }
-    setTimeout(()=>map.invalidateSize(),100);
+
+    if (statusEl) statusEl.textContent = '지도 즉시 표시 완료 · 실제 도로 경로를 백그라운드에서 계산 중...';
+
+    const road = await ensureRoadData(routeId, points);
+    if (road) {
+      if (placeholder) { try { map.removeLayer(placeholder); } catch (_) {} }
+      addRoadLayer(map, routeId, road);
+      if (statusEl) {
+        statusEl.textContent = roadStatusText(road, false);
+        setTimeout(() => statusEl.classList.add('done'), 1400);
+      }
+    } else {
+      if (statusEl) {
+        statusEl.textContent = '장소 위치는 즉시 표시됨 · 도로 경로 서버 연결 실패 시 직선 경로를 유지합니다.';
+        setTimeout(() => statusEl.classList.add('done'), 2500);
+      }
+    }
+    setTimeout(() => map.invalidateSize(), 50);
+  }
+
+  async function prewarmRoadCaches() {
+    // Precompute only the small route JSON, not map tiles. This makes opening a day much faster.
+    for (const routeId of Object.keys(ROUTES)) {
+      const points = getInstantPoints(routeId);
+      if (!getCachedRoad(routeId, points)) {
+        await ensureRoadData(routeId, points);
+        // Avoid hammering the public routing service.
+        await sleep(350);
+      }
+    }
   }
 
   ready(() => {
-    const tabs=[...document.querySelectorAll('.tab')];
-    const categories=[...document.querySelectorAll('.category')];
-    tabs.forEach(tab=>tab.addEventListener('click',()=>{
-      const target=tab.dataset.target;if(!target)return;
-      tabs.forEach(item=>{const active=item===tab;item.classList.toggle('active',active);item.setAttribute('aria-selected',active?'true':'false');});
-      categories.forEach(section=>section.classList.toggle('active',section.id===target));
-    }));
+    const tabs = [...document.querySelectorAll('.tab')];
+    const categories = [...document.querySelectorAll('.category')];
+    tabs.forEach(tab => tab.addEventListener('click', () => {
+      const target = tab.dataset.target; if (!target) return;
+      tabs.forEach(item => {
+        const active = item === tab;
+        item.classList.toggle('active',active);
+        item.setAttribute('aria-selected',active ? 'true' : 'false');
+      });
+      categories.forEach(section => section.classList.toggle('active',section.id === target));
 
-    const dayTabs=[...document.querySelectorAll('.day-schedule-tab')];
-    const dayPanels=[...document.querySelectorAll('.schedule-panel')];
-    dayTabs.forEach(tab=>tab.addEventListener('click',()=>{
-      const targetId=tab.dataset.schedule;if(!targetId)return;
-      dayTabs.forEach(item=>{const active=item===tab;item.classList.toggle('active',active);item.setAttribute('aria-selected',active?'true':'false');});
-      dayPanels.forEach(panel=>{const active=panel.id===targetId;panel.classList.toggle('active',active);panel.hidden=!active;});
-      if(maps.has(targetId)) setTimeout(()=>maps.get(targetId).invalidateSize(),80);
-    }));
-
-    const scheduleToggles=[...document.querySelectorAll('.schedule-card-toggle')];
-    scheduleToggles.forEach(button=>button.addEventListener('click',async()=>{
-      const targetId=button.dataset.collapseTarget;
-      const detailBody=targetId?document.getElementById(targetId):null;
-      const panel=button.closest('.schedule-panel');
-      const label=button.querySelector('.collapse-label');
-      if(!detailBody||!panel)return;
-      const nextExpanded=button.getAttribute('aria-expanded')!=='true';
-      button.setAttribute('aria-expanded',String(nextExpanded));
-      detailBody.hidden=!nextExpanded;
-      panel.classList.toggle('collapsed',!nextExpanded);
-      if(label) label.textContent=nextExpanded?'접기':'펼치기';
-      if(nextExpanded){
-        setTimeout(()=>initRouteMap(panel.id),60);
+      // As soon as Detail tab is selected, ensure the first day's road JSON is warming.
+      if (target === 'detail') {
+        const points = getInstantPoints('schedule-day1');
+        ensureRoadData('schedule-day1', points);
       }
     }));
 
-    const topButton=document.createElement('button');
-    topButton.type='button';topButton.className='back-to-top';topButton.setAttribute('aria-label','페이지 맨 위로 이동');topButton.title='맨 위로';topButton.textContent='↑';document.body.appendChild(topButton);
-    const syncTopButton=()=>topButton.classList.toggle('show',window.scrollY>520);
-    window.addEventListener('scroll',syncTopButton,{passive:true});syncTopButton();
-    topButton.addEventListener('click',()=>{const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});});
+    const dayTabs = [...document.querySelectorAll('.day-schedule-tab')];
+    const dayPanels = [...document.querySelectorAll('.schedule-panel')];
+    dayTabs.forEach(tab => tab.addEventListener('click', () => {
+      const targetId = tab.dataset.schedule; if (!targetId) return;
+      dayTabs.forEach(item => {
+        const active = item === tab;
+        item.classList.toggle('active',active);
+        item.setAttribute('aria-selected',active ? 'true' : 'false');
+      });
+      dayPanels.forEach(panel => {
+        const active = panel.id === targetId;
+        panel.classList.toggle('active',active);
+        panel.hidden = !active;
+      });
+      if (maps.has(targetId)) setTimeout(() => maps.get(targetId).invalidateSize(), 50);
+      // Warm selected day even before the user expands it.
+      ensureRoadData(targetId, getInstantPoints(targetId));
+    }));
 
-    document.addEventListener('keydown',event=>{
-      if(event.key!=='Escape')return;
-      scheduleToggles.forEach(button=>{
-        if(button.getAttribute('aria-expanded')!=='true')return;
+    const scheduleToggles = [...document.querySelectorAll('.schedule-card-toggle')];
+    scheduleToggles.forEach(button => button.addEventListener('click', async () => {
+      const targetId = button.dataset.collapseTarget;
+      const detailBody = targetId ? document.getElementById(targetId) : null;
+      const panel = button.closest('.schedule-panel');
+      const label = button.querySelector('.collapse-label');
+      if (!detailBody || !panel) return;
+      const nextExpanded = button.getAttribute('aria-expanded') !== 'true';
+      button.setAttribute('aria-expanded',String(nextExpanded));
+      detailBody.hidden = !nextExpanded;
+      panel.classList.toggle('collapsed',!nextExpanded);
+      if (label) label.textContent = nextExpanded ? '접기' : '펼치기';
+      if (nextExpanded) setTimeout(() => initRouteMap(panel.id), 20);
+    }));
+
+    // Begin route-data warming shortly after the page is usable.
+    const warm = () => prewarmRoadCaches();
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(warm, {timeout:1600});
+    } else {
+      setTimeout(warm, 450);
+    }
+
+    const topButton = document.createElement('button');
+    topButton.type='button'; topButton.className='back-to-top';
+    topButton.setAttribute('aria-label','페이지 맨 위로 이동');
+    topButton.title='맨 위로'; topButton.textContent='↑';
+    document.body.appendChild(topButton);
+    const syncTopButton = () => topButton.classList.toggle('show',window.scrollY>520);
+    window.addEventListener('scroll',syncTopButton,{passive:true}); syncTopButton();
+    topButton.addEventListener('click',() => {
+      const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});
+    });
+
+    document.addEventListener('keydown',event => {
+      if(event.key !== 'Escape') return;
+      scheduleToggles.forEach(button => {
+        if(button.getAttribute('aria-expanded') !== 'true') return;
         const targetId=button.dataset.collapseTarget;
         const detailBody=targetId?document.getElementById(targetId):null;
         const panel=button.closest('.schedule-panel');
         const label=button.querySelector('.collapse-label');
-        button.setAttribute('aria-expanded','false');if(detailBody)detailBody.hidden=true;if(panel)panel.classList.add('collapsed');if(label)label.textContent='펼치기';
+        button.setAttribute('aria-expanded','false');
+        if(detailBody) detailBody.hidden=true;
+        if(panel) panel.classList.add('collapsed');
+        if(label) label.textContent='펼치기';
       });
     });
   });
