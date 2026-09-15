@@ -139,7 +139,7 @@
     const statusEl=document.getElementById(`${routeId}-map-status`);
     if(!mapEl) return;
 
-    const map=L.map(mapEl,{zoomControl:true,scrollWheelZoom:false,preferCanvas:true}).setView([33.38,126.53],9);
+    const map=L.map(mapEl,{zoomControl:true,scrollWheelZoom:true,preferCanvas:true}).setView([33.38,126.53],9);
     maps.set(routeId,map);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{

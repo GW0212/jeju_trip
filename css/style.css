@@ -2509,3 +2509,32 @@ footer{
   .map-source-label{text-align:center;font-size:8px}
   .route-number-marker{width:25px;height:25px;font-size:10px}
 }
+
+
+/* v11 · numbered schedule badges */
+.timeline{
+  counter-reset:none;
+}
+.timeline .time{
+  min-width:76px;
+  white-space:nowrap;
+  letter-spacing:-.01em;
+}
+@media(max-width:620px){
+  .timeline li{
+    grid-template-columns:66px minmax(0,1fr) !important;
+  }
+  .timeline .time{
+    min-width:0 !important;
+    font-size:8.5px !important;
+    padding:4px 5px !important;
+  }
+}
+@media(max-width:390px){
+  .timeline li{
+    grid-template-columns:62px minmax(0,1fr) !important;
+  }
+  .timeline .time{
+    font-size:8px !important;
+  }
+}
