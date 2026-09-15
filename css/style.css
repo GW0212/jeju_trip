@@ -2922,3 +2922,190 @@ footer{
     gap:8px !important;
   }
 }
+
+
+/* =========================================================
+   v16 · DETAIL HEADER TRUE CENTER + PLAY LINK BUTTON
+   ========================================================= */
+
+/* 이전 v15 grid 오버라이드 무효화 */
+.schedule-card-toggle-v16{
+  display:block !important;
+  position:relative !important;
+  width:100% !important;
+  min-height:68px !important;
+  padding:12px 18px !important;
+}
+
+.schedule-card-toggle-v16 .schedule-card-content{
+  position:relative !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:10px !important;
+  width:100% !important;
+  min-height:42px !important;
+  padding-left:120px !important;
+  padding-right:120px !important;
+  box-sizing:border-box !important;
+}
+
+/* DAY 배지 + 제목은 중앙 묶음 */
+.schedule-card-toggle-v16 .schedule-day-chip{
+  flex:0 0 auto !important;
+  margin:0 !important;
+}
+.schedule-card-toggle-v16 .schedule-card-title{
+  flex:0 1 auto !important;
+  width:auto !important;
+  max-width:100% !important;
+  margin:0 !important;
+  text-align:center !important;
+  justify-self:auto !important;
+  grid-column:auto !important;
+  white-space:normal !important;
+  line-height:1.3 !important;
+}
+
+/* 접기/펼치기 버튼은 다시 오른쪽 끝 */
+.schedule-card-toggle-v16 .schedule-card-action{
+  position:absolute !important;
+  right:0 !important;
+  top:50% !important;
+  transform:translateY(-50%) !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:5px !important;
+  min-width:104px !important;
+  margin:0 !important;
+  grid-column:auto !important;
+  justify-self:auto !important;
+}
+
+/* 상세 일정에서는 장소 링크 대신 일반 텍스트 */
+.schedule-place-plain{
+  color:inherit;
+  font-weight:inherit;
+}
+
+/* 놀거리 탭의 버튼형 지도 링크 */
+.place-with-button{
+  padding:0 !important;
+}
+.place-button-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  width:100%;
+  min-height:48px;
+  padding:9px 10px;
+  box-sizing:border-box;
+}
+.place-button-row .place-main{
+  flex:1 1 auto;
+  min-width:0;
+}
+.place-map-button{
+  flex:0 0 auto;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:32px;
+  padding:7px 10px;
+  border:1px solid #F3A15E;
+  border-radius:9px;
+  background:#FFF5EA;
+  color:#C94F08;
+  font-size:10px;
+  font-weight:900;
+  line-height:1;
+  text-decoration:none;
+  white-space:nowrap;
+  transition:transform .15s ease, background .15s ease, border-color .15s ease;
+}
+.place-map-button:hover{
+  background:#FFE9D4;
+  border-color:#F97316;
+  transform:translateY(-1px);
+}
+.place-map-button:active{
+  transform:translateY(0);
+}
+.place-map-button:focus-visible{
+  outline:none;
+  box-shadow:0 0 0 3px rgba(249,115,22,.18);
+}
+
+/* 모바일: 중앙 제목과 오른쪽 버튼이 겹치지 않도록 */
+@media(max-width:760px){
+  .schedule-card-toggle-v16{
+    min-height:64px !important;
+    padding:10px 10px !important;
+  }
+  .schedule-card-toggle-v16 .schedule-card-content{
+    gap:6px !important;
+    min-height:44px !important;
+    padding-left:88px !important;
+    padding-right:88px !important;
+  }
+  .schedule-card-toggle-v16 .schedule-card-action{
+    right:0 !important;
+    min-width:78px !important;
+    padding:7px 8px !important;
+  }
+  .schedule-card-toggle-v16 .collapse-label{
+    font-size:0 !important;
+  }
+  .schedule-card-toggle-v16 .collapse-label::before{
+    content:"일정 접기";
+    font-size:9px;
+    font-weight:900;
+  }
+  .schedule-card-toggle-v16[aria-expanded="false"] .collapse-label::before{
+    content:"일정 펼치기";
+  }
+
+  .place-button-row{
+    gap:8px;
+    padding:8px 9px;
+  }
+  .place-map-button{
+    min-height:34px;
+    padding:8px 9px;
+    font-size:9px;
+  }
+}
+
+@media(max-width:430px){
+  .schedule-card-toggle-v16 .schedule-card-content{
+    padding-left:74px !important;
+    padding-right:74px !important;
+    gap:5px !important;
+  }
+  .schedule-card-toggle-v16 .schedule-card-action{
+    min-width:68px !important;
+    padding:6px 6px !important;
+  }
+  .schedule-card-toggle-v16 .schedule-day-chip{
+    font-size:7.5px !important;
+    padding:3px 5px !important;
+  }
+  .schedule-card-toggle-v16 .schedule-card-title{
+    font-size:12px !important;
+  }
+  .schedule-card-toggle-v16 .collapse-label::before{
+    font-size:8px;
+  }
+  .place-button-row{
+    align-items:center;
+  }
+  .place-button-row .name-text{
+    font-size:10px !important;
+  }
+  .place-map-button{
+    padding:7px 8px;
+    font-size:8.5px;
+  }
+}
