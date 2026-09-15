@@ -1,0 +1,2107 @@
+
+    :root{
+      --bg:#f6f8f7;
+      --surface:#ffffff;
+      --surface-2:#f9fbfa;
+      --text:#17201d;
+      --muted:#6b7671;
+      --line:#e4eae7;
+      --primary:#0f766e;
+      --primary-2:#14b8a6;
+      --food:#ef7d45;
+      --play:#2f80ed;
+      --cafe:#8b5cf6;
+      --pending:#f59e0b;
+      --shadow:0 12px 34px rgba(20, 45, 37, .08);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      padding-left:env(safe-area-inset-left, 0);
+      padding-right:env(safe-area-inset-right, 0);
+      font-family:Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(20,184,166,.08), transparent 28rem),
+        linear-gradient(180deg,#f7faf9 0%, var(--bg) 100%);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:inherit}
+    .wrap{width:min(1180px, calc(100% - 32px));margin:0 auto}
+    header{
+      padding:54px 0 26px;
+    }
+    .hero{
+      position:relative;
+      overflow:hidden;
+      background:linear-gradient(135deg,#0f766e 0%,#109487 48%,#0d6b76 100%);
+      color:white;
+      border-radius:30px;
+      padding:34px 34px 32px;
+      box-shadow:0 22px 55px rgba(15,118,110,.20);
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      width:250px;height:250px;border-radius:50%;
+      right:-85px;top:-100px;
+      background:rgba(255,255,255,.10);
+    }
+    .eyebrow{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      padding:7px 11px;
+      border:1px solid rgba(255,255,255,.22);
+      background:rgba(255,255,255,.10);
+      border-radius:999px;
+      font-size:12px;font-weight:800;letter-spacing:.04em;
+    }
+    h1{font-size:clamp(28px,4.2vw,46px);margin:14px 0 8px;letter-spacing:-.045em;line-height:1.15;text-align:center}
+    .hero p{margin:0;color:rgba(255,255,255,.82);font-size:15px;text-align:center}
+    .hero{text-align:center}
+    .stats{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:24px auto 0;max-width:520px
+    }
+    .stat{
+      padding:12px 14px;border-radius:15px;background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.14);text-align:center
+    }
+    .stat b{display:block;font-size:19px}
+    .stat span{font-size:12px;color:rgba(255,255,255,.74)}
+    .tabs{
+      position:sticky;top:0;z-index:20;
+      margin-top:18px;padding:10px;
+      background:rgba(246,248,247,.88);backdrop-filter:blur(12px);
+      border:1px solid rgba(228,234,231,.9);
+      border-radius:18px;
+      display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
+      box-shadow:0 8px 28px rgba(18,50,40,.06);
+    }
+    .tab{
+      appearance:none;border:0;cursor:pointer;border-radius:13px;
+      padding:12px 14px;background:transparent;color:var(--muted);
+      font:inherit;font-weight:800;transition:.18s ease;
+    }
+    .tab:hover{background:white;color:var(--text)}
+    .tab.active{background:white;color:var(--primary);box-shadow:0 4px 16px rgba(12,73,65,.08)}
+    main{padding:12px 0 70px}
+    .category{display:none;animation:fade .22s ease}
+    .category.active{display:block}
+    @keyframes fade{from{opacity:.3;transform:translateY(4px)}to{opacity:1;transform:none}}
+    .category-head{
+      display:flex;align-items:center;justify-content:center;gap:16px;
+      margin:30px 2px 14px;text-align:center
+    }
+    .category-title{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;width:100%}
+    .category-icon{
+      width:46px;height:46px;border-radius:15px;display:grid;place-items:center;font-size:23px;
+      box-shadow:var(--shadow)
+    }
+    .food .category-icon{background:#fff1ea}
+    .play .category-icon{background:#eaf3ff}
+    .cafe .category-icon{background:#f3edff}
+    .category-head h2{margin:0;font-size:24px;letter-spacing:-.03em;text-align:center}
+    .category-head p{margin:2px 0 0;color:var(--muted);font-size:13px;text-align:center}
+    .days{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .day-card{
+      background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+      padding:20px;box-shadow:var(--shadow);min-height:210px;
+    }
+    .day-top{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:7px;margin-bottom:14px;text-align:center}
+    .day-label{
+      font-weight:900;font-size:14px;letter-spacing:-.02em;
+      display:inline-flex;align-items:center;justify-content:center;gap:7px;text-align:center
+    }
+    .count{
+      color:var(--muted);font-size:12px;background:var(--surface-2);border:1px solid var(--line);
+      border-radius:999px;padding:4px 8px;font-weight:700
+    }
+    .list{display:flex;flex-direction:column;gap:9px}
+    .place{
+      display:flex;align-items:center;padding:0;border-radius:14px;
+      background:var(--surface-2);border:1px solid transparent;
+      transition:.17s ease;overflow:hidden
+    }
+    .place:hover{border-color:var(--line);transform:translateY(-1px);background:#fff}
+    .place:has(.place-link:hover){box-shadow:0 6px 16px rgba(15,118,110,.08)}
+    .place-link{
+      display:flex;align-items:center;width:100%;min-height:44px;
+      color:inherit;text-decoration:none;border-radius:14px;outline:none;
+      -webkit-tap-highlight-color:transparent;
+      touch-action:manipulation;
+    }
+    .place-link:focus-visible{
+      box-shadow:0 0 0 3px rgba(15,118,110,.18)
+    }
+    .place-main{
+      display:flex;align-items:flex-start;gap:10px;min-width:0;flex:1 1 auto;
+      padding:11px 12px
+    }
+    .place-name{
+      overflow-wrap:anywhere;word-break:keep-all
+    }
+    .pending-place{
+      min-height:44px;
+      cursor:default;
+    }
+    .pending-place .place-main{
+      width:100%;
+      align-items:center;
+    }
+    .pending-place .dot{
+      margin-top:0;
+    }
+    .pending-place .place-name{
+      display:flex;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:6px;
+    }
+    .pending-place .badge{
+      margin-left:0;
+      transform:none;
+    }
+    @media(hover:none){
+      .place:hover{transform:none}
+      .place:active{background:#eef8f6;border-color:#cfeee8}
+    }
+    .dot{width:9px;height:9px;border-radius:50%;margin-top:7px;flex:0 0 auto}
+    .food .dot{background:var(--food)}
+    .play .dot{background:var(--play)}
+    .cafe .dot{background:var(--cafe)}
+    .place-name{font-size:14px;font-weight:760;letter-spacing:-.015em}
+    .badge{
+      display:inline-flex;margin-left:7px;transform:translateY(-1px);
+      padding:2px 7px;border-radius:999px;font-size:10px;font-weight:900;
+      color:#9a6700;background:#fff7df;border:1px solid #fde7a8
+    }
+    .empty{
+      min-height:145px;display:grid;place-items:center;text-align:center;color:#99a29e;
+      border:1px dashed var(--line);border-radius:15px;font-size:13px;background:#fbfcfc
+    }
+    .summary{
+      margin-top:20px;background:var(--surface);border:1px solid var(--line);
+      border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)
+    }
+    .summary h3{margin:0 0 14px;font-size:18px;text-align:center}
+    .summary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .summary-item{padding:14px;border-radius:15px;background:var(--surface-2);border:1px solid var(--line);text-align:center}
+    .summary-item b{display:block;font-size:18px;margin-bottom:2px;text-align:center}
+    .summary-item span{font-size:12px;color:var(--muted);text-align:center}
+    footer{padding:24px 0 max(40px, env(safe-area-inset-bottom, 0));color:#8b9691;text-align:center;font-size:12px}
+    @media(max-width:860px){
+      .days{grid-template-columns:1fr}
+      .day-card{min-height:auto}
+      .summary-grid{grid-template-columns:1fr}
+      .stats{grid-template-columns:1fr 1fr 1fr}
+    }
+    @media(max-width:560px){
+      .wrap{width:min(100% - 20px,1180px)}
+      header{padding-top:max(18px, env(safe-area-inset-top, 0))}
+      .hero{padding:25px 18px;border-radius:23px}
+      .tabs{grid-template-columns:repeat(3,1fr);position:static;gap:6px;padding:7px}
+      .tab{padding:10px 6px;font-size:13px}
+      .day-card{padding:16px}
+      .place-link{align-items:center}
+      .place-main{gap:8px;padding:10px}
+      .place-name{font-size:13px}
+      .category-head{align-items:center}
+      .category-head h2{font-size:20px}
+      .stats{gap:7px}
+      .stat{padding:10px}
+      .stat b{font-size:16px}
+    }
+    @media print{
+      body{background:white}
+      .hero{box-shadow:none}
+      .tabs{display:none}
+      .category{display:block !important;break-inside:avoid}
+      .days{grid-template-columns:repeat(3,1fr)}
+      .day-card,.summary{box-shadow:none}
+      header{padding-top:0}
+      footer{display:none}
+    }
+  
+    /* Pass badges */
+    .place-name{
+      display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0;
+    }
+    .name-text{min-width:0}
+    .pass-badges{
+      display:inline-flex;align-items:center;gap:5px;flex-wrap:wrap;
+    }
+    .pass-badge{
+      display:inline-flex;align-items:center;justify-content:center;
+      min-height:21px;padding:2px 7px;border-radius:999px;
+      font-size:9.5px;font-weight:950;line-height:1;white-space:nowrap;
+      letter-spacing:-.02em;
+    }
+    .pass-badge.v{
+      color:#b42318;background:#fff0ee;border:1px solid #f4c8c3;
+    }
+    .pass-badge.t{
+      color:#175eae;background:#eaf3ff;border:1px solid #c9ddf8;
+    }
+    .pass-badge.condition::after{
+      content:"";width:4px;height:4px;border-radius:50%;background:currentColor;margin-left:3px;
+    }
+
+    /* Pass tab */
+    .pass-category .category-icon{background:#f4f0ff}
+    .pass-legend{
+      display:flex;justify-content:center;gap:10px;flex-wrap:wrap;
+      margin:0 auto 14px;
+    }
+    .pass-legend>span{
+      display:inline-flex;align-items:center;gap:7px;
+      padding:8px 11px;border:1px solid var(--line);border-radius:999px;
+      background:#fff;font-size:11px;color:var(--muted);
+    }
+    .legend-dot{width:9px;height:9px;border-radius:50%}
+    .legend-dot.v{background:#d63b2e}
+    .legend-dot.t{background:#2f80ed}
+    .pass-summary-note{
+      max-width:880px;margin:0 auto 18px;padding:12px 14px;
+      text-align:center;border-radius:14px;background:#f8faf9;border:1px solid var(--line);
+      color:var(--muted);font-size:12px;
+    }
+    .pass-columns{
+      display:grid;grid-template-columns:1fr 1fr;gap:16px;
+    }
+    .pass-panel{
+      background:#fff;border:1px solid var(--line);border-radius:22px;
+      padding:20px;box-shadow:var(--shadow);
+    }
+    .pass-panel-head{
+      display:flex;align-items:center;gap:12px;margin-bottom:15px;
+      padding-bottom:14px;border-bottom:1px solid var(--line);
+    }
+    .pass-panel-head h3{margin:0;font-size:17px;letter-spacing:-.03em}
+    .pass-panel-head p{margin:2px 0 0;color:var(--muted);font-size:11px}
+    .big-pass-badge{
+      flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;
+      min-height:36px;padding:8px 11px;border-radius:11px;font-size:11px;font-weight:950;
+      white-space:nowrap;
+    }
+    .big-pass-badge.v{background:#fff0ee;color:#b42318;border:1px solid #f3c1bc}
+    .big-pass-badge.t{background:#eaf3ff;color:#175eae;border:1px solid #c5dcf8}
+    .benefit-list{display:flex;flex-direction:column;gap:9px}
+    .benefit-card{
+      padding:13px;border-radius:15px;background:#fafcfc;border:1px solid var(--line);
+    }
+    .benefit-card.caution{background:#fffaf0}
+    .benefit-card.condition-card{background:#f6f9ff}
+    .benefit-title{
+      display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:7px;
+    }
+    .benefit-title>span{
+      font-size:9px;font-weight:950;color:var(--muted);
+      padding:3px 6px;border-radius:999px;background:#eef2f1;
+    }
+    .benefit-title b{font-size:13px}
+    .benefit-price{
+      font-size:12px;font-weight:800;color:#6c251e;line-height:1.55;
+    }
+    .benefit-price.blue{color:#175eae}
+    .benefit-price.sub{margin-top:2px}
+    .benefit-price strong{font-weight:950}
+    .benefit-card p{
+      margin:5px 0 0;color:var(--muted);font-size:10.8px;line-height:1.5;
+    }
+    .pass-total{
+      margin-top:13px;padding:15px;border-radius:15px;text-align:center;
+    }
+    .pass-total.v{background:#fff2f0;border:1px solid #f3cbc7}
+    .pass-total.t{background:#edf5ff;border:1px solid #cfe1f8}
+    .pass-total span,.pass-total small{display:block;color:var(--muted);font-size:10px}
+    .pass-total strong{display:block;font-size:20px;margin:3px 0}
+    .pass-total.v strong{color:#b42318}
+    .pass-total.t strong{color:#175eae}
+    .pass-warning{
+      display:flex;gap:10px;align-items:flex-start;margin-top:15px;padding:14px 15px;
+      border-radius:15px;background:#fff8e8;border:1px solid #f4dda0;
+      color:#735600;font-size:11px;line-height:1.55;
+    }
+    .pass-warning b{white-space:nowrap}
+
+    @media(max-width:860px){
+      .pass-columns{grid-template-columns:1fr}
+    }
+    @media(max-width:560px){
+      .tabs{grid-template-columns:repeat(2,1fr)}
+      .pass-badge{font-size:9px;padding:2px 6px}
+      .place-name{gap:6px}
+      .pass-panel{padding:15px}
+      .pass-panel-head{align-items:flex-start}
+      .benefit-card{padding:12px}
+      .pass-warning{flex-direction:column;gap:4px}
+      .pass-warning b{white-space:normal}
+    }
+
+/* ===== v3: 탭 구분 강화 ===== */
+.tabs{
+  border:1px solid #d8e1dd;
+  gap:8px;
+}
+.tab{
+  border:1.5px solid #d6dfdb !important;
+  background:#fff !important;
+  box-shadow:0 1px 4px rgba(20,45,37,.035);
+}
+.tab[data-target="food"]{border-color:#f2b18d !important;color:#b95727}
+.tab[data-target="play"]{border-color:#9dc5f6 !important;color:#2367b5}
+.tab[data-target="cafe"]{border-color:#c8b1f4 !important;color:#7350b9}
+.tab[data-target="pass"]{border-color:#8fcfc7 !important;color:#0f766e}
+.tab[data-target="food"].active{background:#fff3ec !important;border-color:#ef7d45 !important;box-shadow:0 0 0 2px rgba(239,125,69,.10)}
+.tab[data-target="play"].active{background:#eef6ff !important;border-color:#2f80ed !important;box-shadow:0 0 0 2px rgba(47,128,237,.10)}
+.tab[data-target="cafe"].active{background:#f6f1ff !important;border-color:#8b5cf6 !important;box-shadow:0 0 0 2px rgba(139,92,246,.10)}
+.tab[data-target="pass"].active{background:#edf9f7 !important;border-color:#0f766e !important;box-shadow:0 0 0 2px rgba(15,118,110,.10)}
+.tab:hover{transform:translateY(-1px)}
+
+/* 패스 배지 재정의 */
+.pass-badge.v{
+  color:#b42318 !important;background:#fff0ee !important;border:1px solid #e98f87 !important;
+}
+.pass-badge.t{
+  color:#1765b2 !important;background:#eaf3ff !important;border:1px solid #82b3ec !important;
+}
+.pass-badge.check{
+  color:#6f7780 !important;background:#f2f4f6 !important;border:1px solid #cfd5db !important;
+}
+
+/* 패스 상세 검증 상태 */
+.verify-row{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:4px 7px;border-radius:999px;font-size:9.5px;font-weight:900;
+  margin-top:6px;
+}
+.verify-row.ok{background:#edf8f5;color:#08715b;border:1px solid #cdebe2}
+.verify-row.check{background:#fff7e5;color:#805d00;border:1px solid #f1dda5}
+.source-actions{
+  display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:14px 0 18px;
+}
+.source-actions a{
+  display:inline-flex;align-items:center;justify-content:center;min-height:40px;
+  padding:9px 13px;border-radius:12px;text-decoration:none;font-size:11px;font-weight:900;
+}
+.source-actions .vsrc{color:#b42318;background:#fff3f1;border:1px solid #ebaaa4}
+.source-actions .tsrc{color:#1765b2;background:#eef6ff;border:1px solid #9dc3ee}
+.pass-fact{
+  border:1px solid var(--line);background:#fbfcfc;border-radius:15px;
+  padding:13px 14px;margin-bottom:10px;
+}
+.pass-fact h4{margin:0 0 5px;font-size:13px}
+.pass-fact p{margin:0;color:var(--muted);font-size:11px;line-height:1.55}
+.pass-fact .money{font-weight:950;color:#17201d}
+.recheck-box{
+  margin-top:16px;padding:15px;border:1px dashed #c9d1d8;border-radius:16px;
+  background:#fafbfc;
+}
+.recheck-box h3{margin:0 0 8px;font-size:15px}
+.recheck-box p{margin:5px 0;color:var(--muted);font-size:11px}
+.pass-correction{
+  margin:0 auto 14px;max-width:930px;padding:13px 15px;
+  border-radius:15px;background:#fff7e8;border:1px solid #efd99b;
+  color:#695000;font-size:11.5px;line-height:1.6;text-align:center;
+}
+@media(max-width:560px){
+  .tab{min-height:44px}
+  .source-actions{display:grid;grid-template-columns:1fr}
+  .source-actions a{width:100%}
+}
+
+/* 패스 총 할인액 비교 */
+.pass-total-comparison{
+  display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;
+}
+.total-compare-card{
+  text-align:center;padding:18px;border-radius:18px;border:1px solid var(--line);
+  box-shadow:0 6px 18px rgba(20,45,37,.045);
+}
+.total-compare-card.v{background:#fff3f1;border-color:#efb9b3}
+.total-compare-card.t{background:#eef6ff;border-color:#add0f4}
+.total-compare-card span{
+  display:block;font-size:10px;font-weight:900;color:var(--muted);margin-bottom:4px
+}
+.total-compare-card strong{
+  display:block;font-size:22px;letter-spacing:-.035em
+}
+.total-compare-card.v strong{color:#b42318}
+.total-compare-card.t strong{color:#1765b2}
+.total-compare-card small{
+  display:block;font-size:10px;color:var(--muted);margin-top:5px;line-height:1.45
+}
+@media(max-width:700px){
+  .pass-total-comparison{grid-template-columns:1fr}
+}
+
+/* ===== 2026-09-15 FINAL PASS AUDIT ===== */
+.final-rule{
+  max-width:960px;margin:0 auto 14px;padding:14px 16px;border-radius:15px;
+  background:#fff8e8;border:1px solid #efd799;color:#685000;text-align:center;
+}
+.final-rule b{font-size:12px}
+.final-rule p{margin:4px 0 0;font-size:11px;line-height:1.6}
+
+.final-pass-overview,.money-summary{
+  display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:15px 0;
+}
+.overview-card,.money-card{
+  border-radius:18px;padding:17px;border:1px solid var(--line);text-align:center;
+  box-shadow:0 6px 18px rgba(20,45,37,.04);
+}
+.overview-card.v,.money-card.v{background:#fff4f2;border-color:#efc0bb}
+.overview-card.t,.money-card.t{background:#eef6ff;border-color:#b9d4f3}
+.overview-k,.money-card>span{display:block;font-size:10px;font-weight:950;color:var(--muted)}
+.overview-card strong,.money-card strong{display:block;margin:4px 0;font-size:20px;letter-spacing:-.035em}
+.overview-card.v strong,.money-card.v strong{color:#b42318}
+.overview-card.t strong,.money-card.t strong{color:#1765b2}
+.overview-card p,.money-card p{margin:7px 0 0;font-size:10.5px;color:var(--muted);line-height:1.55}
+.money-card small{display:block;margin-top:7px;font-size:9.8px;color:#68746f;line-height:1.5}
+
+.pass-badge.condition{
+  border-style:dashed !important;
+}
+.benefit-card.confirmed{border-left:3px solid #a8d9ce}
+.benefit-card.conditional-card{border-left:3px solid #e5c66f;background:#fffdf7}
+
+.standalone-warning{
+  margin-top:16px;padding:16px;border-radius:18px;background:#fff9ef;border:1px solid #efdda9;
+}
+.standalone-warning h3{margin:0 0 10px;font-size:14px;text-align:center;color:#725400}
+.standalone-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.standalone-grid>div{
+  padding:11px;border-radius:13px;background:#fff;border:1px solid #efe4c6;text-align:center
+}
+.standalone-grid b{display:block;font-size:11.5px}
+.standalone-grid span{display:block;font-size:10px;margin:4px 0;color:#5f625f}
+.standalone-grid em{display:block;font-style:normal;font-size:9.5px;color:#8a6c18}
+
+.full-audit{
+  margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;
+  box-shadow:var(--shadow)
+}
+.audit-head{text-align:center;margin-bottom:13px}
+.audit-head h3{margin:0;font-size:16px}
+.audit-head p{margin:5px auto 0;max-width:820px;color:var(--muted);font-size:10.5px}
+.audit-table{border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.audit-row{
+  display:grid;grid-template-columns:1.4fr .75fr .85fr 2fr;align-items:center;
+  min-height:43px;border-bottom:1px solid var(--line);font-size:10.5px;
+}
+.audit-row:last-child{border-bottom:0}
+.audit-row>div{padding:9px 10px}
+.audit-row>div:first-child{font-weight:850}
+.audit-header{background:#f3f6f5;font-weight:950;color:#53615c}
+.audit-row:not(.audit-header):hover{background:#fbfcfc}
+.audit-chip{
+  display:inline-flex;align-items:center;justify-content:center;min-height:23px;
+  padding:3px 7px;border-radius:999px;font-size:9px;font-weight:950;white-space:nowrap
+}
+.audit-chip.v{background:#fff0ee;color:#b42318;border:1px solid #eaa59e}
+.audit-chip.t{background:#eaf3ff;color:#1765b2;border:1px solid #9fc5ef}
+.audit-row .none{color:#8b9591;font-size:9.8px}
+
+.research-sources{
+  margin-top:16px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;
+  box-shadow:var(--shadow)
+}
+.research-sources h3{margin:0 0 12px;text-align:center;font-size:15px}
+.research-source-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.research-source-grid a{
+  display:block;padding:11px;border-radius:13px;background:#f9fbfa;border:1px solid var(--line);
+  text-decoration:none;color:inherit;transition:.16s ease
+}
+.research-source-grid a:hover{background:#fff;transform:translateY(-1px);border-color:#b7c9c2}
+.research-source-grid b{display:block;font-size:10.5px}
+.research-source-grid span{display:block;margin-top:3px;font-size:9.5px;color:var(--muted);line-height:1.45}
+
+@media(max-width:860px){
+  .final-pass-overview,.money-summary{grid-template-columns:1fr}
+  .standalone-grid{grid-template-columns:1fr}
+  .research-source-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:620px){
+  .full-audit{padding:13px}
+  .audit-table{border:0;display:flex;flex-direction:column;gap:8px;overflow:visible}
+  .audit-header{display:none}
+  .audit-row{
+    display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);
+    border-radius:13px;overflow:hidden;background:#fbfcfc;min-height:0
+  }
+  .audit-row>div{padding:8px}
+  .audit-row>div:first-child{
+    grid-column:1/-1;background:#f4f7f6;font-size:11px;text-align:center;border-bottom:1px solid var(--line)
+  }
+  .audit-row>div:nth-child(2)::before{content:"브이패스 · ";font-size:8.5px;color:#8a9590;font-weight:700}
+  .audit-row>div:nth-child(3)::before{content:"투어패스 · ";font-size:8.5px;color:#8a9590;font-weight:700}
+  .audit-row>div:nth-child(4){
+    grid-column:1/-1;border-top:1px dashed var(--line);font-size:9.5px;color:#68746f;text-align:center
+  }
+  .research-source-grid{grid-template-columns:1fr}
+}
+
+/* ===== 상세 일정 ===== */
+.detail-schedule{
+  margin-top:20px;background:#fff;border:1px solid var(--line);border-radius:22px;
+  padding:22px;box-shadow:var(--shadow)
+}
+.detail-head{text-align:center;margin-bottom:15px}
+.detail-head h3{margin:0;font-size:20px;letter-spacing:-.03em}
+.detail-head p{margin:4px 0 0;color:var(--muted);font-size:11.5px}
+
+.day-schedule-tabs{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:15px
+}
+.day-schedule-tab{
+  appearance:none;border:1.5px solid #d9e1de;background:#fff;border-radius:15px;
+  padding:13px 10px;cursor:pointer;color:var(--text);font:inherit;text-align:center;
+  transition:.16s ease;min-height:82px;
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation
+}
+.day-schedule-tab:hover{transform:translateY(-1px);border-color:#91bdb5}
+.day-schedule-tab.active{
+  background:#edf9f7;border-color:#0f766e;box-shadow:0 0 0 2px rgba(15,118,110,.09)
+}
+.day-schedule-tab span{display:block;font-size:9px;font-weight:950;color:var(--primary);letter-spacing:.06em}
+.day-schedule-tab b{display:block;font-size:14px;margin:3px 0;letter-spacing:-.02em}
+.day-schedule-tab small{display:block;font-size:10px;color:var(--muted)}
+
+.schedule-panel{
+  border:1px solid var(--line);border-radius:18px;background:#fbfcfc;padding:18px;
+  animation:fade .18s ease
+}
+.schedule-panel[hidden]{display:none !important}
+.schedule-panel-head{
+  display:flex;align-items:flex-end;justify-content:space-between;gap:12px;
+  padding-bottom:13px;margin-bottom:7px;border-bottom:1px solid var(--line)
+}
+.schedule-panel-head>div{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.schedule-panel-head h4{margin:0;font-size:17px;letter-spacing:-.025em}
+.schedule-panel-head p{margin:0;color:var(--muted);font-size:10.5px}
+.schedule-day-chip{
+  display:inline-flex;align-items:center;justify-content:center;padding:4px 7px;
+  border-radius:999px;background:#e8f8f5;color:var(--primary);font-size:9px;font-weight:950
+}
+.timeline{list-style:none;padding:0;margin:0}
+.timeline li{
+  position:relative;display:grid;grid-template-columns:72px 1fr;gap:13px;
+  padding:12px 0;border-bottom:1px solid #e9eeeb
+}
+.timeline li:last-child{border-bottom:0;padding-bottom:2px}
+.timeline .time{
+  display:flex;align-items:center;justify-content:center;align-self:start;
+  min-height:28px;padding:5px 7px;border-radius:9px;
+  background:#eef4f2;color:#4f625c;font-size:10px;font-weight:900;white-space:nowrap
+}
+.timeline b{display:block;font-size:13px;letter-spacing:-.015em}
+.timeline p{margin:3px 0 0;color:var(--muted);font-size:10.5px;line-height:1.5}
+
+@media(max-width:620px){
+  .detail-schedule{padding:14px;border-radius:18px}
+  .day-schedule-tabs{grid-template-columns:1fr;gap:7px}
+  .day-schedule-tab{
+    min-height:58px;padding:10px 12px;display:grid;grid-template-columns:52px 1fr auto;
+    align-items:center;text-align:left;gap:8px
+  }
+  .day-schedule-tab span,.day-schedule-tab b,.day-schedule-tab small{display:block;margin:0}
+  .day-schedule-tab small{text-align:right}
+  .schedule-panel{padding:13px}
+  .schedule-panel-head{align-items:flex-start;flex-direction:column}
+  .timeline li{grid-template-columns:58px 1fr;gap:9px;padding:10px 0}
+  .timeline .time{font-size:9px;padding:4px 5px}
+  .timeline b{font-size:12px}
+  .timeline p{font-size:10px}
+}
+
+/* ===== 상세 일정 접기/펼치기 ===== */
+.schedule-panel-head{
+  position:relative;
+}
+.schedule-collapse-toggle{
+  appearance:none;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  flex:0 0 auto;
+  min-height:38px;
+  padding:8px 11px;
+  border-radius:11px;
+  border:1.5px solid #b8d5cf;
+  background:#f2faf8;
+  color:var(--primary);
+  font:inherit;
+  font-size:10.5px;
+  font-weight:900;
+  cursor:pointer;
+  transition:.16s ease;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+}
+.schedule-collapse-toggle:hover{
+  background:#e8f6f3;
+  border-color:var(--primary);
+}
+.schedule-collapse-toggle:focus-visible{
+  outline:none;
+  box-shadow:0 0 0 3px rgba(15,118,110,.16);
+}
+.collapse-arrow{
+  display:inline-block;
+  font-size:9px;
+  transition:transform .18s ease;
+}
+.schedule-collapse-toggle[aria-expanded="true"] .collapse-arrow{
+  transform:rotate(180deg);
+}
+.schedule-panel.collapsed{
+  padding-bottom:13px;
+}
+.schedule-panel.collapsed .schedule-panel-head{
+  margin-bottom:0;
+  padding-bottom:0;
+  border-bottom:0;
+}
+.schedule-panel:not(.collapsed) .schedule-panel-head{
+  margin-bottom:7px;
+}
+.timeline[hidden]{
+  display:none !important;
+}
+@media(max-width:620px){
+  .schedule-panel-head{
+    width:100%;
+  }
+  .schedule-collapse-toggle{
+    width:100%;
+    min-height:42px;
+    margin-top:3px;
+  }
+}
+
+/* ===== v5: 상세 일정 상단 박스 전체 토글 + 중앙 정렬 ===== */
+.schedule-panel-head{
+  display:block !important;
+  padding:0 !important;
+  margin:0 !important;
+  border:0 !important;
+  width:100%;
+}
+.schedule-card-toggle{
+  appearance:none;
+  display:block;
+  width:100%;
+  min-height:118px;
+  margin:0;
+  padding:18px 22px;
+  border:0;
+  border-radius:16px;
+  background:transparent;
+  color:var(--text);
+  font:inherit;
+  cursor:pointer;
+  text-align:center;
+  transition:background .16s ease, box-shadow .16s ease, transform .16s ease;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+}
+.schedule-card-toggle:hover{
+  background:#f3faf8;
+}
+.schedule-card-toggle:active{
+  transform:scale(.995);
+}
+.schedule-card-toggle:focus-visible{
+  outline:none;
+  box-shadow:inset 0 0 0 3px rgba(15,118,110,.16);
+}
+.schedule-card-content{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  width:100%;
+  text-align:center;
+}
+.schedule-card-title{
+  display:block;
+  font-size:18px;
+  line-height:1.35;
+  font-weight:900;
+  letter-spacing:-.03em;
+  text-align:center;
+}
+.schedule-card-desc{
+  display:block;
+  margin-top:1px;
+  color:var(--muted);
+  font-size:10.5px;
+  line-height:1.45;
+  text-align:center;
+}
+.schedule-card-action{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  margin-top:5px;
+  min-height:31px;
+  padding:6px 10px;
+  border-radius:10px;
+  border:1.5px solid #b8d5cf;
+  background:#f2faf8;
+  color:var(--primary);
+  font-size:10px;
+  font-weight:900;
+}
+.schedule-card-toggle:hover .schedule-card-action{
+  background:#e8f6f3;
+  border-color:var(--primary);
+}
+.schedule-card-toggle[aria-expanded="true"] .collapse-arrow{
+  transform:rotate(180deg);
+}
+.schedule-card-toggle[aria-expanded="true"] .schedule-card-action{
+  background:#e8f6f3;
+  border-color:#91bdb5;
+}
+.schedule-panel.collapsed{
+  padding-bottom:13px !important;
+}
+.schedule-panel.collapsed .schedule-panel-head{
+  margin-bottom:0 !important;
+  padding-bottom:0 !important;
+  border-bottom:0 !important;
+}
+.schedule-panel:not(.collapsed) .schedule-panel-head{
+  margin-bottom:8px !important;
+}
+.schedule-panel:not(.collapsed) .schedule-card-toggle{
+  background:#f7fbfa;
+}
+.schedule-day-chip{
+  margin:0 auto;
+}
+
+/* 기존 소형 토글 버튼 스타일은 v5에서 사용하지 않음 */
+.schedule-collapse-toggle{
+  display:none !important;
+}
+
+@media(max-width:620px){
+  .schedule-card-toggle{
+    min-height:112px;
+    padding:16px 12px;
+  }
+  .schedule-card-title{
+    font-size:16px;
+  }
+  .schedule-card-desc{
+    font-size:10px;
+  }
+  .schedule-card-action{
+    min-height:34px;
+    padding:7px 11px;
+  }
+}
+
+/* ===== v6: 상세 일정 카드 - 가로 구조 유지 + 정확한 수직 중앙 정렬 ===== */
+.schedule-card-toggle{
+  min-height:70px !important;
+  padding:10px 18px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:left !important;
+}
+
+.schedule-card-content{
+  width:100% !important;
+  min-height:48px;
+  display:grid !important;
+  grid-template-columns:auto auto minmax(120px,1fr) auto;
+  align-items:center !important;
+  justify-content:stretch !important;
+  column-gap:10px !important;
+  row-gap:0 !important;
+  text-align:left !important;
+}
+
+.schedule-day-chip{
+  grid-column:1;
+  align-self:center !important;
+  justify-self:start;
+  margin:0 !important;
+  line-height:1 !important;
+}
+
+.schedule-card-title{
+  grid-column:2;
+  align-self:center !important;
+  justify-self:start;
+  margin:0 !important;
+  padding:0 !important;
+  font-size:18px !important;
+  line-height:1.2 !important;
+  white-space:nowrap;
+  text-align:left !important;
+}
+
+.schedule-card-desc{
+  grid-column:3;
+  align-self:center !important;
+  justify-self:center;
+  margin:0 !important;
+  padding:0 !important;
+  line-height:1.25 !important;
+  text-align:center !important;
+  color:var(--muted);
+}
+
+.schedule-card-action{
+  grid-column:4;
+  align-self:center !important;
+  justify-self:end;
+  margin:0 !important;
+  min-height:38px !important;
+  padding:7px 11px !important;
+}
+
+/* 펼친 상태에서도 헤더 높이/중앙축이 흔들리지 않도록 고정 */
+.schedule-panel:not(.collapsed) .schedule-card-toggle,
+.schedule-panel.collapsed .schedule-card-toggle{
+  min-height:70px !important;
+}
+
+/* 태블릿 */
+@media(max-width:860px){
+  .schedule-card-content{
+    grid-template-columns:auto auto minmax(90px,1fr) auto;
+    column-gap:8px !important;
+  }
+  .schedule-card-title{
+    font-size:16px !important;
+  }
+}
+
+/* 모바일: 가로형을 유지하되 설명은 중앙에서 자연스럽게 축약 */
+@media(max-width:620px){
+  .schedule-card-toggle{
+    min-height:68px !important;
+    padding:9px 10px !important;
+  }
+  .schedule-card-content{
+    min-height:48px;
+    grid-template-columns:auto minmax(0,1fr) auto !important;
+    grid-template-areas:
+      "chip title action"
+      "desc desc desc";
+    column-gap:7px !important;
+    row-gap:4px !important;
+  }
+  .schedule-day-chip{
+    grid-area:chip;
+    justify-self:start;
+  }
+  .schedule-card-title{
+    grid-area:title;
+    justify-self:start;
+    min-width:0;
+    font-size:14px !important;
+    white-space:normal;
+    line-height:1.2 !important;
+  }
+  .schedule-card-desc{
+    grid-area:desc;
+    justify-self:center;
+    font-size:9.5px !important;
+    line-height:1.2 !important;
+  }
+  .schedule-card-action{
+    grid-area:action;
+    justify-self:end;
+    min-height:34px !important;
+    padding:6px 9px !important;
+    font-size:9.5px !important;
+  }
+}
+
+
+/* ===== v7: 상세 일정 카드 설명 제거 후 재정렬 ===== */
+.schedule-card-content{
+  grid-template-columns:auto auto 1fr auto !important;
+}
+.schedule-card-action{
+  grid-column:4 !important;
+}
+@media(max-width:620px){
+  .schedule-card-content{
+    grid-template-columns:auto minmax(0,1fr) auto !important;
+    grid-template-areas:"chip title action" !important;
+    row-gap:0 !important;
+  }
+}
+
+/* ===== v8 FINAL MOBILE UX OPTIMIZATION ===== */
+
+/* Global */
+html{
+  -webkit-text-size-adjust:100%;
+}
+body{
+  overflow-x:hidden;
+}
+button,a{
+  -webkit-tap-highlight-color:transparent;
+}
+
+/* Hero */
+.hero{
+  text-align:center;
+}
+.hero .eyebrow{
+  margin-inline:auto;
+}
+.hero .stats{
+  margin-left:auto;
+  margin-right:auto;
+}
+.hero h1{
+  text-wrap:balance;
+}
+
+/* Top category tabs */
+.tabs{
+  gap:8px;
+}
+.tab{
+  min-height:44px;
+  border-radius:12px;
+}
+
+/* Place rows */
+.place{
+  min-height:48px;
+}
+.place-link{
+  min-height:48px;
+}
+.place-main{
+  align-items:center;
+}
+.place-name{
+  line-height:1.35;
+}
+.pass-badges{
+  gap:4px;
+}
+
+/* Detail schedule */
+.detail-schedule{
+  overflow:hidden;
+}
+.day-schedule-tab{
+  min-height:72px;
+}
+.schedule-panel{
+  overflow:hidden;
+}
+.schedule-card-toggle{
+  min-height:68px !important;
+}
+.timeline li{
+  min-width:0;
+}
+.timeline li>div{
+  min-width:0;
+}
+
+/* Pass section */
+.pass-panel,
+.full-audit,
+.research-sources{
+  overflow:hidden;
+}
+.benefit-card,
+.audit-row,
+.research-source-grid a{
+  min-width:0;
+}
+
+/* ----- Tablet ----- */
+@media(max-width:860px){
+  .wrap{
+    width:min(100% - 24px,1180px);
+  }
+
+  header{
+    padding-top:20px;
+  }
+
+  .hero{
+    padding:24px 20px;
+  }
+
+  .hero h1{
+    font-size:clamp(26px,6vw,36px);
+  }
+
+  .stats{
+    width:100%;
+    max-width:none;
+  }
+
+  .category-head{
+    margin-top:24px;
+  }
+
+  .days{
+    gap:12px;
+  }
+
+  .day-card{
+    padding:16px;
+  }
+
+  .pass-columns,
+  .final-pass-overview,
+  .money-summary{
+    grid-template-columns:1fr !important;
+  }
+}
+
+/* ----- Mobile ----- */
+@media(max-width:620px){
+  :root{
+    --radius:18px;
+  }
+
+  body{
+    font-size:14px;
+  }
+
+  .wrap{
+    width:calc(100% - 16px) !important;
+  }
+
+  header{
+    padding-top:max(10px, env(safe-area-inset-top, 0)) !important;
+    padding-bottom:8px;
+  }
+
+  .hero{
+    padding:20px 15px !important;
+    border-radius:20px !important;
+  }
+
+  .eyebrow{
+    font-size:10px !important;
+    padding:6px 9px !important;
+  }
+
+  .hero h1{
+    font-size:27px !important;
+    line-height:1.18 !important;
+    margin:11px 0 0 !important;
+  }
+
+  .stats{
+    margin-top:17px !important;
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+    gap:6px !important;
+  }
+
+  .stat{
+    min-width:0;
+    padding:9px 5px !important;
+    border-radius:12px !important;
+  }
+
+  .stat b{
+    font-size:16px !important;
+  }
+
+  .stat span{
+    font-size:10px !important;
+  }
+
+  /* Category buttons: 2 x 2, large touch targets */
+  .tabs{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:6px !important;
+    padding:7px !important;
+    margin-top:10px !important;
+    border-radius:15px !important;
+    position:static !important;
+  }
+
+  .tab{
+    min-height:46px !important;
+    padding:9px 6px !important;
+    font-size:12px !important;
+    line-height:1.25 !important;
+  }
+
+  main{
+    padding-top:4px !important;
+    padding-bottom:max(36px, env(safe-area-inset-bottom, 0)) !important;
+  }
+
+  .category-head{
+    margin:22px 0 12px !important;
+  }
+
+  .category-title{
+    gap:7px !important;
+  }
+
+  .category-icon{
+    width:40px !important;
+    height:40px !important;
+    border-radius:13px !important;
+    font-size:20px !important;
+  }
+
+  .category-head h2{
+    font-size:20px !important;
+  }
+
+  .category-head p{
+    font-size:11px !important;
+    line-height:1.4 !important;
+  }
+
+  /* Day cards */
+  .days{
+    gap:10px !important;
+  }
+
+  .day-card{
+    padding:14px !important;
+    border-radius:17px !important;
+  }
+
+  .day-top{
+    gap:5px !important;
+    margin-bottom:10px !important;
+  }
+
+  .day-label{
+    font-size:13px !important;
+  }
+
+  .count{
+    padding:3px 7px !important;
+    font-size:10px !important;
+  }
+
+  .list{
+    gap:7px !important;
+  }
+
+  .place{
+    min-height:46px !important;
+    border-radius:12px !important;
+  }
+
+  .place-link{
+    min-height:46px !important;
+  }
+
+  .place-main{
+    padding:10px !important;
+    gap:8px !important;
+  }
+
+  .dot{
+    width:8px !important;
+    height:8px !important;
+    margin-top:4px !important;
+  }
+
+  .place-name{
+    font-size:12.5px !important;
+    gap:5px !important;
+    line-height:1.35 !important;
+  }
+
+  .pass-badge{
+    min-height:20px !important;
+    padding:2px 6px !important;
+    font-size:8.5px !important;
+  }
+
+  /* Detail schedule wrapper */
+  .detail-schedule{
+    margin-top:14px !important;
+    padding:13px !important;
+    border-radius:18px !important;
+  }
+
+  .detail-head{
+    margin-bottom:11px !important;
+  }
+
+  .detail-head h3{
+    font-size:18px !important;
+  }
+
+  .detail-head p{
+    font-size:10px !important;
+    line-height:1.4 !important;
+  }
+
+  /* Day selector cards: keep them compact and clearly tappable */
+  .day-schedule-tabs{
+    grid-template-columns:1fr !important;
+    gap:6px !important;
+    margin-bottom:10px !important;
+  }
+
+  .day-schedule-tab{
+    min-height:56px !important;
+    padding:8px 10px !important;
+    border-radius:12px !important;
+    display:grid !important;
+    grid-template-columns:50px minmax(0,1fr) auto !important;
+    align-items:center !important;
+    gap:7px !important;
+    text-align:left !important;
+  }
+
+  .day-schedule-tab span{
+    font-size:8.5px !important;
+  }
+
+  .day-schedule-tab b{
+    font-size:13px !important;
+    line-height:1.2 !important;
+  }
+
+  .day-schedule-tab small{
+    font-size:9px !important;
+    text-align:right !important;
+  }
+
+  /* Collapsible schedule header */
+  .schedule-panel{
+    padding:10px !important;
+    border-radius:14px !important;
+  }
+
+  .schedule-card-toggle{
+    min-height:56px !important;
+    padding:8px 7px !important;
+  }
+
+  .schedule-card-content{
+    grid-template-columns:auto minmax(0,1fr) auto !important;
+    grid-template-areas:"chip title action" !important;
+    gap:7px !important;
+    min-height:40px !important;
+  }
+
+  .schedule-day-chip{
+    grid-area:chip !important;
+    font-size:8px !important;
+    padding:4px 6px !important;
+  }
+
+  .schedule-card-title{
+    grid-area:title !important;
+    min-width:0;
+    font-size:13.5px !important;
+    line-height:1.2 !important;
+    white-space:normal !important;
+  }
+
+  .schedule-card-action{
+    grid-area:action !important;
+    min-height:32px !important;
+    padding:5px 8px !important;
+    font-size:9px !important;
+    border-radius:9px !important;
+  }
+
+  /* Timeline */
+  .timeline li{
+    grid-template-columns:52px minmax(0,1fr) !important;
+    gap:8px !important;
+    padding:9px 0 !important;
+  }
+
+  .timeline .time{
+    min-height:26px !important;
+    padding:4px !important;
+    font-size:8.5px !important;
+    border-radius:8px !important;
+  }
+
+  .timeline b{
+    font-size:11.5px !important;
+    line-height:1.35 !important;
+  }
+
+  .timeline p{
+    font-size:9.5px !important;
+    line-height:1.45 !important;
+    margin-top:2px !important;
+  }
+
+  /* Pass section */
+  .pass-legend{
+    gap:6px !important;
+  }
+
+  .pass-legend>span{
+    padding:7px 9px !important;
+    font-size:9.5px !important;
+  }
+
+  .final-rule,
+  .pass-correction,
+  .pass-summary-note{
+    padding:11px !important;
+    font-size:10px !important;
+    line-height:1.5 !important;
+  }
+
+  .source-actions{
+    grid-template-columns:1fr !important;
+    gap:6px !important;
+  }
+
+  .source-actions a{
+    min-height:42px !important;
+    font-size:10px !important;
+  }
+
+  .overview-card,
+  .money-card{
+    padding:14px !important;
+    border-radius:15px !important;
+  }
+
+  .overview-card strong,
+  .money-card strong{
+    font-size:18px !important;
+  }
+
+  .overview-card p,
+  .money-card p{
+    font-size:9.5px !important;
+  }
+
+  .pass-panel{
+    padding:13px !important;
+    border-radius:17px !important;
+  }
+
+  .pass-panel-head{
+    gap:8px !important;
+    margin-bottom:10px !important;
+    padding-bottom:10px !important;
+  }
+
+  .pass-panel-head h3{
+    font-size:15px !important;
+  }
+
+  .pass-panel-head p{
+    font-size:9.5px !important;
+  }
+
+  .big-pass-badge{
+    min-height:32px !important;
+    padding:6px 8px !important;
+    font-size:9px !important;
+  }
+
+  .benefit-list{
+    gap:7px !important;
+  }
+
+  .benefit-card{
+    padding:10px !important;
+    border-radius:12px !important;
+  }
+
+  .benefit-title b{
+    font-size:11.5px !important;
+  }
+
+  .benefit-price{
+    font-size:10.5px !important;
+  }
+
+  .benefit-card p{
+    font-size:9.5px !important;
+  }
+
+  .verify-row{
+    font-size:8.5px !important;
+    padding:3px 6px !important;
+  }
+
+  .standalone-warning{
+    padding:12px !important;
+    border-radius:15px !important;
+  }
+
+  .standalone-warning h3{
+    font-size:12px !important;
+  }
+
+  /* Audit list becomes stacked cards */
+  .full-audit{
+    padding:12px !important;
+    border-radius:17px !important;
+  }
+
+  .audit-head h3{
+    font-size:14px !important;
+  }
+
+  .audit-head p{
+    font-size:9px !important;
+  }
+
+  .audit-table{
+    gap:7px !important;
+  }
+
+  .audit-row{
+    border-radius:11px !important;
+  }
+
+  .audit-row>div{
+    padding:7px !important;
+    font-size:9px !important;
+  }
+
+  .audit-row>div:first-child{
+    font-size:10.5px !important;
+  }
+
+  .audit-chip{
+    min-height:21px !important;
+    font-size:8px !important;
+    padding:2px 6px !important;
+  }
+
+  /* Research links */
+  .research-sources{
+    padding:12px !important;
+    border-radius:17px !important;
+  }
+
+  .research-sources h3{
+    font-size:13px !important;
+  }
+
+  .research-source-grid{
+    grid-template-columns:1fr !important;
+    gap:6px !important;
+  }
+
+  .research-source-grid a{
+    padding:10px !important;
+    border-radius:11px !important;
+  }
+
+  .research-source-grid b{
+    font-size:10px !important;
+  }
+
+  .research-source-grid span{
+    font-size:9px !important;
+  }
+
+  .pass-warning{
+    padding:11px !important;
+    font-size:9.5px !important;
+    border-radius:13px !important;
+  }
+
+  footer{
+    font-size:10px !important;
+    padding-bottom:max(24px, env(safe-area-inset-bottom, 0)) !important;
+  }
+}
+
+/* Very narrow phones */
+@media(max-width:390px){
+  .hero h1{
+    font-size:24px !important;
+  }
+
+  .tab{
+    font-size:11px !important;
+  }
+
+  .day-schedule-tab{
+    grid-template-columns:43px minmax(0,1fr) auto !important;
+  }
+
+  .schedule-card-content{
+    grid-template-columns:auto minmax(0,1fr) auto !important;
+  }
+
+  .schedule-card-title{
+    font-size:12.5px !important;
+  }
+
+  .schedule-card-action{
+    padding:5px 6px !important;
+  }
+}
+
+
+
+/* =========================================================
+   JEJU CITRUS EDITION · FINAL THEME
+   GitHub Pages ready
+   ========================================================= */
+
+:root{
+  --bg:#FFF9F3;
+  --surface:#FFFFFF;
+  --surface-2:#FFFDF9;
+  --text:#2D211A;
+  --muted:#7D6B60;
+  --line:#EEDFD2;
+
+  --primary:#F97316;
+  --primary-2:#FF9B3D;
+  --primary-dark:#C94F08;
+  --primary-deep:#9A3B06;
+
+  --citrus:#FF8A1F;
+  --citrus-soft:#FFF0DF;
+  --citrus-pale:#FFF8F0;
+  --tangerine:#F97316;
+  --mandarin:#FFB14B;
+  --sand:#F5EBDD;
+  --leaf:#4E7C59;
+
+  --food:#F66A20;
+  --play:#E99A16;
+  --cafe:#B86B38;
+  --pending:#D98C10;
+
+  --shadow:0 16px 42px rgba(116,65,27,.10);
+  --shadow-hover:0 20px 48px rgba(157,78,18,.16);
+  --radius:22px;
+}
+
+html{
+  scroll-behavior:smooth;
+  background:#FFF9F3;
+}
+
+body{
+  background:
+    radial-gradient(circle at 8% -8%, rgba(255,158,61,.18), transparent 30rem),
+    radial-gradient(circle at 94% 14%, rgba(255,195,111,.13), transparent 28rem),
+    linear-gradient(180deg,#FFFDF9 0%,#FFF8F0 48%,#FFF9F3 100%) !important;
+  color:var(--text);
+}
+
+::selection{
+  background:#FFD3A6;
+  color:#6E2A05;
+}
+
+/* ---------- HERO ---------- */
+.hero{
+  background:
+    radial-gradient(circle at 12% 18%, rgba(255,255,255,.18), transparent 10rem),
+    radial-gradient(circle at 88% 10%, rgba(255,217,153,.18), transparent 13rem),
+    linear-gradient(132deg,#FF9A2F 0%,#F97316 46%,#DF5607 100%) !important;
+  box-shadow:0 24px 60px rgba(199,83,10,.24) !important;
+  border:1px solid rgba(255,255,255,.28);
+  isolation:isolate;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  width:150px;
+  height:150px;
+  left:-38px;
+  bottom:-72px;
+  border-radius:50%;
+  border:28px solid rgba(255,255,255,.08);
+  pointer-events:none;
+}
+
+.hero::after{
+  width:260px !important;
+  height:260px !important;
+  right:-90px !important;
+  top:-120px !important;
+  background:rgba(255,255,255,.09) !important;
+  box-shadow:
+    -72px 150px 0 -108px rgba(255,255,255,.11),
+    -122px 102px 0 -116px rgba(255,255,255,.08);
+}
+
+.hero .eyebrow{
+  background:rgba(255,255,255,.15) !important;
+  border-color:rgba(255,255,255,.28) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12);
+}
+
+.hero h1{
+  text-shadow:0 2px 10px rgba(110,39,0,.14);
+}
+
+.stat{
+  background:rgba(255,255,255,.14) !important;
+  border-color:rgba(255,255,255,.20) !important;
+  backdrop-filter:blur(7px);
+  -webkit-backdrop-filter:blur(7px);
+  transition:transform .18s ease, background .18s ease;
+}
+
+.stat:hover{
+  transform:translateY(-2px);
+  background:rgba(255,255,255,.20) !important;
+}
+
+/* ---------- MAIN CATEGORY TABS ---------- */
+.tabs{
+  background:rgba(255,250,244,.88) !important;
+  border-color:#F0DCC9 !important;
+  box-shadow:0 10px 28px rgba(102,57,23,.08) !important;
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+}
+
+.tab{
+  color:#755C4D !important;
+  border:1.5px solid #EEDCCB !important;
+  background:#FFFDF9 !important;
+  box-shadow:0 2px 7px rgba(81,49,25,.035) !important;
+  transition:
+    transform .18s ease,
+    border-color .18s ease,
+    background .18s ease,
+    color .18s ease,
+    box-shadow .18s ease !important;
+}
+
+.tab:hover{
+  transform:translateY(-2px);
+  border-color:#F4B271 !important;
+  color:#A84408 !important;
+  box-shadow:0 7px 18px rgba(199,83,10,.10) !important;
+}
+
+.tab.active{
+  color:#A43F06 !important;
+  background:linear-gradient(180deg,#FFF3E6,#FFE8D1) !important;
+  border-color:#F97316 !important;
+  box-shadow:
+    0 0 0 2px rgba(249,115,22,.09),
+    0 8px 20px rgba(207,83,9,.10) !important;
+}
+
+/* ---------- SECTION HEADINGS ---------- */
+.category-icon{
+  box-shadow:0 8px 22px rgba(111,63,28,.08) !important;
+  border:1px solid rgba(226,197,171,.55);
+}
+
+.food .category-icon{background:#FFF0E7 !important}
+.play .category-icon{background:#FFF5DD !important}
+.cafe .category-icon{background:#F8EEE5 !important}
+.pass-category .category-icon{background:#FFF1E3 !important}
+
+.category-head h2,
+.detail-head h3{
+  color:#39281E;
+}
+
+/* ---------- DAY CARDS ---------- */
+.day-card,
+.detail-schedule,
+.pass-panel,
+.full-audit,
+.research-sources{
+  border-color:#EEDFD3 !important;
+  background:rgba(255,255,255,.96) !important;
+  box-shadow:var(--shadow) !important;
+}
+
+.day-card{
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+.day-card:hover{
+  transform:translateY(-3px);
+  border-color:#F1C9A6 !important;
+  box-shadow:var(--shadow-hover) !important;
+}
+
+.count{
+  background:#FFF8F0 !important;
+  border-color:#EEDAC8 !important;
+  color:#8A654B !important;
+}
+
+/* ---------- PLACE CARDS ---------- */
+.place{
+  background:#FFF9F4 !important;
+  border-color:#F4E7DC !important;
+  transition:
+    transform .17s ease,
+    background .17s ease,
+    border-color .17s ease,
+    box-shadow .17s ease !important;
+}
+
+.place:hover{
+  background:#FFF4E9 !important;
+  border-color:#F1C79D !important;
+  box-shadow:0 9px 22px rgba(160,83,27,.10) !important;
+  transform:translateY(-2px) !important;
+}
+
+.place-link:focus-visible{
+  box-shadow:0 0 0 3px rgba(249,115,22,.20) !important;
+}
+
+.food .dot{background:#F97316 !important}
+.play .dot{background:#E7A01B !important}
+.cafe .dot{background:#B66A36 !important}
+
+.place-link::after{
+  content:"›";
+  flex:0 0 auto;
+  align-self:center;
+  margin-right:10px;
+  color:#C99670;
+  font-size:19px;
+  line-height:1;
+  font-weight:500;
+  opacity:.62;
+  transform:translateX(0);
+  transition:transform .16s ease, opacity .16s ease, color .16s ease;
+}
+
+.place-link:hover::after{
+  color:#E45C08;
+  opacity:1;
+  transform:translateX(2px);
+}
+
+/* Pass badges intentionally keep red / blue distinction */
+.pass-badge.v{
+  color:#B42318 !important;
+  background:#FFF0EE !important;
+  border-color:#ECA39C !important;
+}
+.pass-badge.t{
+  color:#1765B2 !important;
+  background:#EAF3FF !important;
+  border-color:#9DC3ED !important;
+}
+
+/* ---------- DETAIL SCHEDULE ---------- */
+.detail-schedule{
+  position:relative;
+}
+
+.detail-schedule::before{
+  content:"";
+  position:absolute;
+  left:18px;
+  right:18px;
+  top:0;
+  height:3px;
+  border-radius:0 0 8px 8px;
+  background:linear-gradient(90deg,#FFB14B,#F97316,#D95708);
+  opacity:.88;
+}
+
+.day-schedule-tab{
+  border-color:#ECDCCD !important;
+  background:#FFFDF9 !important;
+  color:#4A3528 !important;
+  box-shadow:0 2px 8px rgba(88,48,20,.03);
+}
+
+.day-schedule-tab:hover{
+  border-color:#F1B779 !important;
+  background:#FFF8F1 !important;
+}
+
+.day-schedule-tab.active{
+  background:linear-gradient(180deg,#FFF4E6,#FFE8D1) !important;
+  border-color:#F97316 !important;
+  box-shadow:
+    0 0 0 2px rgba(249,115,22,.08),
+    0 7px 18px rgba(166,76,18,.08) !important;
+}
+
+.day-schedule-tab span{
+  color:#D95408 !important;
+}
+
+.schedule-panel{
+  background:#FFFCF8 !important;
+  border-color:#EEE0D4 !important;
+}
+
+.schedule-card-toggle{
+  border-radius:14px !important;
+  transition:background .17s ease, box-shadow .17s ease, transform .17s ease !important;
+}
+
+.schedule-card-toggle:hover{
+  background:#FFF5E9 !important;
+}
+
+.schedule-card-toggle:focus-visible{
+  box-shadow:inset 0 0 0 3px rgba(249,115,22,.18) !important;
+}
+
+.schedule-day-chip{
+  background:#FFF0DF !important;
+  color:#C84A05 !important;
+}
+
+.schedule-card-action{
+  color:#C54A05 !important;
+  border-color:#F0B77E !important;
+  background:#FFF7EE !important;
+}
+
+.schedule-card-toggle:hover .schedule-card-action,
+.schedule-card-toggle[aria-expanded="true"] .schedule-card-action{
+  background:#FFEAD4 !important;
+  border-color:#F97316 !important;
+}
+
+.timeline li{
+  border-color:#F0E4D9 !important;
+}
+
+.timeline .time{
+  background:#FFF0DF !important;
+  color:#9F430D !important;
+}
+
+.timeline:not([hidden]){
+  animation:citrusReveal .23s ease both;
+}
+
+@keyframes citrusReveal{
+  from{opacity:0;transform:translateY(-5px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ---------- PASS AREA ---------- */
+.final-rule,
+.pass-correction,
+.pass-summary-note{
+  background:#FFF7E7 !important;
+  border-color:#F1D28F !important;
+  color:#725014 !important;
+}
+
+.source-actions .vsrc{
+  box-shadow:0 5px 14px rgba(180,35,24,.07);
+}
+.source-actions .tsrc{
+  box-shadow:0 5px 14px rgba(23,101,178,.07);
+}
+
+.overview-card,
+.money-card,
+.benefit-card,
+.standalone-warning,
+.research-source-grid a{
+  box-shadow:0 4px 14px rgba(80,48,26,.035);
+}
+
+.pass-panel{
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+
+.pass-panel:hover{
+  transform:translateY(-2px);
+  box-shadow:var(--shadow-hover) !important;
+}
+
+.benefit-card{
+  background:#FFFDF9 !important;
+  border-color:#EEE2D8 !important;
+}
+
+.standalone-warning{
+  background:#FFF8EC !important;
+  border-color:#F0D8A7 !important;
+}
+
+/* ---------- AUDIT / SOURCES ---------- */
+.audit-table{
+  border-color:#EEDFD3 !important;
+}
+
+.audit-header{
+  background:#FFF5E9 !important;
+  color:#695142 !important;
+}
+
+.audit-row{
+  border-color:#F0E4DA !important;
+}
+
+.audit-row:not(.audit-header):hover{
+  background:#FFFAF5 !important;
+}
+
+.research-source-grid a{
+  background:#FFF9F4 !important;
+  border-color:#EEE1D6 !important;
+}
+
+.research-source-grid a:hover{
+  border-color:#F1B982 !important;
+  background:#FFF3E7 !important;
+  box-shadow:0 8px 18px rgba(157,78,18,.09);
+}
+
+/* ---------- FOOTER ---------- */
+footer{
+  color:#99765E !important;
+}
+
+/* ---------- BACK TO TOP ---------- */
+.back-to-top{
+  position:fixed;
+  right:max(18px, env(safe-area-inset-right, 0px));
+  bottom:max(18px, env(safe-area-inset-bottom, 0px));
+  z-index:50;
+  width:46px;
+  height:46px;
+  border:0;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(145deg,#FF9A2F,#F2660C);
+  color:#fff;
+  box-shadow:0 12px 28px rgba(196,77,7,.26);
+  font-size:18px;
+  cursor:pointer;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px) scale(.96);
+  transition:opacity .2s ease,visibility .2s ease,transform .2s ease,box-shadow .2s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+.back-to-top.show{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0) scale(1);
+}
+.back-to-top:hover{
+  box-shadow:0 16px 32px rgba(196,77,7,.32);
+  transform:translateY(-2px) scale(1.02);
+}
+.back-to-top:focus-visible{
+  outline:none;
+  box-shadow:0 0 0 4px rgba(249,115,22,.18),0 12px 28px rgba(196,77,7,.26);
+}
+
+/* ---------- MICRO ANIMATIONS ---------- */
+@media(hover:hover){
+  .tab,
+  .day-schedule-tab,
+  .place-link,
+  .schedule-card-toggle,
+  .source-actions a{
+    cursor:pointer;
+  }
+}
+
+@media(prefers-reduced-motion:no-preference){
+  .category.active{
+    animation:sectionFade .22s ease both;
+  }
+  @keyframes sectionFade{
+    from{opacity:.45;transform:translateY(5px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,
+  *::before,
+  *::after{
+    scroll-behavior:auto !important;
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+  }
+}
+
+/* ---------- MOBILE CITRUS POLISH ---------- */
+@media(max-width:620px){
+  body{
+    background:
+      radial-gradient(circle at 4% -2%, rgba(255,166,74,.16), transparent 19rem),
+      linear-gradient(180deg,#FFFDF9,#FFF8F1) !important;
+  }
+
+  .hero{
+    box-shadow:0 16px 38px rgba(199,83,10,.19) !important;
+  }
+
+  .tabs{
+    background:rgba(255,249,242,.94) !important;
+  }
+
+  .tab{
+    background:#FFFCF8 !important;
+  }
+
+  .day-card,
+  .detail-schedule,
+  .pass-panel,
+  .full-audit,
+  .research-sources{
+    box-shadow:0 9px 24px rgba(98,56,25,.07) !important;
+  }
+
+  .place-link::after{
+    margin-right:8px;
+    font-size:17px;
+  }
+
+  .back-to-top{
+    width:43px;
+    height:43px;
+    right:12px;
+    bottom:max(12px, env(safe-area-inset-bottom, 0px));
+  }
+}
+
+@media(max-width:390px){
+  .hero{
+    border-radius:18px !important;
+  }
+
+  .tabs{
+    border-radius:14px !important;
+  }
+
+  .place-link::after{
+    display:none;
+  }
+}
