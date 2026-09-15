@@ -2628,3 +2628,79 @@ footer{
     padding:3px 6px !important;
   }
 }
+
+
+/* =========================================================
+   v14 · ALWAYS-VISIBLE MAP + STRONG RED ENDPOINT
+   ========================================================= */
+
+/* 지도는 상세 일정 리스트와 별개로 항상 노출 */
+.schedule-panel > .real-map-visual{
+  display:block !important;
+  margin:10px 0 12px !important;
+}
+
+/* 접힘/펼침은 오직 상세 일정 리스트에만 적용 */
+.schedule-detail-body[hidden]{
+  display:none !important;
+}
+.schedule-detail-body:not([hidden]){
+  display:block !important;
+}
+
+/* 펼치기 버튼이 무엇을 제어하는지 더 명확하게 */
+.schedule-card-action{
+  min-width:104px;
+}
+.collapse-label{
+  white-space:nowrap;
+}
+
+/* 중간 핀은 감귤 오렌지 */
+.route-number-marker:not(.start):not(.end){
+  background:#F97316 !important;
+  border:3px solid #FFFFFF !important;
+  box-shadow:0 2px 7px rgba(139,71,18,.25) !important;
+}
+
+/* 1번 시작 핀은 선명한 초록 */
+.route-number-marker.start{
+  background:#168447 !important;
+  border:3px solid #FFFFFF !important;
+  box-shadow:
+    0 0 0 3px rgba(22,132,71,.18),
+    0 4px 10px rgba(18,92,52,.28) !important;
+}
+
+/* 마지막 핀은 오렌지와 혼동되지 않는 진한 RED */
+.route-number-marker.end{
+  background:#D50000 !important;
+  border:3px solid #FFFFFF !important;
+  box-shadow:
+    0 0 0 4px rgba(213,0,0,.24),
+    0 4px 12px rgba(135,0,0,.38) !important;
+}
+
+/* 마지막 지점 상시 라벨도 동일하게 강한 빨강 */
+.route-endpoint-label.end-label{
+  border:2px solid #D50000 !important;
+  background:#FFF5F5 !important;
+  color:#B00000 !important;
+  box-shadow:0 4px 14px rgba(170,0,0,.18) !important;
+}
+
+/* 지도 아래 일정 리스트는 별도 영역처럼 구분 */
+.schedule-detail-body .timeline{
+  margin-top:10px !important;
+  padding-top:4px !important;
+  border-top:1px dashed #EAD8C8;
+}
+
+@media(max-width:620px){
+  .schedule-panel > .real-map-visual{
+    margin:8px 0 10px !important;
+  }
+  .schedule-card-action{
+    min-width:94px;
+  }
+}

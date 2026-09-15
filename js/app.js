@@ -319,8 +319,10 @@
 
       // As soon as Detail tab is selected, ensure the first day's road JSON is warming.
       if (target === 'detail') {
-        const points = getInstantPoints('schedule-day1');
-        ensureRoadData('schedule-day1', points);
+        const activeDay = document.querySelector('.schedule-panel.active')?.id || 'schedule-day1';
+        const points = getInstantPoints(activeDay);
+        ensureRoadData(activeDay, points);
+        setTimeout(() => initRouteMap(activeDay), 30);
       }
     }));
 
@@ -338,8 +340,12 @@
         panel.classList.toggle('active',active);
         panel.hidden = !active;
       });
-      if (maps.has(targetId)) setTimeout(() => maps.get(targetId).invalidateSize(), 50);
-      // Warm selected day even before the user expands it.
+      if (maps.has(targetId)) {
+        setTimeout(() => maps.get(targetId).invalidateSize(), 50);
+      } else {
+        setTimeout(() => initRouteMap(targetId), 30);
+      }
+      // Keep road data warm regardless of detailed-list state.
       ensureRoadData(targetId, getInstantPoints(targetId));
     }));
 
@@ -354,8 +360,9 @@
       button.setAttribute('aria-expanded',String(nextExpanded));
       detailBody.hidden = !nextExpanded;
       panel.classList.toggle('collapsed',!nextExpanded);
-      if (label) label.textContent = nextExpanded ? '접기' : '펼치기';
-      if (nextExpanded) setTimeout(() => initRouteMap(panel.id), 20);
+      if (label) {
+        label.textContent = nextExpanded ? '상세 일정 접기' : '상세 일정 펼치기';
+      }
     }));
 
     // Begin route-data warming shortly after the page is usable.
