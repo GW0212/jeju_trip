@@ -2704,3 +2704,221 @@ footer{
     min-width:94px;
   }
 }
+
+
+/* =========================================================
+   v15 · MOBILE UX + CENTERED SCHEDULE HEADER
+   ========================================================= */
+
+/* 상세 일정 카드 제목을 카드 정중앙에 배치 */
+.schedule-card-toggle-centered{
+  position:relative !important;
+  display:grid !important;
+  grid-template-columns:1fr auto 1fr !important;
+  align-items:center !important;
+  min-height:68px;
+  padding:12px 18px !important;
+}
+.schedule-card-toggle-centered .schedule-card-title,
+.schedule-card-toggle-centered .schedule-card-heading,
+.schedule-card-toggle-centered > div:first-child{
+  grid-column:2 !important;
+  justify-self:center !important;
+  text-align:center !important;
+  margin:0 !important;
+}
+.schedule-card-toggle-centered .schedule-card-action{
+  grid-column:3 !important;
+  justify-self:end !important;
+  margin:0 !important;
+}
+
+/* DAY 배지 + 제목 묶음이 실제 중앙에 오도록 */
+.schedule-card-toggle-centered .schedule-card-title{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:10px !important;
+  width:max-content;
+  max-width:100%;
+}
+
+/* 기본 상태는 상세 리스트 펼침 */
+.schedule-detail-body:not([hidden]){
+  display:block !important;
+}
+
+/* 모바일 공통 최적화 */
+@media(max-width:760px){
+  html,body{
+    overflow-x:hidden;
+  }
+
+  .container,
+  main,
+  .category,
+  .detail-schedule{
+    width:100%;
+    max-width:100%;
+  }
+
+  /* 상세 일정 헤더: 중앙 제목 + 우측 버튼 */
+  .schedule-card-toggle-centered{
+    grid-template-columns:44px minmax(0,1fr) auto !important;
+    min-height:64px;
+    padding:10px 12px !important;
+    gap:8px !important;
+  }
+
+  .schedule-card-toggle-centered .schedule-card-title,
+  .schedule-card-toggle-centered .schedule-card-heading,
+  .schedule-card-toggle-centered > div:first-child{
+    grid-column:2 !important;
+    width:100%;
+    min-width:0;
+    justify-self:stretch !important;
+    justify-content:center !important;
+    text-align:center !important;
+  }
+
+  .schedule-card-toggle-centered .schedule-card-action{
+    grid-column:3 !important;
+    justify-self:end !important;
+    min-width:auto !important;
+  }
+
+  .schedule-card-toggle-centered .collapse-label{
+    font-size:0 !important;
+  }
+  .schedule-card-toggle-centered .collapse-label::before{
+    content:"일정 접기";
+    font-size:10px;
+    font-weight:900;
+  }
+  .schedule-card-toggle-centered[aria-expanded="false"] .collapse-label::before{
+    content:"일정 펼치기";
+  }
+
+  .schedule-card-toggle-centered .day-chip{
+    flex:0 0 auto;
+  }
+
+  .schedule-card-toggle-centered h3,
+  .schedule-card-toggle-centered strong{
+    min-width:0;
+    line-height:1.3;
+    overflow-wrap:anywhere;
+  }
+
+  /* 실제 지도는 화면 폭에 맞춰 안정적으로 유지 */
+  .real-map-visual{
+    padding:8px !important;
+    border-radius:14px !important;
+    overflow:hidden;
+  }
+  .real-map{
+    height:340px !important;
+    min-height:340px !important;
+    border-radius:12px !important;
+  }
+  .real-map-head{
+    gap:8px !important;
+    align-items:flex-start !important;
+  }
+  .real-map-head > div{
+    min-width:0;
+  }
+  .real-map-head h4{
+    font-size:13px !important;
+    line-height:1.35 !important;
+  }
+  .real-map-head p{
+    font-size:9px !important;
+    line-height:1.4 !important;
+  }
+
+  /* 일정 리스트: 번호/시간과 내용이 겹치지 않도록 */
+  .timeline li{
+    grid-template-columns:82px minmax(0,1fr) !important;
+    gap:10px !important;
+    padding:11px 4px !important;
+    align-items:start !important;
+  }
+  .timeline .time{
+    width:auto !important;
+    min-width:0 !important;
+    font-size:10px !important;
+    line-height:1.4 !important;
+    white-space:normal !important;
+  }
+  .timeline li > div{
+    min-width:0;
+  }
+  .timeline li b,
+  .timeline li p,
+  .schedule-place-link{
+    overflow-wrap:anywhere;
+    word-break:keep-all;
+  }
+  .timeline li b{
+    font-size:11px !important;
+    line-height:1.4 !important;
+  }
+  .timeline li p{
+    margin-top:3px !important;
+    font-size:9px !important;
+    line-height:1.5 !important;
+  }
+
+  /* 지도 하단 정보/버튼이 좁은 화면에서 깨지지 않도록 */
+  .map-footer,
+  .real-map-footer{
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:stretch !important;
+    gap:8px !important;
+  }
+  .map-footer a,
+  .real-map-footer a{
+    width:100%;
+    justify-content:center;
+    text-align:center;
+  }
+
+  /* Leaflet 컨트롤 터치 영역 */
+  .leaflet-control-zoom a{
+    width:34px !important;
+    height:34px !important;
+    line-height:34px !important;
+    font-size:18px !important;
+  }
+}
+
+@media(max-width:430px){
+  .schedule-card-toggle-centered{
+    grid-template-columns:28px minmax(0,1fr) 76px !important;
+    padding:9px 8px !important;
+  }
+  .schedule-card-toggle-centered .schedule-card-title{
+    gap:6px !important;
+  }
+  .schedule-card-toggle-centered .day-chip{
+    font-size:8px !important;
+    padding:3px 6px !important;
+  }
+  .schedule-card-toggle-centered h3,
+  .schedule-card-toggle-centered strong{
+    font-size:13px !important;
+  }
+  .schedule-card-action{
+    padding:7px 8px !important;
+  }
+  .real-map{
+    height:300px !important;
+    min-height:300px !important;
+  }
+  .timeline li{
+    grid-template-columns:72px minmax(0,1fr) !important;
+    gap:8px !important;
+  }
+}
