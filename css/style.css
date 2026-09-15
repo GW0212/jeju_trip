@@ -3109,3 +3109,58 @@ footer{
     font-size:8.5px;
   }
 }
+
+
+/* =========================================================
+   v17 · FULL-CARD LINK CONSISTENCY
+   ========================================================= */
+#play .place .place-link{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  gap:10px !important;
+  width:100% !important;
+  min-height:48px !important;
+  padding:9px 10px !important;
+  box-sizing:border-box !important;
+  color:inherit !important;
+  text-decoration:none !important;
+  border-radius:inherit !important;
+}
+#play .place .place-link:hover{
+  background:rgba(249,115,22,.045) !important;
+}
+#play .place .place-link:active{
+  background:rgba(249,115,22,.085) !important;
+}
+#play .place .place-link:focus-visible{
+  outline:none !important;
+  box-shadow:inset 0 0 0 2px rgba(249,115,22,.35) !important;
+}
+#play .place .place-main{
+  display:flex !important;
+  align-items:center !important;
+  gap:9px !important;
+  min-width:0 !important;
+}
+#play .place .place-arrow{
+  flex:0 0 auto !important;
+  color:#DDA77A !important;
+  font-size:20px !important;
+  line-height:1 !important;
+  font-weight:700 !important;
+}
+
+/* v16의 하늘여행 전용 작은 버튼 레이아웃은 더 이상 사용하지 않음 */
+#play .place-with-button,
+#play .place-button-row,
+#play .place-map-button{
+  all:unset;
+}
+
+@media(max-width:620px){
+  #play .place .place-link{
+    min-height:46px !important;
+    padding:9px 10px !important;
+  }
+}
