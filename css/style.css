@@ -3654,3 +3654,120 @@ footer{
     margin-top:0 !important;
   }
 }
+
+
+/* =========================================================
+   v27 · TIMELINE ROW ALIGNMENT
+   링크가 없는 일정도 링크 카드와 동일한 그리드/높이/패딩 사용
+   ========================================================= */
+.timeline li:not(.schedule-linked-item){
+  position:relative !important;
+  display:grid !important;
+  grid-template-columns:104px minmax(0,1fr) 22px !important;
+  align-items:center !important;
+  gap:12px !important;
+  width:100% !important;
+  min-height:62px !important;
+  box-sizing:border-box !important;
+  margin:6px 0 !important;
+  padding:10px 12px !important;
+  border:1px solid #EFDACA !important;
+  border-radius:13px !important;
+  background:#FFFCF8 !important;
+  box-shadow:0 2px 5px rgba(91,54,28,.025) !important;
+}
+
+/* 시간/순번 칸을 링크 행과 정확히 동일한 위치로 */
+.timeline li:not(.schedule-linked-item) > .time{
+  grid-column:1 !important;
+  width:auto !important;
+  min-width:0 !important;
+  margin:0 !important;
+  padding:0 !important;
+  align-self:start !important;
+}
+
+/* 본문 시작선을 링크 행과 일치 */
+.timeline li:not(.schedule-linked-item) > div{
+  grid-column:2 !important;
+  min-width:0 !important;
+  margin:0 !important;
+}
+
+/* 링크 행의 화살표 자리만큼 빈 공간 확보 */
+.timeline li:not(.schedule-linked-item)::after{
+  content:"";
+  grid-column:3 !important;
+  width:22px;
+  height:1px;
+  display:block;
+}
+
+/* 비클릭 행은 링크처럼 보이되 hover 반응은 없음 */
+.timeline li:not(.schedule-linked-item):hover{
+  transform:none !important;
+  background:#FFFCF8 !important;
+  border-color:#EFDACA !important;
+  box-shadow:0 2px 5px rgba(91,54,28,.025) !important;
+}
+
+@media(max-width:760px){
+  .timeline li:not(.schedule-linked-item){
+    grid-template-columns:78px minmax(0,1fr) 18px !important;
+    gap:8px !important;
+    min-height:58px !important;
+    margin:5px 0 !important;
+    padding:9px 9px !important;
+    border-radius:11px !important;
+  }
+
+  .timeline li:not(.schedule-linked-item) > .time{
+    font-size:9.5px !important;
+    line-height:1.35 !important;
+    white-space:normal !important;
+  }
+
+  .timeline li:not(.schedule-linked-item) > div b{
+    font-size:10.5px !important;
+    line-height:1.4 !important;
+    word-break:keep-all !important;
+    overflow-wrap:anywhere !important;
+  }
+
+  .timeline li:not(.schedule-linked-item) > div p{
+    margin-top:3px !important;
+    font-size:8.8px !important;
+    line-height:1.45 !important;
+    word-break:keep-all !important;
+    overflow-wrap:anywhere !important;
+  }
+
+  .timeline li:not(.schedule-linked-item)::after{
+    width:18px;
+  }
+}
+
+@media(max-width:430px){
+  .timeline li:not(.schedule-linked-item){
+    grid-template-columns:66px minmax(0,1fr) 16px !important;
+    gap:7px !important;
+    min-height:56px !important;
+    padding:8px 8px !important;
+  }
+
+  .timeline li:not(.schedule-linked-item) > .time{
+    font-size:8.7px !important;
+  }
+
+  .timeline li:not(.schedule-linked-item) > div b{
+    font-size:10px !important;
+  }
+
+  .timeline li:not(.schedule-linked-item) > div p{
+    font-size:8.4px !important;
+  }
+
+  .timeline li:not(.schedule-linked-item)::after{
+    width:16px;
+  }
+}
