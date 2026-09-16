@@ -1560,7 +1560,6 @@ button,a{
 }
 
 
-
 /* =========================================================
    JEJU CITRUS EDITION · FINAL THEME
    GitHub Pages ready
@@ -2264,854 +2263,6 @@ footer{
 
 
 /* =========================================================
-   ROUTE VISUAL BLOCK
-   ========================================================= */
-.schedule-detail-body[hidden]{
-  display:none !important;
-}
-.route-visual{
-  margin:2px 0 14px;
-  padding:12px;
-  border:1px solid #EEDFD2;
-  border-radius:16px;
-  background:linear-gradient(180deg,#FFFDFC,#FFF8F2);
-  box-shadow:0 6px 16px rgba(104,61,25,.05);
-}
-.route-visual img{
-  display:block;
-  width:100%;
-  height:auto;
-  border-radius:14px;
-  border:1px solid #F0E1D4;
-  background:#FFF;
-}
-.route-caption{
-  margin:8px 0 0 !important;
-  text-align:center;
-  color:#8E7565 !important;
-  font-size:10px !important;
-  line-height:1.45 !important;
-}
-.route-chip-list{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:6px;
-  margin-top:10px;
-}
-.route-chip{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  min-height:28px;
-  padding:5px 9px;
-  border-radius:999px;
-  border:1px solid #F1D3B4;
-  background:#FFF6EB;
-  color:#7F624F;
-  font-size:9.5px;
-  line-height:1.2;
-}
-.route-chip b{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  width:18px;
-  height:18px;
-  border-radius:50%;
-  background:#F97316;
-  color:#FFF;
-  font-size:10px;
-  line-height:1;
-}
-@media(max-width:620px){
-  .route-visual{
-    margin:0 0 10px;
-    padding:8px;
-    border-radius:13px;
-  }
-  .route-visual img{
-    border-radius:11px;
-  }
-  .route-caption{
-    font-size:8.8px !important;
-    margin-top:6px !important;
-  }
-  .route-chip-list{
-    gap:5px;
-    margin-top:8px;
-  }
-  .route-chip{
-    min-height:26px;
-    padding:5px 8px;
-    font-size:8.7px;
-  }
-  .route-chip b{
-    width:17px;
-    height:17px;
-    font-size:9px;
-  }
-}
-
-
-/* =========================================================
-   v10 · REAL MAP ROUTES (OpenStreetMap + Leaflet + OSRM)
-   ========================================================= */
-.real-map-visual{
-  padding:12px !important;
-  overflow:hidden;
-}
-.route-map-head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  margin-bottom:10px;
-  padding:2px 2px 0;
-}
-.route-map-head>div{
-  min-width:0;
-}
-.route-map-head strong{
-  display:block;
-  color:#3B291E;
-  font-size:14px;
-  line-height:1.3;
-}
-.route-map-head span:not(.real-map-badge){
-  display:block;
-  margin-top:2px;
-  color:#8A7568;
-  font-size:9.5px;
-  line-height:1.35;
-}
-.real-map-badge{
-  flex:0 0 auto;
-  display:inline-flex;
-  align-items:center;
-  min-height:28px;
-  padding:5px 9px;
-  border:1px solid #F2B879;
-  border-radius:999px;
-  background:#FFF1E2;
-  color:#B74A08;
-  font-size:9px;
-  font-weight:950;
-}
-.route-map-shell{
-  position:relative;
-  width:100%;
-  min-height:440px;
-  overflow:hidden;
-  border:1px solid #E7D6C8;
-  border-radius:14px;
-  background:#EAF4F8;
-}
-.route-map{
-  width:100%;
-  height:440px;
-  z-index:1;
-}
-.route-map-status{
-  position:absolute;
-  left:50%;
-  top:50%;
-  z-index:500;
-  transform:translate(-50%,-50%);
-  max-width:80%;
-  padding:10px 13px;
-  border:1px solid rgba(234,198,163,.9);
-  border-radius:12px;
-  background:rgba(255,252,248,.94);
-  color:#795D4C;
-  box-shadow:0 8px 24px rgba(83,49,28,.12);
-  font-size:10px;
-  line-height:1.45;
-  text-align:center;
-  pointer-events:none;
-  backdrop-filter:blur(8px);
-}
-.route-map-status.done{
-  opacity:0;
-  visibility:hidden;
-  transition:opacity .22s ease, visibility .22s ease;
-}
-.route-map-tools{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:8px;
-  margin-top:8px;
-}
-.map-source-label{
-  color:#998071;
-  font-size:8.8px;
-}
-.google-route-link{
-  display:inline-flex;
-  align-items:center;
-  min-height:30px;
-  padding:6px 9px;
-  border:1px solid #F0C291;
-  border-radius:9px;
-  background:#FFF7EE;
-  color:#A74408;
-  font-size:9px;
-  font-weight:900;
-  text-decoration:none;
-}
-.google-route-link:hover{
-  border-color:#F97316;
-  background:#FFEBD8;
-}
-.route-number-icon{
-  background:transparent !important;
-  border:0 !important;
-}
-.route-number-marker{
-  display:grid;
-  place-items:center;
-  width:28px;
-  height:28px;
-  border:3px solid #FFF;
-  border-radius:50%;
-  background:#F97316;
-  color:#FFF;
-  box-shadow:0 3px 10px rgba(119,59,17,.28);
-  font-size:11px;
-  font-weight:950;
-}
-.route-number-marker.start{background:#4D9C68}
-.route-number-marker.end{background:#E05128}
-.route-map .leaflet-popup-content-wrapper{
-  border-radius:12px;
-  box-shadow:0 8px 24px rgba(60,39,25,.16);
-}
-.route-map .leaflet-popup-content{
-  margin:10px 12px;
-  font-family:inherit;
-  font-size:11px;
-  line-height:1.45;
-}
-.route-map .leaflet-control-zoom a{
-  color:#9F430D;
-}
-@media(max-width:620px){
-  .real-map-visual{padding:8px !important}
-  .route-map-head{margin-bottom:8px}
-  .route-map-head strong{font-size:12.5px}
-  .route-map-head span:not(.real-map-badge){font-size:8.6px}
-  .route-map-shell{min-height:340px;border-radius:12px}
-  .route-map{height:340px}
-  .route-map-status{font-size:9px;padding:8px 10px}
-  .route-map-tools{align-items:stretch;flex-direction:column}
-  .google-route-link{justify-content:center;min-height:36px}
-  .map-source-label{text-align:center;font-size:8px}
-  .route-number-marker{width:25px;height:25px;font-size:10px}
-}
-
-
-/* v11 · numbered schedule badges */
-.timeline{
-  counter-reset:none;
-}
-.timeline .time{
-  min-width:76px;
-  white-space:nowrap;
-  letter-spacing:-.01em;
-}
-@media(max-width:620px){
-  .timeline li{
-    grid-template-columns:66px minmax(0,1fr) !important;
-  }
-  .timeline .time{
-    min-width:0 !important;
-    font-size:8.5px !important;
-    padding:4px 5px !important;
-  }
-}
-@media(max-width:390px){
-  .timeline li{
-    grid-template-columns:62px minmax(0,1fr) !important;
-  }
-  .timeline .time{
-    font-size:8px !important;
-  }
-}
-
-
-/* =========================================================
-   FAST MAP CACHE V12
-   ========================================================= */
-.route-map-status{
-  transition:opacity .2s ease, background .2s ease, color .2s ease;
-}
-.route-map-status.done{
-  opacity:.82;
-}
-
-
-/* =========================================================
-   v13 · STAY START POINT + ENDPOINT PIN CLARITY
-   ========================================================= */
-.schedule-place-link{
-  color:#B64A08;
-  text-decoration:none;
-  font-weight:950;
-  border-bottom:1px dashed rgba(182,74,8,.35);
-  transition:color .16s ease,border-color .16s ease,background .16s ease;
-}
-.schedule-place-link:hover{
-  color:#E45B08;
-  border-color:#E45B08;
-}
-.schedule-place-link:focus-visible{
-  outline:none;
-  border-radius:5px;
-  box-shadow:0 0 0 3px rgba(249,115,22,.15);
-}
-
-/* 1번은 초록색, 마지막 순서는 빨간색 */
-.route-number-marker.start{
-  background:#3E9B61 !important;
-  border-color:#FFF !important;
-}
-.route-number-marker.end{
-  background:#E24C2A !important;
-  border-color:#FFF !important;
-}
-
-/* DAY 2처럼 시작/도착 장소가 같은 경우 두 핀을 좌우로 벌려 둘 다 보이게 함 */
-.route-number-icon.duplicate-start{
-  margin-left:-13px !important;
-}
-.route-number-icon.duplicate-end{
-  margin-left:13px !important;
-}
-
-.route-endpoint-label{
-  border:1px solid #E4D7CA !important;
-  border-radius:8px !important;
-  background:rgba(255,255,255,.96) !important;
-  color:#4D3A2D !important;
-  box-shadow:0 4px 12px rgba(71,45,28,.10) !important;
-  font-size:10px !important;
-  font-weight:900 !important;
-  padding:4px 7px !important;
-}
-.route-endpoint-label.start-label{
-  border-color:#9FD0AE !important;
-  color:#287443 !important;
-}
-.route-endpoint-label.end-label{
-  border-color:#F0A08A !important;
-  color:#B63C20 !important;
-}
-.route-endpoint-label::before{
-  display:none !important;
-}
-.map-popup-link{
-  display:inline-block;
-  margin-top:6px;
-  color:#0B63CE;
-  font-size:11px;
-  font-weight:800;
-  text-decoration:none;
-}
-.map-popup-link:hover{
-  text-decoration:underline;
-}
-
-@media(max-width:620px){
-  .route-endpoint-label{
-    font-size:9px !important;
-    padding:3px 6px !important;
-  }
-}
-
-
-/* =========================================================
-   v14 · ALWAYS-VISIBLE MAP + STRONG RED ENDPOINT
-   ========================================================= */
-
-/* 지도는 상세 일정 리스트와 별개로 항상 노출 */
-.schedule-panel > .real-map-visual{
-  display:block !important;
-  margin:10px 0 12px !important;
-}
-
-/* 접힘/펼침은 오직 상세 일정 리스트에만 적용 */
-.schedule-detail-body[hidden]{
-  display:none !important;
-}
-.schedule-detail-body:not([hidden]){
-  display:block !important;
-}
-
-/* 펼치기 버튼이 무엇을 제어하는지 더 명확하게 */
-.schedule-card-action{
-  min-width:104px;
-}
-.collapse-label{
-  white-space:nowrap;
-}
-
-/* 중간 핀은 감귤 오렌지 */
-.route-number-marker:not(.start):not(.end){
-  background:#F97316 !important;
-  border:3px solid #FFFFFF !important;
-  box-shadow:0 2px 7px rgba(139,71,18,.25) !important;
-}
-
-/* 1번 시작 핀은 선명한 초록 */
-.route-number-marker.start{
-  background:#168447 !important;
-  border:3px solid #FFFFFF !important;
-  box-shadow:
-    0 0 0 3px rgba(22,132,71,.18),
-    0 4px 10px rgba(18,92,52,.28) !important;
-}
-
-/* 마지막 핀은 오렌지와 혼동되지 않는 진한 RED */
-.route-number-marker.end{
-  background:#D50000 !important;
-  border:3px solid #FFFFFF !important;
-  box-shadow:
-    0 0 0 4px rgba(213,0,0,.24),
-    0 4px 12px rgba(135,0,0,.38) !important;
-}
-
-/* 마지막 지점 상시 라벨도 동일하게 강한 빨강 */
-.route-endpoint-label.end-label{
-  border:2px solid #D50000 !important;
-  background:#FFF5F5 !important;
-  color:#B00000 !important;
-  box-shadow:0 4px 14px rgba(170,0,0,.18) !important;
-}
-
-/* 지도 아래 일정 리스트는 별도 영역처럼 구분 */
-.schedule-detail-body .timeline{
-  margin-top:10px !important;
-  padding-top:4px !important;
-  border-top:1px dashed #EAD8C8;
-}
-
-@media(max-width:620px){
-  .schedule-panel > .real-map-visual{
-    margin:8px 0 10px !important;
-  }
-  .schedule-card-action{
-    min-width:94px;
-  }
-}
-
-
-/* =========================================================
-   v15 · MOBILE UX + CENTERED SCHEDULE HEADER
-   ========================================================= */
-
-/* 상세 일정 카드 제목을 카드 정중앙에 배치 */
-.schedule-card-toggle-centered{
-  position:relative !important;
-  display:grid !important;
-  grid-template-columns:1fr auto 1fr !important;
-  align-items:center !important;
-  min-height:68px;
-  padding:12px 18px !important;
-}
-.schedule-card-toggle-centered .schedule-card-title,
-.schedule-card-toggle-centered .schedule-card-heading,
-.schedule-card-toggle-centered > div:first-child{
-  grid-column:2 !important;
-  justify-self:center !important;
-  text-align:center !important;
-  margin:0 !important;
-}
-.schedule-card-toggle-centered .schedule-card-action{
-  grid-column:3 !important;
-  justify-self:end !important;
-  margin:0 !important;
-}
-
-/* DAY 배지 + 제목 묶음이 실제 중앙에 오도록 */
-.schedule-card-toggle-centered .schedule-card-title{
-  display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  gap:10px !important;
-  width:max-content;
-  max-width:100%;
-}
-
-/* 기본 상태는 상세 리스트 펼침 */
-.schedule-detail-body:not([hidden]){
-  display:block !important;
-}
-
-/* 모바일 공통 최적화 */
-@media(max-width:760px){
-  html,body{
-    overflow-x:hidden;
-  }
-
-  .container,
-  main,
-  .category,
-  .detail-schedule{
-    width:100%;
-    max-width:100%;
-  }
-
-  /* 상세 일정 헤더: 중앙 제목 + 우측 버튼 */
-  .schedule-card-toggle-centered{
-    grid-template-columns:44px minmax(0,1fr) auto !important;
-    min-height:64px;
-    padding:10px 12px !important;
-    gap:8px !important;
-  }
-
-  .schedule-card-toggle-centered .schedule-card-title,
-  .schedule-card-toggle-centered .schedule-card-heading,
-  .schedule-card-toggle-centered > div:first-child{
-    grid-column:2 !important;
-    width:100%;
-    min-width:0;
-    justify-self:stretch !important;
-    justify-content:center !important;
-    text-align:center !important;
-  }
-
-  .schedule-card-toggle-centered .schedule-card-action{
-    grid-column:3 !important;
-    justify-self:end !important;
-    min-width:auto !important;
-  }
-
-  .schedule-card-toggle-centered .collapse-label{
-    font-size:0 !important;
-  }
-  .schedule-card-toggle-centered .collapse-label::before{
-    content:"일정 접기";
-    font-size:10px;
-    font-weight:900;
-  }
-  .schedule-card-toggle-centered[aria-expanded="false"] .collapse-label::before{
-    content:"일정 펼치기";
-  }
-
-  .schedule-card-toggle-centered .day-chip{
-    flex:0 0 auto;
-  }
-
-  .schedule-card-toggle-centered h3,
-  .schedule-card-toggle-centered strong{
-    min-width:0;
-    line-height:1.3;
-    overflow-wrap:anywhere;
-  }
-
-  /* 실제 지도는 화면 폭에 맞춰 안정적으로 유지 */
-  .real-map-visual{
-    padding:8px !important;
-    border-radius:14px !important;
-    overflow:hidden;
-  }
-  .real-map{
-    height:340px !important;
-    min-height:340px !important;
-    border-radius:12px !important;
-  }
-  .real-map-head{
-    gap:8px !important;
-    align-items:flex-start !important;
-  }
-  .real-map-head > div{
-    min-width:0;
-  }
-  .real-map-head h4{
-    font-size:13px !important;
-    line-height:1.35 !important;
-  }
-  .real-map-head p{
-    font-size:9px !important;
-    line-height:1.4 !important;
-  }
-
-  /* 일정 리스트: 번호/시간과 내용이 겹치지 않도록 */
-  .timeline li{
-    grid-template-columns:82px minmax(0,1fr) !important;
-    gap:10px !important;
-    padding:11px 4px !important;
-    align-items:start !important;
-  }
-  .timeline .time{
-    width:auto !important;
-    min-width:0 !important;
-    font-size:10px !important;
-    line-height:1.4 !important;
-    white-space:normal !important;
-  }
-  .timeline li > div{
-    min-width:0;
-  }
-  .timeline li b,
-  .timeline li p,
-  .schedule-place-link{
-    overflow-wrap:anywhere;
-    word-break:keep-all;
-  }
-  .timeline li b{
-    font-size:11px !important;
-    line-height:1.4 !important;
-  }
-  .timeline li p{
-    margin-top:3px !important;
-    font-size:9px !important;
-    line-height:1.5 !important;
-  }
-
-  /* 지도 하단 정보/버튼이 좁은 화면에서 깨지지 않도록 */
-  .map-footer,
-  .real-map-footer{
-    display:flex !important;
-    flex-direction:column !important;
-    align-items:stretch !important;
-    gap:8px !important;
-  }
-  .map-footer a,
-  .real-map-footer a{
-    width:100%;
-    justify-content:center;
-    text-align:center;
-  }
-
-  /* Leaflet 컨트롤 터치 영역 */
-  .leaflet-control-zoom a{
-    width:34px !important;
-    height:34px !important;
-    line-height:34px !important;
-    font-size:18px !important;
-  }
-}
-
-@media(max-width:430px){
-  .schedule-card-toggle-centered{
-    grid-template-columns:28px minmax(0,1fr) 76px !important;
-    padding:9px 8px !important;
-  }
-  .schedule-card-toggle-centered .schedule-card-title{
-    gap:6px !important;
-  }
-  .schedule-card-toggle-centered .day-chip{
-    font-size:8px !important;
-    padding:3px 6px !important;
-  }
-  .schedule-card-toggle-centered h3,
-  .schedule-card-toggle-centered strong{
-    font-size:13px !important;
-  }
-  .schedule-card-action{
-    padding:7px 8px !important;
-  }
-  .real-map{
-    height:300px !important;
-    min-height:300px !important;
-  }
-  .timeline li{
-    grid-template-columns:72px minmax(0,1fr) !important;
-    gap:8px !important;
-  }
-}
-
-
-/* =========================================================
-   v16 · DETAIL HEADER TRUE CENTER + PLAY LINK BUTTON
-   ========================================================= */
-
-/* 이전 v15 grid 오버라이드 무효화 */
-.schedule-card-toggle-v16{
-  display:block !important;
-  position:relative !important;
-  width:100% !important;
-  min-height:68px !important;
-  padding:12px 18px !important;
-}
-
-.schedule-card-toggle-v16 .schedule-card-content{
-  position:relative !important;
-  display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  gap:10px !important;
-  width:100% !important;
-  min-height:42px !important;
-  padding-left:120px !important;
-  padding-right:120px !important;
-  box-sizing:border-box !important;
-}
-
-/* DAY 배지 + 제목은 중앙 묶음 */
-.schedule-card-toggle-v16 .schedule-day-chip{
-  flex:0 0 auto !important;
-  margin:0 !important;
-}
-.schedule-card-toggle-v16 .schedule-card-title{
-  flex:0 1 auto !important;
-  width:auto !important;
-  max-width:100% !important;
-  margin:0 !important;
-  text-align:center !important;
-  justify-self:auto !important;
-  grid-column:auto !important;
-  white-space:normal !important;
-  line-height:1.3 !important;
-}
-
-/* 접기/펼치기 버튼은 다시 오른쪽 끝 */
-.schedule-card-toggle-v16 .schedule-card-action{
-  position:absolute !important;
-  right:0 !important;
-  top:50% !important;
-  transform:translateY(-50%) !important;
-  display:inline-flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  gap:5px !important;
-  min-width:104px !important;
-  margin:0 !important;
-  grid-column:auto !important;
-  justify-self:auto !important;
-}
-
-/* 상세 일정에서는 장소 링크 대신 일반 텍스트 */
-.schedule-place-plain{
-  color:inherit;
-  font-weight:inherit;
-}
-
-/* 놀거리 탭의 버튼형 지도 링크 */
-.place-with-button{
-  padding:0 !important;
-}
-.place-button-row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  width:100%;
-  min-height:48px;
-  padding:9px 10px;
-  box-sizing:border-box;
-}
-.place-button-row .place-main{
-  flex:1 1 auto;
-  min-width:0;
-}
-.place-map-button{
-  flex:0 0 auto;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-height:32px;
-  padding:7px 10px;
-  border:1px solid #F3A15E;
-  border-radius:9px;
-  background:#FFF5EA;
-  color:#C94F08;
-  font-size:10px;
-  font-weight:900;
-  line-height:1;
-  text-decoration:none;
-  white-space:nowrap;
-  transition:transform .15s ease, background .15s ease, border-color .15s ease;
-}
-.place-map-button:hover{
-  background:#FFE9D4;
-  border-color:#F97316;
-  transform:translateY(-1px);
-}
-.place-map-button:active{
-  transform:translateY(0);
-}
-.place-map-button:focus-visible{
-  outline:none;
-  box-shadow:0 0 0 3px rgba(249,115,22,.18);
-}
-
-/* 모바일: 중앙 제목과 오른쪽 버튼이 겹치지 않도록 */
-@media(max-width:760px){
-  .schedule-card-toggle-v16{
-    min-height:64px !important;
-    padding:10px 10px !important;
-  }
-  .schedule-card-toggle-v16 .schedule-card-content{
-    gap:6px !important;
-    min-height:44px !important;
-    padding-left:88px !important;
-    padding-right:88px !important;
-  }
-  .schedule-card-toggle-v16 .schedule-card-action{
-    right:0 !important;
-    min-width:78px !important;
-    padding:7px 8px !important;
-  }
-  .schedule-card-toggle-v16 .collapse-label{
-    font-size:0 !important;
-  }
-  .schedule-card-toggle-v16 .collapse-label::before{
-    content:"일정 접기";
-    font-size:9px;
-    font-weight:900;
-  }
-  .schedule-card-toggle-v16[aria-expanded="false"] .collapse-label::before{
-    content:"일정 펼치기";
-  }
-
-  .place-button-row{
-    gap:8px;
-    padding:8px 9px;
-  }
-  .place-map-button{
-    min-height:34px;
-    padding:8px 9px;
-    font-size:9px;
-  }
-}
-
-@media(max-width:430px){
-  .schedule-card-toggle-v16 .schedule-card-content{
-    padding-left:74px !important;
-    padding-right:74px !important;
-    gap:5px !important;
-  }
-  .schedule-card-toggle-v16 .schedule-card-action{
-    min-width:68px !important;
-    padding:6px 6px !important;
-  }
-  .schedule-card-toggle-v16 .schedule-day-chip{
-    font-size:7.5px !important;
-    padding:3px 5px !important;
-  }
-  .schedule-card-toggle-v16 .schedule-card-title{
-    font-size:12px !important;
-  }
-  .schedule-card-toggle-v16 .collapse-label::before{
-    font-size:8px;
-  }
-  .place-button-row{
-    align-items:center;
-  }
-  .place-button-row .name-text{
-    font-size:10px !important;
-  }
-  .place-map-button{
-    padding:7px 8px;
-    font-size:8.5px;
-  }
-}
-
-
-/* =========================================================
    v17 · FULL-CARD LINK CONSISTENCY
    ========================================================= */
 #play .place .place-link{
@@ -3597,21 +2748,6 @@ footer{
 
 
 /* =========================================================
-   v22 · PASS BADGE STYLE ALIAS FIX
-   ========================================================= */
-.pass-badge.vpass{
-  color:#b42318 !important;
-  background:#fff0ee !important;
-  border:1px solid #f4c8c3 !important;
-}
-.pass-badge.tourpass{
-  color:#175eae !important;
-  background:#eaf3ff !important;
-  border:1px solid #c9ddf8 !important;
-}
-
-
-/* =========================================================
    v26 · CLEAN DAY CARDS + DIRECT DETAIL FLOW
    ========================================================= */
 
@@ -3769,5 +2905,271 @@ footer{
 
   .timeline li:not(.schedule-linked-item)::after{
     width:16px;
+  }
+}
+
+
+/* =========================================================
+   FINAL v28 · OPENFREEMAP / MAPLIBRE ROUTE MAP
+   ========================================================= */
+.real-map-visual{
+  display:block !important;
+  margin:0 0 12px !important;
+  padding:12px !important;
+  overflow:hidden;
+  border:1px solid #EEDFD2;
+  border-radius:16px;
+  background:linear-gradient(180deg,#FFFDFC,#FFF8F2);
+  box-shadow:0 6px 16px rgba(104,61,25,.05);
+}
+.route-map-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:10px;
+  padding:2px 2px 0;
+}
+.route-map-head>div{min-width:0}
+.route-map-head strong{
+  display:block;
+  color:#3B291E;
+  font-size:14px;
+  line-height:1.3;
+}
+.route-map-head span:not(.real-map-badge){
+  display:block;
+  margin-top:2px;
+  color:#8A7568;
+  font-size:9.5px;
+  line-height:1.35;
+}
+.real-map-badge{
+  flex:0 0 auto;
+  display:inline-flex;
+  align-items:center;
+  min-height:28px;
+  padding:5px 9px;
+  border:1px solid #F2B879;
+  border-radius:999px;
+  background:#FFF1E2;
+  color:#B74A08;
+  font-size:9px;
+  font-weight:950;
+}
+.route-map-shell{
+  position:relative;
+  width:100%;
+  min-height:440px;
+  overflow:hidden;
+  border:1px solid #E7D6C8;
+  border-radius:14px;
+  background:#EAF4F8;
+}
+.route-map{
+  width:100%;
+  height:440px;
+}
+.route-map-status{
+  position:absolute;
+  left:50%;
+  top:50%;
+  z-index:20;
+  transform:translate(-50%,-50%);
+  max-width:80%;
+  padding:9px 12px;
+  border:1px solid rgba(234,198,163,.9);
+  border-radius:11px;
+  background:rgba(255,252,248,.95);
+  color:#795D4C;
+  box-shadow:0 8px 24px rgba(83,49,28,.12);
+  font-size:9.5px;
+  line-height:1.45;
+  text-align:center;
+  pointer-events:none;
+}
+.route-map-status.done{
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .25s ease .65s, visibility .25s ease .65s;
+}
+.route-map-tools{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-top:8px;
+}
+.map-source-label{
+  color:#998071;
+  font-size:8.5px;
+  line-height:1.4;
+}
+.google-route-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:5px;
+}
+.google-route-link{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:30px;
+  padding:6px 9px;
+  border:1px solid #F0C291;
+  border-radius:9px;
+  background:#FFF7EE;
+  color:#A74408;
+  font-size:8.5px;
+  font-weight:900;
+  line-height:1.2;
+  text-decoration:none;
+  white-space:nowrap;
+}
+.google-route-link:hover{
+  border-color:#F97316;
+  background:#FFEBD8;
+}
+.route-caption{
+  margin:8px 0 0 !important;
+  text-align:center;
+  color:#8E7565 !important;
+  font-size:9px !important;
+  line-height:1.45 !important;
+}
+.route-marker-wrap{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:30px;
+  height:30px;
+}
+.route-number-marker{
+  display:grid;
+  place-items:center;
+  width:28px;
+  height:28px;
+  border:3px solid #FFF;
+  border-radius:50%;
+  background:#F97316;
+  color:#FFF;
+  box-shadow:0 3px 10px rgba(119,59,17,.30);
+  font-size:10.5px;
+  font-weight:950;
+  line-height:1;
+}
+.route-marker-wrap.start .route-number-marker{
+  background:#168447;
+  box-shadow:0 0 0 3px rgba(22,132,71,.20),0 4px 10px rgba(18,92,52,.28);
+}
+.route-marker-wrap.end .route-number-marker{
+  background:#C40000;
+  box-shadow:0 0 0 4px rgba(196,0,0,.25),0 4px 12px rgba(125,0,0,.42);
+}
+.route-marker-label{
+  position:absolute;
+  left:50%;
+  width:max-content;
+  max-width:180px;
+  padding:4px 7px;
+  border:1px solid #E4D7CA;
+  border-radius:8px;
+  background:rgba(255,255,255,.96);
+  color:#4D3A2D;
+  box-shadow:0 4px 12px rgba(71,45,28,.10);
+  font-size:9px;
+  font-weight:900;
+  line-height:1.25;
+  pointer-events:none;
+}
+.route-marker-wrap.start .route-marker-label{
+  bottom:36px;
+  transform:translateX(-50%);
+  border-color:#91C9A4;
+  color:#216B3D;
+}
+.route-marker-wrap.end .route-marker-label{
+  top:36px;
+  transform:translateX(-50%);
+  border:2px solid #C40000;
+  color:#A00000;
+  background:#FFF5F5;
+}
+.map-popup-link{
+  display:inline-block;
+  margin-top:6px;
+  color:#0B63CE;
+  font-size:11px;
+  font-weight:800;
+  text-decoration:none;
+}
+.map-popup-link:hover{text-decoration:underline}
+.maplibregl-popup-content{
+  border-radius:12px !important;
+  font-family:inherit;
+  font-size:11px;
+  line-height:1.45;
+  box-shadow:0 8px 24px rgba(60,39,25,.16) !important;
+}
+.maplibregl-ctrl-group{
+  border-radius:10px !important;
+  overflow:hidden;
+}
+.schedule-detail-body{
+  display:block !important;
+}
+.schedule-detail-body .timeline{
+  margin-top:10px !important;
+  padding-top:4px !important;
+  border-top:1px dashed #EAD8C8;
+}
+
+/* pass image stability */
+.benefit-media-figure img{
+  aspect-ratio:auto;
+  contain-intrinsic-size:700px 700px;
+}
+
+/* normalized badges */
+.pass-badge.v{
+  color:#b42318 !important;
+  background:#fff0ee !important;
+  border:1px solid #f4c8c3 !important;
+}
+.pass-badge.t{
+  color:#175eae !important;
+  background:#eaf3ff !important;
+  border:1px solid #c9ddf8 !important;
+}
+
+@media(max-width:620px){
+  .real-map-visual{padding:8px !important;border-radius:13px}
+  .route-map-head{margin-bottom:8px}
+  .route-map-head strong{font-size:12.5px}
+  .route-map-head span:not(.real-map-badge){font-size:8.5px}
+  .route-map-shell{min-height:335px;border-radius:12px}
+  .route-map{height:335px}
+  .route-map-status{font-size:8.5px;padding:8px 10px}
+  .route-map-tools{
+    flex-direction:column;
+    align-items:stretch;
+  }
+  .map-source-label{
+    text-align:center;
+    font-size:7.8px;
+  }
+  .google-route-links{
+    justify-content:center;
+  }
+  .google-route-link{
+    flex:1 1 auto;
+    min-height:36px;
+    font-size:8px;
+  }
+  .route-marker-label{
+    max-width:130px;
+    font-size:8px;
   }
 }

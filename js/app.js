@@ -1,6 +1,12 @@
 (() => {
   'use strict';
 
+  const ROUTES = {"schedule-day1":{"title":"DAY 1","points":[{"seq":1,"name":"제주공항","lat":33.5066,"lng":126.493,"naver":"https://naver.me/5TiWH09m"},{"seq":3,"name":"먹돌고기국수 제주본점","lat":33.5008,"lng":126.512,"naver":"https://naver.me/xoGeo83K"},{"seq":4,"name":"사려니숲길","lat":33.4223,"lng":126.6277,"naver":"https://naver.me/53lKPuY7"},{"seq":5,"name":"제주 스카이워터쇼","lat":33.448,"lng":126.748,"naver":"https://naver.me/xmxIrdbH"},{"seq":6,"name":"다이나믹메이즈 제주","lat":33.449,"lng":126.806,"naver":"https://naver.me/55rm5FpK"},{"seq":7,"name":"온평바다한그릇 성산본점","lat":33.4,"lng":126.872,"naver":"https://naver.me/F64TyFxi"},{"seq":8,"name":"뷰 제주하늘","lat":33.391,"lng":126.858,"naver":"https://naver.me/x4FLYS7p"},{"seq":9,"name":"천지연폭포","lat":33.2469,"lng":126.5544,"naver":"https://naver.me/xAFC3J5w"},{"seq":10,"name":"산방산 탄산온천","lat":33.2361,"lng":126.3042,"naver":"https://naver.me/5mI0abxa"},{"seq":11,"name":"사계흑돼지","lat":33.2285,"lng":126.306,"naver":"https://naver.me/FgHDApUZ"},{"seq":12,"name":"바인스테이","lat":33.425,"lng":126.37,"naver":"https://naver.me/F42RoD3p"}]},"schedule-day2":{"title":"DAY 2","points":[{"seq":1,"name":"바인스테이","lat":33.425,"lng":126.37,"naver":"https://naver.me/F42RoD3p"},{"seq":2,"name":"문개어멍","lat":33.42,"lng":126.27,"naver":"https://naver.me/5GpYsyjp"},{"seq":3,"name":"시소 카이막 애월점","lat":33.466,"lng":126.337,"naver":"https://map.naver.com/p/entry/place/1635962925"},{"seq":4,"name":"도치돌알파카목장","lat":33.407,"lng":126.368,"naver":"https://naver.me/xprAP83t"},{"seq":5,"name":"9.81 파크 제주","lat":33.3898,"lng":126.3664,"naver":"https://naver.me/IgJG8AuB"},{"seq":6,"name":"하늘여행 행글라이더체험장","lat":33.3725,"lng":126.2985,"naver":"https://naver.me/xBwWHSm6"},{"seq":7,"name":"은하 요가","lat":33.397,"lng":126.3,"naver":"https://naver.me/xCBXopKG"},{"seq":8,"name":"성아시","lat":33.3907,"lng":126.228,"naver":"https://naver.me/5S94geTT"},{"seq":9,"name":"호텔 샌드","lat":33.394,"lng":126.239,"naver":"https://naver.me/FHlgNVlc"},{"seq":10,"name":"우무 푸딩","lat":33.416,"lng":126.265,"naver":"https://naver.me/FK5vaTT8"},{"seq":11,"name":"곽지해수욕장","lat":33.4509,"lng":126.3047,"naver":"https://naver.me/5MVzrPxH"},{"seq":12,"name":"애월 갈치 암행어사","lat":33.463,"lng":126.311,"naver":"https://m.place.naver.com/restaurant/1042054066/home?entry=plt"},{"seq":13,"name":"해지개","lat":33.4635,"lng":126.309,"naver":"https://naver.me/FbiqjgSg"},{"seq":14,"name":"바인스테이","lat":33.425,"lng":126.37,"naver":"https://naver.me/F42RoD3p"}]},"schedule-day3":{"title":"DAY 3","points":[{"seq":1,"name":"바인스테이","lat":33.425,"lng":126.37,"naver":"https://naver.me/F42RoD3p"},{"seq":2,"name":"상가리야자숲","lat":33.436,"lng":126.358,"naver":"https://m.place.naver.com/place/1647855493/home?entry=pll"},{"seq":3,"name":"제주고기국수 모던돔베 공항본점","lat":33.5,"lng":126.5,"naver":"https://naver.me/G7VAIuUd"},{"seq":4,"name":"돈키쥬쥬","lat":33.455,"lng":126.485,"naver":"https://map.naver.com/p/search/%EC%A0%9C%EC%A3%BC%20%EB%8F%88%ED%82%A4%EC%A5%AC%EC%A5%AC"},{"seq":5,"name":"본초족욕","lat":33.4685,"lng":126.483,"naver":"https://naver.me/xKERgNDm"},{"seq":6,"name":"닭머르","lat":33.553,"lng":126.643,"naver":"https://naver.me/5T4AvdCd"},{"seq":7,"name":"점점","lat":33.543,"lng":126.66,"naver":"https://naver.me/GtURn7qG"},{"seq":8,"name":"링로드","lat":33.542,"lng":126.665,"naver":"https://map.naver.com/p/search/%EC%A0%9C%EC%A3%BC%20%EB%A7%81%EB%A1%9C%EB%93%9C"},{"seq":9,"name":"함덕해수욕장","lat":33.5435,"lng":126.6692,"naver":"https://naver.me/xBwJypFt"},{"seq":10,"name":"반디파스타","lat":33.535,"lng":126.65,"naver":"https://naver.me/x2PkE7iU"},{"seq":11,"name":"글로시말차","lat":33.52,"lng":126.6,"naver":"https://map.naver.com/p/search/%EC%A0%9C%EC%A3%BC%20%EA%B8%80%EB%A1%9C%EC%8B%9C%EB%A7%90%EC%B0%A8"},{"seq":12,"name":"동문재래시장","lat":33.5128,"lng":126.528,"naver":"https://naver.me/xeAfYFPG"},{"seq":13,"name":"모찌마루","lat":33.51,"lng":126.525,"naver":"https://m.place.naver.com/restaurant/1034190148/home"},{"seq":14,"name":"제주공항 · 렌터카 반납","lat":33.5066,"lng":126.493,"naver":"https://naver.me/5TiWH09m"}]}};
+  const MAP_STYLE = 'https://tiles.openfreemap.org/styles/liberty';
+  const ROAD_CACHE_PREFIX = 'jeju-trip-road-v28:';
+  const ROAD_CACHE_TTL = 30 * 24 * 60 * 60 * 1000;
+  const maps = new Map();
+
   const ready = (fn) => {
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', fn, { once: true });
@@ -9,357 +15,417 @@
     }
   };
 
-  const ROUTES = {
-    'schedule-day1': [
-      {name:'제주국제공항', q:'제주국제공항 제주특별자치도', fallback:[33.5066,126.4930]},
-      {name:'먹돌고기국수 제주본점', q:'먹돌고기국수 제주본점 제주', fallback:[33.5008,126.5120]},
-      {name:'사려니숲길', q:'사려니숲길 제주', fallback:[33.4223,126.6277]},
-      {name:'제주 스카이워터쇼', q:'스카이워터쇼 번영로 2172-80 제주', fallback:[33.4480,126.7480]},
-      {name:'다이나믹메이즈 제주', q:'다이나믹메이즈 제주 성산', fallback:[33.4490,126.8060]},
-      {name:'온평바다한그릇 성산본점', q:'온평바다한그릇 성산본점 제주', fallback:[33.4000,126.8720]},
-      {name:'뷰 제주하늘', q:'뷰 제주하늘 제주', fallback:[33.3910,126.8580]},
-      {name:'천지연폭포', q:'천지연폭포 제주', fallback:[33.2469,126.5544]},
-      {name:'산방산 탄산온천', q:'산방산 탄산온천 제주', fallback:[33.2361,126.3042]},
-      {name:'사계흑돼지 산방산본점', q:'사계흑돼지 산방산본점 제주', fallback:[33.2285,126.3060]},
-      {name:'바인스테이', q:'제주 제주시 애월읍 소길남길 45-1 바인스테이', fallback:[33.4250,126.3700]}
-    ],
-    'schedule-day2': [
-      {name:'바인스테이', q:'제주 제주시 애월읍 소길남길 45-1 바인스테이', fallback:[33.4250,126.3700]},
-      {name:'문개어멍', q:'문개어멍 제주', fallback:[33.4200,126.2700]},
-      {name:'시소 카이막 애월점', q:'시소 카이막 애월점 제주', fallback:[33.4660,126.3370]},
-      {name:'도치돌알파카목장', q:'도치돌알파카목장 제주', fallback:[33.4070,126.3680]},
-      {name:'9.81 파크 제주', q:'9.81 파크 제주', fallback:[33.3898,126.3664]},
-      {name:'하늘여행 행글라이더체험장', q:'제주 하늘여행 행글라이더체험장', fallback:[33.3725,126.2985]},
-      {name:'은하 요가', q:'은하 요가 제주', fallback:[33.3970,126.3000]},
-      {name:'성아시', q:'성아시 금능 제주', fallback:[33.3907,126.2280]},
-      {name:'호텔 샌드', q:'호텔 샌드 제주 협재', fallback:[33.3940,126.2390]},
-      {name:'우무 푸딩', q:'우무 제주 한림', fallback:[33.4160,126.2650]},
-      {name:'곽지해수욕장', q:'곽지해수욕장 제주', fallback:[33.4509,126.3047]},
-      {name:'애월 갈치 암행어사', q:'애월갈치 암행어사 제주', fallback:[33.4630,126.3110]},
-      {name:'해지개', q:'해지개 카페 애월 제주', fallback:[33.4635,126.3090]},
-      {name:'바인스테이', q:'제주 제주시 애월읍 소길남길 45-1 바인스테이', fallback:[33.4250,126.3700]}
-    ],
-    'schedule-day3': [
-      {name:'바인스테이', q:'제주 제주시 애월읍 소길남길 45-1 바인스테이', fallback:[33.4250,126.3700]},
-      {name:'상가리야자숲', q:'상가리야자숲 제주', fallback:[33.4360,126.3580]},
-      {name:'제주고기국수 모던돔베 공항본점', q:'제주고기국수 모던돔베 공항본점 제주', fallback:[33.5000,126.5000]},
-      {name:'돈키쥬쥬', q:'돈키쥬쥬 제주', fallback:[33.4550,126.4850]},
-      {name:'본초족욕', q:'본초족욕 수목원길 제주', fallback:[33.4685,126.4830]},
-      {name:'닭머르', q:'닭머르 제주 조천', fallback:[33.5530,126.6430]},
-      {name:'점점', q:'점점 초당옥수수 아이스크림 제주', fallback:[33.5430,126.6600]},
-      {name:'링로드', q:'링로드 에그타르트 제주', fallback:[33.5420,126.6650]},
-      {name:'함덕해수욕장', q:'함덕해수욕장 제주', fallback:[33.5435,126.6692]},
-      {name:'반디파스타', q:'반디파스타 제주', fallback:[33.5350,126.6500]},
-      {name:'글로시말차', q:'글로시말차 제주', fallback:[33.5200,126.6000]},
-      {name:'동문재래시장', q:'동문재래시장 제주', fallback:[33.5128,126.5280]},
-      {name:'모찌마루', q:'모찌마루 제주', fallback:[33.5100,126.5250]},
-      {name:'제주국제공항', q:'제주국제공항 제주특별자치도', fallback:[33.5066,126.4930]}
-    ]
+  const escapeHtml = (value) => String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+
+  const routeCoords = (route) =>
+    route.points.map((point) => [point.lng, point.lat]);
+
+  const lineFeature = (coords) => ({
+    type: 'Feature',
+    properties: {},
+    geometry: { type: 'LineString', coordinates: coords }
+  });
+
+  const cacheKey = (routeId) => ROAD_CACHE_PREFIX + routeId;
+
+  const getCachedRoad = (routeId) => {
+    try {
+      const raw = localStorage.getItem(cacheKey(routeId));
+      if (!raw) return null;
+      const parsed = JSON.parse(raw);
+      if (!parsed?.ts || !parsed?.geometry) return null;
+      if (Date.now() - parsed.ts > ROAD_CACHE_TTL) {
+        localStorage.removeItem(cacheKey(routeId));
+        return null;
+      }
+      return parsed;
+    } catch {
+      return null;
+    }
   };
 
-  const maps = new Map();
-  const liveRouteLayers = new Map();
-  const roadPromises = new Map();
-
-  // Existing v10/v11 geocoding cache is still reused when present.
-  const geoCacheKey = 'jejuTripGeoCacheV1';
-  let geoCache = {};
-  try { geoCache = JSON.parse(localStorage.getItem(geoCacheKey) || '{}'); } catch (_) {}
-
-  // New cache: stores the calculated OSRM road geometry itself.
-  // This survives refresh/reopen in the same browser, so the road line is not recalculated every time.
-  const roadCacheKey = 'jejuTripRoadCacheV2';
-  const ROAD_CACHE_MAX_AGE = 1000 * 60 * 60 * 24 * 30; // 30 days
-  let roadCache = {};
-  try { roadCache = JSON.parse(localStorage.getItem(roadCacheKey) || '{}'); } catch (_) {}
-
-  const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-
-  function saveRoadCache() {
-    try { localStorage.setItem(roadCacheKey, JSON.stringify(roadCache)); } catch (_) {}
-  }
-
-  function routeSignature(points) {
-    return points.map(([lat,lng]) => `${Number(lat).toFixed(5)},${Number(lng).toFixed(5)}`).join('|');
-  }
-
-  function getInstantPoints(routeId) {
-    const places = ROUTES[routeId] || [];
-    return places.map(place => geoCache[place.q] || place.fallback);
-  }
-
-  function getCachedRoad(routeId, points) {
-    const item = roadCache[routeId];
-    if (!item) return null;
-    if (Date.now() - Number(item.savedAt || 0) > ROAD_CACHE_MAX_AGE) return null;
-    if (item.signature !== routeSignature(points)) return null;
-    if (!item.geometry || !Array.isArray(item.geometry.coordinates)) return null;
-    return item;
-  }
-
-  function cacheRoad(routeId, points, road) {
-    if (!road || !road.geometry || !Array.isArray(road.geometry.coordinates)) return;
-    roadCache[routeId] = {
-      signature: routeSignature(points),
-      savedAt: Date.now(),
-      distance: road.distance,
-      duration: road.duration,
-      geometry: road.geometry
-    };
-    saveRoadCache();
-  }
-
-  function markerIcon(index, total, duplicateEndpoint=false) {
-    const cls = index === 0 ? 'start' : (index === total - 1 ? 'end' : '');
-    const duplicateCls = duplicateEndpoint
-      ? (index === 0 ? ' duplicate-start' : (index === total - 1 ? ' duplicate-end' : ''))
-      : '';
-    return L.divIcon({
-      className:`route-number-icon${duplicateCls}`,
-      html:`<div class="route-number-marker ${cls}">${index+1}</div>`,
-      iconSize:[28,28],
-      iconAnchor: duplicateEndpoint && index === 0
-        ? [27,14]
-        : (duplicateEndpoint && index === total - 1 ? [1,14] : [14,14]),
-      popupAnchor:[0,-14]
-    });
-  }
-
-  async function fetchRoadGeometry(points) {
-    const coords = points.map(([lat,lng]) => `${lng},${lat}`).join(';');
-    // simplified is much smaller than full and is visually indistinguishable at Jeju-wide zoom.
-    const url = `https://router.project-osrm.org/route/v1/driving/${coords}?overview=simplified&geometries=geojson&steps=false`;
+  const saveCachedRoad = (routeId, payload) => {
     try {
-      const res = await fetch(url, { cache:'no-store' });
-      if (!res.ok) throw new Error('route error');
+      localStorage.setItem(cacheKey(routeId), JSON.stringify({
+        ts: Date.now(),
+        geometry: payload.geometry,
+        distance: payload.distance,
+        duration: payload.duration
+      }));
+    } catch {
+      // Storage can be blocked; the map still works with the static route.
+    }
+  };
+
+  const formatRoadStats = (distance, duration) => {
+    if (!Number.isFinite(distance) || !Number.isFinite(duration)) return '';
+    const km = (distance / 1000).toFixed(distance >= 100000 ? 0 : 1);
+    const mins = Math.round(duration / 60);
+    const h = Math.floor(mins / 60);
+    const m = mins % 60;
+    return ` · ${km}km · ${h ? `${h}시간 ` : ''}${m}분`;
+  };
+
+  const fetchRoadGeometry = async (route) => {
+    const coords = route.points.map((p) => `${p.lng},${p.lat}`).join(';');
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 6500);
+    try {
+      const url =
+        `https://router.project-osrm.org/route/v1/driving/${coords}` +
+        '?overview=full&geometries=geojson&steps=false';
+      const res = await fetch(url, { signal: controller.signal });
+      if (!res.ok) throw new Error(`OSRM ${res.status}`);
       const data = await res.json();
-      if (data.routes && data.routes[0]) {
-        const r = data.routes[0];
-        return { distance:r.distance, duration:r.duration, geometry:r.geometry };
-      }
-    } catch (_) {}
-    return null;
-  }
-
-  async function ensureRoadData(routeId, points) {
-    const cached = getCachedRoad(routeId, points);
-    if (cached) return cached;
-    if (roadPromises.has(routeId)) return roadPromises.get(routeId);
-
-    const promise = (async () => {
-      const road = await fetchRoadGeometry(points);
-      if (road) cacheRoad(routeId, points, road);
-      roadPromises.delete(routeId);
-      return road;
-    })();
-
-    roadPromises.set(routeId, promise);
-    return promise;
-  }
-
-  function googleDirectionsUrl(places) {
-    if (!places.length) return '#';
-    const origin = encodeURIComponent(places[0].name + ' 제주');
-    const destination = encodeURIComponent(places[places.length-1].name + ' 제주');
-    const mids = places.slice(1,-1).map(p => p.name + ' 제주').join('|');
-    let url = `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}&travelmode=driving`;
-    if (mids) url += `&waypoints=${encodeURIComponent(mids)}`;
-    return url;
-  }
-
-  function roadStatusText(road, cached=false) {
-    const km = (road.distance / 1000).toFixed(1);
-    const min = Math.round(road.duration / 60);
-    const time = `${Math.floor(min/60)}시간 ${min%60}분`;
-    return `${cached ? '캐시 경로 · ' : ''}전체 주행 약 ${km}km · 순수 이동 약 ${time}`;
-  }
-
-  function addRoadLayer(map, routeId, road) {
-    const previous = liveRouteLayers.get(routeId);
-    if (previous) {
-      try { map.removeLayer(previous); } catch (_) {}
+      const road = data?.routes?.[0];
+      if (!road?.geometry?.coordinates?.length) throw new Error('No route geometry');
+      return {
+        geometry: road.geometry,
+        distance: road.distance,
+        duration: road.duration
+      };
+    } finally {
+      clearTimeout(timeout);
     }
-    if (!road || !road.geometry || !Array.isArray(road.geometry.coordinates)) return null;
-    const latlngs = road.geometry.coordinates.map(([lng,lat]) => [lat,lng]);
-    const layer = L.polyline(latlngs, {
-      color:'#F97316', weight:5, opacity:.92, lineJoin:'round', lineCap:'round'
-    }).addTo(map);
-    liveRouteLayers.set(routeId, layer);
-    return layer;
-  }
+  };
 
-  async function initRouteMap(routeId) {
-    if (maps.has(routeId)) {
-      const m = maps.get(routeId);
-      setTimeout(() => m.invalidateSize(), 50);
-      return;
+  const splitForGoogle = (points, maxPoints = 5) => {
+    const chunks = [];
+    if (points.length < 2) return chunks;
+    let start = 0;
+    while (start < points.length - 1) {
+      const end = Math.min(start + maxPoints - 1, points.length - 1);
+      chunks.push(points.slice(start, end + 1));
+      start = end;
     }
-    if (typeof L === 'undefined') return;
+    return chunks;
+  };
 
-    const mapEl = document.getElementById(`${routeId}-map`);
-    const statusEl = document.getElementById(`${routeId}-map-status`);
-    if (!mapEl) return;
+  const googleRouteUrl = (points) => {
+    if (points.length < 2) return '#';
+    const origin = `${points[0].lat},${points[0].lng}`;
+    const destPoint = points[points.length - 1];
+    const destination = `${destPoint.lat},${destPoint.lng}`;
+    const mids = points.slice(1, -1).map((p) => `${p.lat},${p.lng}`);
+    const params = new URLSearchParams({
+      api: '1',
+      origin,
+      destination,
+      travelmode: 'driving'
+    });
+    if (mids.length) params.set('waypoints', mids.join('|'));
+    return `https://www.google.com/maps/dir/?${params.toString()}`;
+  };
 
-    // Map shell + markers are rendered immediately. No geocoding wait.
-    const map = L.map(mapEl, {
-      zoomControl:true,
-      scrollWheelZoom:true,
-      preferCanvas:true,
-      fadeAnimation:false,
-      markerZoomAnimation:false
-    }).setView([33.38,126.53],9);
-    maps.set(routeId,map);
+  const populateGoogleLinks = (routeId) => {
+    const route = ROUTES[routeId];
+    const holder = document.querySelector(
+      `.google-route-links[data-google-route="${routeId}"]`
+    );
+    if (!route || !holder || holder.childElementCount) return;
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom:19,
-      updateWhenIdle:true,
-      keepBuffer:3,
-      attribution:'&copy; OpenStreetMap contributors'
-    }).addTo(map);
+    const chunks = splitForGoogle(route.points, 5);
+    chunks.forEach((chunk, index) => {
+      const a = document.createElement('a');
+      a.className = 'google-route-link';
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.href = googleRouteUrl(chunk);
+      a.textContent = chunks.length === 1
+        ? 'Google 지도에서 경로 열기 ↗'
+        : `Google 경로 ${index + 1}/${chunks.length} ↗`;
+      a.setAttribute(
+        'aria-label',
+        `${route.title} Google 지도 경로 ${index + 1}/${chunks.length} 열기`
+      );
+      holder.appendChild(a);
+    });
+  };
 
-    const places = ROUTES[routeId] || [];
-    const gLink = document.querySelector(`[data-google-route="${routeId}"]`);
-    if (gLink) gLink.href = googleDirectionsUrl(places);
+  const createMarkerElement = (point, index, total) => {
+    const wrap = document.createElement('div');
+    const isStart = index === 0;
+    const isEnd = index === total - 1;
+    wrap.className = `route-marker-wrap${isStart ? ' start' : ''}${isEnd ? ' end' : ''}`;
 
-    const points = getInstantPoints(routeId);
-    const bounds = [];
-    const sameEndpoint = points.length > 1
-      && Math.abs(points[0][0] - points[points.length-1][0]) < 0.00001
-      && Math.abs(points[0][1] - points[points.length-1][1]) < 0.00001;
+    const pin = document.createElement('div');
+    pin.className = 'route-number-marker';
+    pin.textContent = String(point.seq);
+    wrap.appendChild(pin);
 
-    points.forEach((point,i) => {
-      bounds.push(point);
-      const isDuplicateEndpoint = sameEndpoint && (i === 0 || i === points.length - 1);
-      const place = places[i];
-      const naverLink = place.naver
-        ? `<br><a href="${place.naver}" target="_blank" rel="noopener noreferrer" class="map-popup-link">네이버 지도 바로가기 ↗</a>`
-        : '';
+    if (isStart || isEnd) {
+      const label = document.createElement('span');
+      label.className = 'route-marker-label';
+      label.textContent = `${point.seq}. ${point.name}`;
+      wrap.appendChild(label);
+    }
+    return wrap;
+  };
 
-      const marker = L.marker(point, {
-        icon:markerIcon(i,points.length,isDuplicateEndpoint),
-        zIndexOffset: i === 0 ? 1000 : (i === points.length - 1 ? 900 : 0)
+  const addMarkers = (map, route) => {
+    const first = route.points[0];
+    const last = route.points[route.points.length - 1];
+    const sameEndpoint =
+      Math.abs(first.lat - last.lat) < 0.00001 &&
+      Math.abs(first.lng - last.lng) < 0.00001;
+
+    route.points.forEach((point, index) => {
+      let offset = [0, 0];
+      if (sameEndpoint && index === 0) offset = [-13, 0];
+      if (sameEndpoint && index === route.points.length - 1) offset = [13, 0];
+
+      const popupHtml =
+        `<b>${escapeHtml(point.seq)}. ${escapeHtml(point.name)}</b>` +
+        (point.naver
+          ? `<br><a class="map-popup-link" href="${escapeHtml(point.naver)}" target="_blank" rel="noopener noreferrer">네이버 지도 바로가기 ↗</a>`
+          : '');
+
+      new maplibregl.Marker({
+        element: createMarkerElement(point, index, route.points.length),
+        anchor: 'center',
+        offset
       })
-        .addTo(map)
-        .bindPopup(`<b>${i+1}. ${place.name}</b>${naverLink}`);
+        .setLngLat([point.lng, point.lat])
+        .setPopup(new maplibregl.Popup({ offset: 20 }).setHTML(popupHtml))
+        .addTo(map);
+    });
+  };
 
-      if (i === 0 || i === points.length - 1) {
-        marker.bindTooltip(
-          `${i+1}. ${place.name}`,
-          {
-            permanent:true,
-            direction:i === 0 ? 'top' : 'bottom',
-            offset:i === 0 ? [0,-18] : [0,18],
-            className:i === 0 ? 'route-endpoint-label start-label' : 'route-endpoint-label end-label'
-          }
-        );
+  const fitRoute = (map, route) => {
+    const bounds = new maplibregl.LngLatBounds();
+    route.points.forEach((p) => bounds.extend([p.lng, p.lat]));
+    map.fitBounds(bounds, {
+      padding: window.innerWidth <= 620
+        ? { top: 55, right: 42, bottom: 60, left: 42 }
+        : { top: 60, right: 65, bottom: 65, left: 65 },
+      duration: 0
+    });
+  };
+
+  const addRouteLayers = (map, route) => {
+    const staticGeo = lineFeature(routeCoords(route));
+
+    map.addSource('route-static', {
+      type: 'geojson',
+      data: staticGeo
+    });
+
+    map.addLayer({
+      id: 'route-static-shadow',
+      type: 'line',
+      source: 'route-static',
+      layout: { 'line-join': 'round', 'line-cap': 'round' },
+      paint: {
+        'line-color': '#FFD0A6',
+        'line-width': 8,
+        'line-opacity': 0.75
       }
     });
-    if (bounds.length) map.fitBounds(bounds, {padding:[30,30], animate:false});
 
-    // Show something instantly even on the very first visit.
-    let placeholder = L.polyline(points, {
-      color:'#FDBA74', weight:4, opacity:.9, dashArray:'7 7', lineJoin:'round'
-    }).addTo(map);
-
-    const cached = getCachedRoad(routeId, points);
-    if (cached) {
-      try { map.removeLayer(placeholder); } catch (_) {}
-      placeholder = null;
-      addRoadLayer(map, routeId, cached);
-      if (statusEl) {
-        statusEl.textContent = roadStatusText(cached, true);
-        statusEl.classList.add('done');
+    map.addLayer({
+      id: 'route-static',
+      type: 'line',
+      source: 'route-static',
+      layout: { 'line-join': 'round', 'line-cap': 'round' },
+      paint: {
+        'line-color': '#F97316',
+        'line-width': 3,
+        'line-opacity': 0.82,
+        'line-dasharray': [2, 2]
       }
-      setTimeout(() => map.invalidateSize(), 30);
+    });
+
+    map.addSource('route-road', {
+      type: 'geojson',
+      data: lineFeature([])
+    });
+
+    map.addLayer({
+      id: 'route-road',
+      type: 'line',
+      source: 'route-road',
+      layout: { 'line-join': 'round', 'line-cap': 'round' },
+      paint: {
+        'line-color': '#F97316',
+        'line-width': 5,
+        'line-opacity': 0.96
+      }
+    });
+  };
+
+  const updateRoadLayer = (map, geometry) => {
+    const source = map.getSource('route-road');
+    if (!source || !geometry?.coordinates?.length) return;
+    source.setData({
+      type: 'Feature',
+      properties: {},
+      geometry
+    });
+  };
+
+  const setStatus = (routeId, text, done = false) => {
+    const el = document.getElementById(`${routeId}-map-status`);
+    if (!el) return;
+    el.textContent = text;
+    el.classList.toggle('done', done);
+  };
+
+  const enhanceWithRoad = async (routeId, map, route) => {
+    const cached = getCachedRoad(routeId);
+    if (cached) {
+      updateRoadLayer(map, cached.geometry);
+      setStatus(
+        routeId,
+        `저장된 실제 도로 경로 적용${formatRoadStats(cached.distance, cached.duration)}`,
+        true
+      );
       return;
     }
 
-    if (statusEl) statusEl.textContent = '지도 즉시 표시 완료 · 실제 도로 경로를 백그라운드에서 계산 중...';
-
-    const road = await ensureRoadData(routeId, points);
-    if (road) {
-      if (placeholder) { try { map.removeLayer(placeholder); } catch (_) {} }
-      addRoadLayer(map, routeId, road);
-      if (statusEl) {
-        statusEl.textContent = roadStatusText(road, false);
-        setTimeout(() => statusEl.classList.add('done'), 1400);
-      }
-    } else {
-      if (statusEl) {
-        statusEl.textContent = '장소 위치는 즉시 표시됨 · 도로 경로 서버 연결 실패 시 직선 경로를 유지합니다.';
-        setTimeout(() => statusEl.classList.add('done'), 2500);
-      }
+    setStatus(routeId, '일정 동선 표시 완료 · 실제 도로 경로를 확인하는 중입니다.');
+    try {
+      const road = await fetchRoadGeometry(route);
+      saveCachedRoad(routeId, road);
+      updateRoadLayer(map, road.geometry);
+      setStatus(
+        routeId,
+        `실제 도로 경로 적용${formatRoadStats(road.distance, road.duration)}`,
+        true
+      );
+    } catch {
+      setStatus(
+        routeId,
+        '일정 동선은 표시되었습니다. 실제 도로 경로는 아래 Google 경로 버튼으로 확인할 수 있습니다.',
+        true
+      );
     }
-    setTimeout(() => map.invalidateSize(), 50);
-  }
+  };
 
-  async function prewarmRoadCaches() {
-    // Precompute only the small route JSON, not map tiles. This makes opening a day much faster.
-    for (const routeId of Object.keys(ROUTES)) {
-      const points = getInstantPoints(routeId);
-      if (!getCachedRoad(routeId, points)) {
-        await ensureRoadData(routeId, points);
-        // Avoid hammering the public routing service.
-        await sleep(350);
-      }
+  const initRouteMap = (routeId) => {
+    const route = ROUTES[routeId];
+    const el = document.getElementById(`${routeId}-map`);
+    if (!route || !el || typeof maplibregl === 'undefined') return;
+
+    populateGoogleLinks(routeId);
+
+    if (maps.has(routeId)) {
+      const existing = maps.get(routeId);
+      requestAnimationFrame(() => existing.resize());
+      return;
     }
-  }
+
+    const center = route.points.reduce(
+      (acc, p) => [acc[0] + p.lng, acc[1] + p.lat],
+      [0, 0]
+    ).map((v) => v / route.points.length);
+
+    const map = new maplibregl.Map({
+      container: el,
+      style: MAP_STYLE,
+      center,
+      zoom: 9.2,
+      attributionControl: true,
+      scrollZoom: true
+    });
+
+    map.addControl(
+      new maplibregl.NavigationControl({ showCompass: false }),
+      'top-left'
+    );
+
+    maps.set(routeId, map);
+
+    map.on('load', () => {
+      addRouteLayers(map, route);
+      addMarkers(map, route);
+      fitRoute(map, route);
+      setStatus(routeId, '일정 동선 표시 완료 · 실제 도로 경로를 확인하는 중입니다.');
+      enhanceWithRoad(routeId, map, route);
+    });
+  };
 
   ready(() => {
     const tabs = [...document.querySelectorAll('.tab')];
     const categories = [...document.querySelectorAll('.category')];
-    tabs.forEach(tab => tab.addEventListener('click', () => {
-      const target = tab.dataset.target; if (!target) return;
-      tabs.forEach(item => {
-        const active = item === tab;
-        item.classList.toggle('active',active);
-        item.setAttribute('aria-selected',active ? 'true' : 'false');
-      });
-      categories.forEach(section => section.classList.toggle('active',section.id === target));
 
-      // As soon as Detail tab is selected, ensure the first day's road JSON is warming.
-      if (target === 'detail') {
-        const activeDay = document.querySelector('.schedule-panel.active')?.id || 'schedule-day1';
-        const points = getInstantPoints(activeDay);
-        ensureRoadData(activeDay, points);
-        setTimeout(() => initRouteMap(activeDay), 30);
-      }
-    }));
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.target;
+        if (!target) return;
+
+        tabs.forEach((item) => {
+          const active = item === tab;
+          item.classList.toggle('active', active);
+          item.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+
+        categories.forEach((section) => {
+          section.classList.toggle('active', section.id === target);
+        });
+
+        if (target === 'detail') {
+          const activeDay =
+            document.querySelector('.schedule-panel.active')?.id ||
+            'schedule-day1';
+          setTimeout(() => initRouteMap(activeDay), 30);
+        }
+      });
+    });
 
     const dayTabs = [...document.querySelectorAll('.day-schedule-tab')];
     const dayPanels = [...document.querySelectorAll('.schedule-panel')];
-    dayTabs.forEach(tab => tab.addEventListener('click', () => {
-      const targetId = tab.dataset.schedule; if (!targetId) return;
-      dayTabs.forEach(item => {
-        const active = item === tab;
-        item.classList.toggle('active',active);
-        item.setAttribute('aria-selected',active ? 'true' : 'false');
-      });
-      dayPanels.forEach(panel => {
-        const active = panel.id === targetId;
-        panel.classList.toggle('active',active);
-        panel.hidden = !active;
-      });
-      if (maps.has(targetId)) {
-        setTimeout(() => maps.get(targetId).invalidateSize(), 50);
-      } else {
-        setTimeout(() => initRouteMap(targetId), 30);
-      }
-      // Keep road data warm regardless of detailed-list state.
-      ensureRoadData(targetId, getInstantPoints(targetId));
-    }));
 
+    dayTabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const targetId = tab.dataset.schedule;
+        if (!targetId) return;
+
+        dayTabs.forEach((item) => {
+          const active = item === tab;
+          item.classList.toggle('active', active);
+          item.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+
+        dayPanels.forEach((panel) => {
+          const active = panel.id === targetId;
+          panel.classList.toggle('active', active);
+          panel.hidden = !active;
+        });
+
+        setTimeout(() => initRouteMap(targetId), 30);
+      });
+    });
+
+    Object.keys(ROUTES).forEach(populateGoogleLinks);
 
     const topButton = document.createElement('button');
-    topButton.type='button'; topButton.className='back-to-top';
-    topButton.setAttribute('aria-label','페이지 맨 위로 이동');
-    topButton.title='맨 위로'; topButton.textContent='↑';
+    topButton.type = 'button';
+    topButton.className = 'back-to-top';
+    topButton.setAttribute('aria-label', '페이지 맨 위로 이동');
+    topButton.title = '맨 위로';
+    topButton.textContent = '↑';
     document.body.appendChild(topButton);
-    const syncTopButton = () => topButton.classList.toggle('show',window.scrollY>520);
-    window.addEventListener('scroll',syncTopButton,{passive:true}); syncTopButton();
-    topButton.addEventListener('click',() => {
-      const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});
+
+    const syncTopButton = () => {
+      topButton.classList.toggle('show', window.scrollY > 520);
+    };
+
+    window.addEventListener('scroll', syncTopButton, { passive: true });
+    syncTopButton();
+
+    topButton.addEventListener('click', () => {
+      const reduceMotion = window.matchMedia(
+        '(prefers-reduced-motion: reduce)'
+      ).matches;
+      window.scrollTo({
+        top: 0,
+        behavior: reduceMotion ? 'auto' : 'smooth'
+      });
     });
-});
+  });
 })();

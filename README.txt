@@ -1,41 +1,61 @@
-JEJU TRIP · GitHub Pages 업로드용 최종본
-===========================================
+JEJU TRIP · GitHub Pages 최종 안정화본 v28
+==============================================
 
 폴더 구조
 ---------
 index.html
 css/style.css
 js/app.js
+data/routes.json
+images/
+  pass-benefits/*.webp
+  favicon-*.png
+favicon.ico
+site.webmanifest
+README.txt
 
 업로드 방법
 -----------
-1. GitHub 저장소의 배포 폴더(root 또는 docs)에 위 파일/폴더를 그대로 업로드합니다.
-2. index.html과 css, js 폴더의 상대 위치를 변경하지 마세요.
+1. ZIP 압축을 풉니다.
+2. 압축 해제 후 보이는 index.html / css / js / data / images 등을
+   GitHub Pages 배포 폴더(root 또는 docs)에 그대로 업로드합니다.
 3. GitHub > Settings > Pages에서 배포 브랜치/폴더를 지정합니다.
-4. 배포 후 모바일에서 캐시가 남아 있으면 새로고침하거나 브라우저 캐시를 갱신하세요.
+4. 배포 후 이전 CSS/JS가 보이면 강력 새로고침(Ctrl+Shift+R)을 한 번 해주세요.
 
-디자인
-------
-- 제주 감귤을 모티프로 한 탠저린 오렌지 / 크림 / 샌드 컬러
-- PC Hover 효과 및 모바일 Touch 피드백
-- 먹거리 / 놀거리 / 카페 / 패스 혜택 탭
-- 네이버 지도 장소 카드 전체 클릭
-- DAY 1~3 상세 일정 전환
-- 상세 일정 카드 전체 접기/펼치기
+주요 기능
+---------
+- 먹거리 / 놀거리 / 카페 / 상세 일정 / 패스 혜택 5개 탭
+- 장소 카드 및 상세 일정의 해당 장소 행 전체를 네이버 지도 링크로 사용
+- 상세 일정 DAY 1~3 전환
+- 상세 일정 지도는 항상 노출되며 상세 리스트도 항상 표시
+- 지도 마커 번호와 실제 상세 일정 번호 일치
+- 시작점 초록색 / 마지막 지점 진한 빨간색 / 중간 지점 감귤색
+- 지도 마우스 휠 확대/축소 및 모바일 핀치 줌
+- OpenFreeMap + MapLibre 기반 실제 지도
+- 일정 좌표/즉시 표시용 경로 데이터는 data/routes.json 및 JS에 고정
+- OSRM 실제 도로 경로는 브라우저에서 추가 확인 후 30일간 localStorage 캐시
+- OSRM이 실패해도 기본 일정 동선과 지도/마커는 즉시 표시
+- Google 지도 경로는 모바일 waypoint 제한을 고려해 여러 구간으로 자동 분할
 - 브이패스(빨강) / 제주투어패스(파랑) 배지
-- 반응형 모바일 레이아웃 및 Safe Area 대응
+- 패스 혜택 이미지 WebP 최적화 및 lazy loading
+- 반응형 모바일 레이아웃 / Safe Area / prefers-reduced-motion 대응
 - 맨 위로 이동 버튼
-- prefers-reduced-motion 접근성 대응
 
-외부 프레임워크나 CDN 없이 동작하므로 GitHub Pages에 그대로 배포할 수 있습니다.
+외부 서비스
+-----------
+지도는 네트워크 연결이 필요합니다.
+- MapLibre GL JS: unpkg CDN
+- 지도 스타일/타일: OpenFreeMap
+- 지도 데이터: OpenStreetMap
+- 실제 도로 경로 보정: OSRM 공개 라우팅 서버
+- 장소 바로가기: NAVER 지도/플레이스
+- 보조 경로 열기: Google Maps URL
 
-파비콘
-------
-- favicon.ico
-- images/favicon-16.png
-- images/favicon-32.png
-- images/favicon-64.png
-- images/favicon-192.png
-- images/favicon-512.png
-- images/apple-touch-icon.png
-- site.webmanifest
+참고
+----
+- OpenFreeMap/OSRM이 일시적으로 느리거나 응답하지 않아도
+  일정 좌표 기반 기본 경로와 일정 리스트는 계속 사용할 수 있습니다.
+- 패스 혜택 합계는 패스 구매비를 차감한 순이익이 아니라
+  현재 일정에서 확인 가능한 혜택 가치의 합계입니다.
+- 돈키쥬쥬 / 링로드 / 글로시말차는 안정적인 직접 NAVER 장소 URL을
+  확인하지 못해 NAVER 검색 링크를 유지했습니다.
