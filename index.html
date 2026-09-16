@@ -41,13 +41,15 @@
 
 <!DOCTYPE html>
 
+<!DOCTYPE html>
+
 <html lang="ko">
 <head><link crossorigin="" data-map-speed="1" href="https://tile.openstreetmap.org" rel="preconnect"/><link crossorigin="" data-map-speed="1" href="https://router.project-osrm.org" rel="preconnect"/><link data-map-speed="1" href="//tile.openstreetmap.org" rel="dns-prefetch"/><link data-map-speed="1" href="//router.project-osrm.org" rel="dns-prefetch"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="#F97316" name="theme-color"/>
 <title>제주 3일 여행 플래너</title>
-<meta content="제주 3일 여행의 먹거리, 놀거리, 카페, 상세 일정과 패스 혜택을 한눈에 확인하는 여행 플래너" name="description"/><link href="./css/style.css?v=18" rel="stylesheet"/><link href="./favicon.ico" rel="icon" type="image/x-icon"/><link href="./images/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/><link href="./images/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/><link href="./images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/><link href="./site.webmanifest" rel="manifest"/><link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet"/></head>
+<meta content="제주 3일 여행의 먹거리, 놀거리, 카페, 상세 일정과 패스 혜택을 한눈에 확인하는 여행 플래너" name="description"/><link href="./css/style.css?v=19" rel="stylesheet"/><link href="./favicon.ico" rel="icon" type="image/x-icon"/><link href="./images/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/><link href="./images/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/><link href="./images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/><link href="./site.webmanifest" rel="manifest"/><link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet"/></head>
 <body>
 <header class="wrap">
 <section class="hero">
@@ -193,7 +195,7 @@
 <article class="active schedule-panel" id="schedule-day1" role="tabpanel">
 <div class="schedule-panel-head"><button aria-controls="schedule-day1-details" aria-expanded="true" aria-label="상세 일정 리스트 펼치기 또는 접기" class="schedule-card-toggle-v16 schedule-card-toggle-centered schedule-card-toggle" data-collapse-target="schedule-day1-details" type="button"><span class="schedule-card-content"><span class="schedule-day-chip">DAY 1</span><span class="schedule-card-title">27일 · 동쪽 → 서귀포</span><span class="schedule-card-action"><span class="collapse-label">상세 일정 접기</span><span aria-hidden="true" class="collapse-arrow">▼</span></span></span></button></div>
 <div class="route-visual real-map-visual"><div class="route-map-head"><div><strong>DAY 1 · 실제 주행 루트</strong><span>제주공항 → 동부 → 서귀포 → 숙소</span></div><span class="real-map-badge">실제 지도</span></div><div class="route-map-shell"><div class="route-map" data-route-id="schedule-day1" id="schedule-day1-map"></div><div class="route-map-status" id="schedule-day1-map-status">실제 지도와 주행 경로를 불러오는 중입니다.</div></div><div class="route-map-tools"><span class="map-source-label">지도: OpenStreetMap · 경로: OSRM</span><a class="google-route-link" data-google-route="schedule-day1" href="#" rel="noopener noreferrer" target="_blank">Google 지도에서 경로 열기 ↗</a></div><p class="route-caption">번호는 실제 일정 순서입니다. 도로 상황에 따라 실제 주행 경로와 소요시간은 달라질 수 있습니다.</p></div><div class="schedule-detail-body" id="schedule-day1-details"><ol class="timeline" id="timeline-day1">
-<li><span aria-label="1번 일정 · 07:30" class="time">1. 07:30</span><div><b>제주공항 도착</b><p>07시 30분쯤 공항 도착.</p></div></li>
+<li class="schedule-linked-item" data-place-category="transport"><a aria-label="제주공항 네이버 지도에서 열기" class="schedule-row-link" href="https://naver.me/5TiWH09m" rel="noopener noreferrer" target="_blank"><span aria-label="1번 일정 · 07:30" class="time">1. 07:30</span><div><b>제주공항 도착</b><p>07시 30분쯤 공항 도착.</p></div><span aria-hidden="true" class="schedule-row-arrow">›</span></a></li>
 <li><span aria-label="2번 일정 · 07:50" class="time">2. 07:50</span><div><b>짐 수령 · 렌터카 출발</b><p>짐을 받은 뒤 렌터카를 타고 출발.</p></div></li>
 <li class="schedule-linked-item" data-place-category="food"><a aria-label="먹돌고기국수 제주본점 네이버 지도에서 열기" class="schedule-row-link" href="https://map.naver.com/p/search/%EB%A8%B9%EB%8F%8C%EA%B3%A0%EA%B8%B0%EA%B5%AD%EC%88%98%20%EC%A0%9C%EC%A3%BC%EB%B3%B8%EC%A0%90" rel="noopener noreferrer" target="_blank"><span aria-label="3번 일정 · 아침" class="time">3. 아침</span><div><b>먹돌고기국수 제주본점</b><p>첫 식사 후 동쪽 일정 시작.</p></div><span aria-hidden="true" class="schedule-row-arrow">›</span></a></li>
 <li class="schedule-linked-item" data-place-category="play"><a aria-label="사려니숲길 네이버 지도에서 열기" class="schedule-row-link" href="https://naver.me/53lKPuY7" rel="noopener noreferrer" target="_blank"><span aria-label="4번 일정 · 오전" class="time">4. 오전</span><div><b>사려니숲길</b><p>숲길 산책 및 구경.</p></div><span aria-hidden="true" class="schedule-row-arrow">›</span></a></li>
@@ -240,10 +242,10 @@
 <li class="schedule-linked-item" data-place-category="cafe"><a aria-label="글로시말차 네이버 지도에서 열기" class="schedule-row-link" href="https://map.naver.com/p/search/%EC%A0%9C%EC%A3%BC%20%EA%B8%80%EB%A1%9C%EC%8B%9C%EB%A7%90%EC%B0%A8" rel="noopener noreferrer" target="_blank"><span aria-label="11번 일정 · 카페" class="time">11. 카페</span><div><b>글로시말차</b><p>말차.</p></div><span aria-hidden="true" class="schedule-row-arrow">›</span></a></li>
 <li class="schedule-linked-item" data-place-category="play"><a aria-label="동문재래시장 네이버 지도에서 열기" class="schedule-row-link" href="https://naver.me/xeAfYFPG" rel="noopener noreferrer" target="_blank"><span aria-label="12번 일정 · 쇼핑" class="time">12. 쇼핑</span><div><b>동문재래시장</b><p>시장 구경. 가능하면 근처 다른 곳에 주차.</p></div><span aria-hidden="true" class="schedule-row-arrow">›</span></a></li>
 <li class="schedule-linked-item" data-place-category="cafe"><a aria-label="모찌마루 네이버 지도에서 열기" class="schedule-row-link" href="https://map.naver.com/p/search/%EC%A0%9C%EC%A3%BC%20%EB%AA%A8%EC%B0%8C%EB%A7%88%EB%A3%A8" rel="noopener noreferrer" target="_blank"><span aria-label="13번 일정 · 간식" class="time">13. 간식</span><div><b>모찌마루</b><p>과일 모찌.</p></div><span aria-hidden="true" class="schedule-row-arrow">›</span></a></li>
-<li><span aria-label="14번 일정 · 16:15" class="time">14. 16:15</span><div><b>공항 렌터카 반납</b><p>16시 15분까지 반납. 전날 자세한 연락 예정.</p></div></li>
-<li><span aria-label="15번 일정 · 대기" class="time">15. 대기</span><div><b>우무 &amp; 우무솝 제주공항 출발점</b><p>시간이 남으면 들러서 대기.</p></div></li>
+<li class="schedule-linked-item" data-place-category="transport"><a aria-label="제주공항 네이버 지도에서 열기" class="schedule-row-link" href="https://naver.me/5TiWH09m" rel="noopener noreferrer" target="_blank"><span aria-label="14번 일정 · 16:15" class="time">14. 16:15</span><div><b>공항 렌터카 반납</b><p>16시 15분까지 반납. 전날 자세한 연락 예정.</p></div><span aria-hidden="true" class="schedule-row-arrow">›</span></a></li>
+<li class="schedule-linked-item" data-place-category="cafe"><a aria-label="우무 &amp; 우무솝 제주공항 출발점 네이버 지도에서 열기" class="schedule-row-link" href="https://naver.me/GdlHw3qH" rel="noopener noreferrer" target="_blank"><span aria-label="15번 일정 · 대기" class="time">15. 대기</span><div><b>우무 &amp; 우무솝 제주공항 출발점</b><p>시간이 남으면 들러서 대기.</p></div><span aria-hidden="true" class="schedule-row-arrow">›</span></a></li>
 <li><span aria-label="16번 일정 · 17:15" class="time">16. 17:15</span><div><b>진에어 제주 → 김포</b><p>17시 15분 비행기 탑승.</p></div></li>
-<li><span aria-label="17번 일정 · 18:30" class="time">17. 18:30</span><div><b>김포공항 도착</b><p>18시 30분쯤 도착.</p></div></li>
+<li class="schedule-linked-item" data-place-category="transport"><a aria-label="김포공항 네이버 지도에서 열기" class="schedule-row-link" href="https://naver.me/xjU6uUQo" rel="noopener noreferrer" target="_blank"><span aria-label="17번 일정 · 18:30" class="time">17. 18:30</span><div><b>김포공항 도착</b><p>18시 30분쯤 도착.</p></div><span aria-hidden="true" class="schedule-row-arrow">›</span></a></li>
 <li><span aria-label="18번 일정 · 귀가" class="time">18. 귀가</span><div><b>각자 집으로 이동</b><p>여행 종료.</p></div></li>
 </ol></div></article>
 </div>
@@ -393,5 +395,5 @@
 </section>
 </main>
 <footer class="wrap">🍊 JEJU TRIP · 3 DAYS · GITHUB PAGES EDITION</footer>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script defer="" src="./js/app.js?v=18"></script></body>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script defer="" src="./js/app.js?v=19"></script></body>
 </html>
