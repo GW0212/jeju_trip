@@ -3160,3 +3160,15 @@ footer{
     text-align:center;
   }
 }
+
+
+/* =========================================================
+   v30 · CLEAN MAP PRESENTATION
+   ========================================================= */
+.route-map-tools,
+.route-caption{
+  display:none !important;
+}
+.real-map-visual{
+  padding-bottom:12px !important;
+}
