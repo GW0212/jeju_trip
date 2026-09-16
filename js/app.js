@@ -94,59 +94,6 @@
     }
   };
 
-  const splitForGoogle = (points, maxPoints = 5) => {
-    const chunks = [];
-    if (points.length < 2) return chunks;
-    let start = 0;
-    while (start < points.length - 1) {
-      const end = Math.min(start + maxPoints - 1, points.length - 1);
-      chunks.push(points.slice(start, end + 1));
-      start = end;
-    }
-    return chunks;
-  };
-
-  const googleRouteUrl = (points) => {
-    if (points.length < 2) return '#';
-    const origin = `${points[0].lat},${points[0].lng}`;
-    const destPoint = points[points.length - 1];
-    const destination = `${destPoint.lat},${destPoint.lng}`;
-    const mids = points.slice(1, -1).map((p) => `${p.lat},${p.lng}`);
-    const params = new URLSearchParams({
-      api: '1',
-      origin,
-      destination,
-      travelmode: 'driving'
-    });
-    if (mids.length) params.set('waypoints', mids.join('|'));
-    return `https://www.google.com/maps/dir/?${params.toString()}`;
-  };
-
-  const populateGoogleLinks = (routeId) => {
-    const route = ROUTES[routeId];
-    const holder = document.querySelector(
-      `.google-route-links[data-google-route="${routeId}"]`
-    );
-    if (!route || !holder || holder.childElementCount) return;
-
-    const chunks = splitForGoogle(route.points, 5);
-    chunks.forEach((chunk, index) => {
-      const a = document.createElement('a');
-      a.className = 'google-route-link';
-      a.target = '_blank';
-      a.rel = 'noopener noreferrer';
-      a.href = googleRouteUrl(chunk);
-      a.textContent = chunks.length === 1
-        ? 'Google 지도에서 경로 열기 ↗'
-        : `Google 경로 ${index + 1}/${chunks.length} ↗`;
-      a.setAttribute(
-        'aria-label',
-        `${route.title} Google 지도 경로 ${index + 1}/${chunks.length} 열기`
-      );
-      holder.appendChild(a);
-    });
-  };
-
   const createMarkerElement = (point, index, total) => {
     const wrap = document.createElement('div');
     const isStart = index === 0;
@@ -300,7 +247,7 @@
     } catch {
       setStatus(
         routeId,
-        '일정 동선은 표시되었습니다. 실제 도로 경로는 아래 Google 경로 버튼으로 확인할 수 있습니다.',
+        '일정 동선은 표시되었습니다. 실제 도로 경로 보정 서버 응답이 없어 기본 일정 동선을 표시합니다.',
         true
       );
     }
@@ -310,8 +257,6 @@
     const route = ROUTES[routeId];
     const el = document.getElementById(`${routeId}-map`);
     if (!route || !el || typeof maplibregl === 'undefined') return;
-
-    populateGoogleLinks(routeId);
 
     if (maps.has(routeId)) {
       const existing = maps.get(routeId);
@@ -400,8 +345,6 @@
         setTimeout(() => initRouteMap(targetId), 30);
       });
     });
-
-    Object.keys(ROUTES).forEach(populateGoogleLinks);
 
     const topButton = document.createElement('button');
     topButton.type = 'button';

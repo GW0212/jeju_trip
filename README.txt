@@ -35,7 +35,6 @@ README.txt
 - 일정 좌표/즉시 표시용 경로 데이터는 data/routes.json 및 JS에 고정
 - OSRM 실제 도로 경로는 브라우저에서 추가 확인 후 30일간 localStorage 캐시
 - OSRM이 실패해도 기본 일정 동선과 지도/마커는 즉시 표시
-- Google 지도 경로는 모바일 waypoint 제한을 고려해 여러 구간으로 자동 분할
 - 브이패스(빨강) / 제주투어패스(파랑) 배지
 - 패스 혜택 이미지 WebP 최적화 및 lazy loading
 - 반응형 모바일 레이아웃 / Safe Area / prefers-reduced-motion 대응
@@ -49,7 +48,6 @@ README.txt
 - 지도 데이터: OpenStreetMap
 - 실제 도로 경로 보정: OSRM 공개 라우팅 서버
 - 장소 바로가기: NAVER 지도/플레이스
-- 보조 경로 열기: Google Maps URL
 
 참고
 ----

@@ -3005,32 +3005,6 @@ footer{
   font-size:8.5px;
   line-height:1.4;
 }
-.google-route-links{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:flex-end;
-  gap:5px;
-}
-.google-route-link{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-height:30px;
-  padding:6px 9px;
-  border:1px solid #F0C291;
-  border-radius:9px;
-  background:#FFF7EE;
-  color:#A74408;
-  font-size:8.5px;
-  font-weight:900;
-  line-height:1.2;
-  text-decoration:none;
-  white-space:nowrap;
-}
-.google-route-link:hover{
-  border-color:#F97316;
-  background:#FFEBD8;
-}
 .route-caption{
   margin:8px 0 0 !important;
   text-align:center;
@@ -3160,16 +3134,29 @@ footer{
     text-align:center;
     font-size:7.8px;
   }
-  .google-route-links{
-    justify-content:center;
-  }
-  .google-route-link{
-    flex:1 1 auto;
-    min-height:36px;
-    font-size:8px;
-  }
-  .route-marker-label{
+.route-marker-label{
     max-width:130px;
     font-size:8px;
+  }
+}
+
+
+/* =========================================================
+   v29 · GOOGLE ROUTE BUTTONS REMOVED
+   ========================================================= */
+.route-map-tools{
+  justify-content:flex-start !important;
+}
+.map-source-label{
+  width:100%;
+  text-align:left;
+}
+@media(max-width:620px){
+  .route-map-tools{
+    display:block !important;
+  }
+  .map-source-label{
+    display:block;
+    text-align:center;
   }
 }
