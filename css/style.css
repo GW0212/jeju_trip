@@ -3164,3 +3164,162 @@ footer{
     padding:9px 10px !important;
   }
 }
+
+
+/* =========================================================
+   v18 · DETAIL SCHEDULE FULL-ROW NAVER LINKS
+   ========================================================= */
+
+/* 링크 일정은 한 줄 전체가 버튼 */
+.timeline li.schedule-linked-item{
+  display:block !important;
+  position:relative !important;
+  padding:0 !important;
+  margin:6px 0 !important;
+  border:0 !important;
+  background:transparent !important;
+}
+
+.timeline li.schedule-linked-item > .schedule-row-link{
+  position:relative;
+  display:grid !important;
+  grid-template-columns:104px minmax(0,1fr) 22px !important;
+  align-items:center !important;
+  gap:12px !important;
+  width:100% !important;
+  min-height:62px !important;
+  box-sizing:border-box !important;
+  padding:10px 12px !important;
+  border:1px solid #EFDACA !important;
+  border-radius:13px !important;
+  background:#FFFCF8 !important;
+  color:inherit !important;
+  text-decoration:none !important;
+  box-shadow:0 2px 5px rgba(91,54,28,.025);
+  transition:
+    transform .15s ease,
+    border-color .15s ease,
+    background .15s ease,
+    box-shadow .15s ease;
+}
+
+.timeline li.schedule-linked-item > .schedule-row-link:hover{
+  transform:translateY(-1px);
+  border-color:#F2B37E !important;
+  background:#FFF7EE !important;
+  box-shadow:0 5px 13px rgba(133,70,25,.075);
+}
+
+.timeline li.schedule-linked-item > .schedule-row-link:active{
+  transform:translateY(0) scale(.997);
+  background:#FFF1E4 !important;
+}
+
+.timeline li.schedule-linked-item > .schedule-row-link:focus-visible{
+  outline:none !important;
+  border-color:#F97316 !important;
+  box-shadow:0 0 0 3px rgba(249,115,22,.16) !important;
+}
+
+/* 기존 timeline CSS를 anchor 내부 구조에 맞춤 */
+.timeline li.schedule-linked-item .time{
+  grid-column:1 !important;
+  width:auto !important;
+  min-width:0 !important;
+  margin:0 !important;
+  padding:0 !important;
+  align-self:start !important;
+}
+
+.timeline li.schedule-linked-item .schedule-row-link > div{
+  grid-column:2 !important;
+  min-width:0 !important;
+  margin:0 !important;
+}
+
+.timeline li.schedule-linked-item .schedule-row-arrow{
+  grid-column:3 !important;
+  justify-self:end !important;
+  align-self:center !important;
+  color:#D89B6B;
+  font-size:23px;
+  font-weight:700;
+  line-height:1;
+}
+
+/* 카테고리별 아주 미세한 포인트만 사용 */
+.timeline li.schedule-linked-item[data-place-category="food"] > .schedule-row-link{
+  border-left:3px solid #F59E0B !important;
+}
+.timeline li.schedule-linked-item[data-place-category="play"] > .schedule-row-link{
+  border-left:3px solid #F97316 !important;
+}
+.timeline li.schedule-linked-item[data-place-category="cafe"] > .schedule-row-link{
+  border-left:3px solid #C47A42 !important;
+}
+.timeline li.schedule-linked-item[data-place-category="stay"] > .schedule-row-link{
+  border-left:3px solid #7C8F6B !important;
+}
+
+/* 일반 일정은 링크 일정과 시각적으로 자연스럽게 이어지도록 */
+.timeline li:not(.schedule-linked-item){
+  box-sizing:border-box;
+}
+
+/* 모바일에서는 시간/순번 영역을 좁히고 전체 행 터치 영역 확보 */
+@media(max-width:760px){
+  .timeline li.schedule-linked-item{
+    margin:5px 0 !important;
+  }
+
+  .timeline li.schedule-linked-item > .schedule-row-link{
+    grid-template-columns:78px minmax(0,1fr) 18px !important;
+    gap:8px !important;
+    min-height:58px !important;
+    padding:9px 9px !important;
+    border-radius:11px !important;
+  }
+
+  .timeline li.schedule-linked-item .time{
+    font-size:9.5px !important;
+    line-height:1.35 !important;
+    white-space:normal !important;
+  }
+
+  .timeline li.schedule-linked-item b{
+    font-size:10.5px !important;
+    line-height:1.4 !important;
+    word-break:keep-all !important;
+    overflow-wrap:anywhere !important;
+  }
+
+  .timeline li.schedule-linked-item p{
+    margin-top:3px !important;
+    font-size:8.8px !important;
+    line-height:1.45 !important;
+    word-break:keep-all !important;
+    overflow-wrap:anywhere !important;
+  }
+
+  .timeline li.schedule-linked-item .schedule-row-arrow{
+    font-size:20px !important;
+  }
+}
+
+@media(max-width:430px){
+  .timeline li.schedule-linked-item > .schedule-row-link{
+    grid-template-columns:66px minmax(0,1fr) 16px !important;
+    gap:7px !important;
+    min-height:56px !important;
+    padding:8px 8px !important;
+  }
+  .timeline li.schedule-linked-item .time{
+    font-size:8.7px !important;
+  }
+  .timeline li.schedule-linked-item b{
+    font-size:10px !important;
+  }
+  .timeline li.schedule-linked-item p{
+    font-size:8.4px !important;
+  }
+}
