@@ -3172,3 +3172,84 @@ footer{
 .real-map-visual{
   padding-bottom:12px !important;
 }
+
+
+/* =========================================================
+   v31 · PASS OFFICIAL LINK BUTTONS
+   ========================================================= */
+.pass-official-link{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  width:100%;
+  min-height:38px;
+  margin-top:12px;
+  padding:8px 12px;
+  box-sizing:border-box;
+  border-radius:10px;
+  font-size:10px;
+  font-weight:950;
+  line-height:1.2;
+  text-decoration:none;
+  transition:
+    transform .15s ease,
+    background .15s ease,
+    border-color .15s ease,
+    box-shadow .15s ease;
+}
+.pass-official-link.v{
+  color:#B42318;
+  background:#FFF1EF;
+  border:1px solid #F1B8B2;
+}
+.pass-official-link.t{
+  color:#175EAE;
+  background:#EDF5FF;
+  border:1px solid #B9D4F3;
+}
+.pass-official-link.v:hover{
+  background:#FFE5E2;
+  border-color:#E86D62;
+  box-shadow:0 4px 12px rgba(180,35,24,.10);
+  transform:translateY(-1px);
+}
+.pass-official-link.t:hover{
+  background:#DFEEFF;
+  border-color:#6EA7E7;
+  box-shadow:0 4px 12px rgba(23,94,174,.10);
+  transform:translateY(-1px);
+}
+.pass-official-link:active{
+  transform:translateY(0);
+}
+.pass-official-link:focus-visible{
+  outline:none;
+  box-shadow:0 0 0 3px rgba(249,115,22,.14);
+}
+.pass-official-arrow{
+  font-size:12px;
+  line-height:1;
+}
+
+.big-pass-link{
+  text-decoration:none !important;
+  cursor:pointer;
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.big-pass-link:hover{
+  transform:translateY(-1px);
+  box-shadow:0 3px 9px rgba(60,40,25,.08);
+}
+.big-pass-link:focus-visible{
+  outline:none;
+  box-shadow:0 0 0 3px rgba(249,115,22,.14);
+}
+
+@media(max-width:620px){
+  .pass-official-link{
+    min-height:42px;
+    margin-top:10px;
+    font-size:9.5px;
+  }
+}
