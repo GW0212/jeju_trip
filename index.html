@@ -45,13 +45,15 @@
 
 <!DOCTYPE html>
 
+<!DOCTYPE html>
+
 <html lang="ko">
 <head><link crossorigin="" data-map-speed="1" href="https://tile.openstreetmap.org" rel="preconnect"/><link crossorigin="" data-map-speed="1" href="https://router.project-osrm.org" rel="preconnect"/><link data-map-speed="1" href="//tile.openstreetmap.org" rel="dns-prefetch"/><link data-map-speed="1" href="//router.project-osrm.org" rel="dns-prefetch"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="#F97316" name="theme-color"/>
 <title>제주 3일 여행 플래너</title>
-<meta content="제주 3일 여행의 먹거리, 놀거리, 카페, 상세 일정과 패스 혜택을 한눈에 확인하는 여행 플래너" name="description"/><link href="./css/style.css?v=20" rel="stylesheet"/><link href="./favicon.ico" rel="icon" type="image/x-icon"/><link href="./images/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/><link href="./images/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/><link href="./images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/><link href="./site.webmanifest" rel="manifest"/><link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet"/></head>
+<meta content="제주 3일 여행의 먹거리, 놀거리, 카페, 상세 일정과 패스 혜택을 한눈에 확인하는 여행 플래너" name="description"/><link href="./css/style.css?v=21" rel="stylesheet"/><link href="./favicon.ico" rel="icon" type="image/x-icon"/><link href="./images/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/><link href="./images/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/><link href="./images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/><link href="./site.webmanifest" rel="manifest"/><link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet"/></head>
 <body>
 <header class="wrap">
 <section class="hero">
@@ -257,145 +259,21 @@
 <div class="category-title">
 <div class="category-icon pass-icon">🎟️</div>
 <div>
-<h2>패스 혜택 · 최종 재검증</h2>
-<p>2026-09-15 기준 · 일정의 실제 32개 장소 전수 확인</p>
+<h2>패스 혜택</h2>
+<p>업로드한 패스 이용처 이미지 기준 · 장소 + 이미지 + 실제 혜택 정리</p>
 </div>
 </div>
 </div>
-<div class="pass-legend">
-<span><i class="legend-dot v"></i><b>브이패스</b> = 제주올패스 자유이용권</span>
-<span><i class="legend-dot t"></i><b>제주투어패스</b> = 투어패스몰 자유이용권</span>
-<span><b>*</b> 세부상품·지점·최신 바코드 조건 확인 필요</span>
-</div>
-<div class="final-rule">
-<b>이번 최종본의 판정 원칙</b>
-<p>브이패스 사이트에서 <b>단품 할인 티켓을 판매하는 것</b>과 <b>제주올패스로 무료·추가금 이용 가능한 것</b>을 분리했습니다.
-    따라서 산방산 탄산온천·도치돌알파카목장처럼 브이패스 단품 특가가 있어도 제주올패스 포함 근거가 확인되지 않으면 빨간 배지를 붙이지 않았습니다.</p>
-</div>
-<div class="final-pass-overview">
-<article class="overview-card v">
-<span class="overview-k">브이패스 · 제주올패스</span>
-<strong>확인 4곳 + 재확인 1곳</strong>
-<p><b>확인:</b> 스카이워터쇼 · 다이나믹메이즈 · 더마파크 · 글로시말차<br/>
-<b>최신 바코드 재확인:</b> 뷰 제주하늘</p>
-</article>
-<article class="overview-card t">
-<span class="overview-k">제주투어패스</span>
-<strong>확인 5곳</strong>
-<p><b>확인:</b> 뷰 제주하늘 · 더마파크 · 시소 카이막 애월점 · 상가리야자숲 · 석예원 본초족욕 성산</p>
-</article>
-</div>
-<div class="money-summary">
-<article class="money-card v">
-<span>브이패스 · 공개자료로 금액 산정 가능한 최소 혜택</span>
-<strong>인당 약 21,000 ~ 21,500원 + α</strong>
-<p>현재 스케줄 기준: 스카이워터쇼 약 15,000원 + 글로시말차 6,000~6,500원 = 인당 약 21,000~21,500원. 다이나믹메이즈·뷰 제주하늘·더마파크는 제주올패스 정확 적용가가 공개되지 않아 +α로 두었습니다.</p>
-<small>현재 제주올패스 판매가 11,900원 기준으로 위 두 곳만 써도 패스값을 넘기는 구조지만, 실제 추가금은 여행 직전 바코드가 최종 기준입니다.</small>
-</article>
-<article class="money-card t">
-<span>제주투어패스 · 현재 동선의 보수적 확인 혜택</span>
-<strong>인당 최소 18,500원 + α</strong>
-<p>현재 스케줄 기준: 뷰 제주하늘 약 9,000원 + 시소 카이막우유 4,000원 + 상가리야자숲 약 5,500원 = 인당 최소 18,500원 + α. <b>석예원 성산점 본초족욕을 실제 이용하면 +9,000원</b>으로 인당 최소 27,500원 + α입니다. 더마파크는 정확 할인액이 공개되지 않아 α로 남겼습니다.</p>
-<small>본초족욕을 <b>석예원 성산</b>으로 실제 방문하면 온라인 대체구매가 약 9,000원 상당이 추가되어 <b>인당 최소 27,500원 + α</b>로 볼 수 있습니다.</small>
-</article>
-</div>
-<div class="pass-columns">
-<article class="pass-panel vpass-panel">
-<div class="pass-panel-head">
-<span class="big-pass-badge v">브이패스</span>
-<div>
-<h3>브이패스 · 제주올패스 혜택 일정</h3>
-<p>단품 할인과 제주올패스 혜택을 구분해 실제 금액 중심으로 정리</p>
-</div>
-</div>
-<div class="benefit-list">
-<div class="benefit-card confirmed"><div class="benefit-title"><span>DAY 1</span><b>제주 스카이워터쇼</b></div><div class="benefit-price benefit-price-clear">스카이워터쇼 입장권</div><div class="discount-grid"><div class="discount-row"><span class="discount-label">브이패스 단품</span><strong class="discount-value">23,000원 → 20,000원</strong></div><div class="discount-row discount"><span class="discount-label">단품 할인</span><strong class="discount-value">3,000원 · 13%</strong></div><div class="discount-row"><span class="discount-label">제주올패스 이용 사례</span><strong class="discount-value">현장 추가금 약 5,000원</strong></div><div class="discount-row saving"><span class="discount-label">최소합계 반영 절감액</span><strong class="discount-value">약 15,000원/인</strong></div></div><p class="benefit-note">최소합계는 브이패스 단품 판매가 20,000원과 최근 제주올패스 추가금 5,000원 사례의 차액 15,000원으로 보수적으로 계산했습니다.</p></div>
-<div class="benefit-card conditional"><div class="benefit-title"><span>DAY 1</span><b>다이나믹메이즈 제주</b></div><div class="benefit-price benefit-price-clear">기본 입장권</div><div class="discount-grid"><div class="discount-row"><span class="discount-label">브이패스 단품</span><strong class="discount-value">10,000원 → 9,000원</strong></div><div class="discount-row discount"><span class="discount-label">단품 할인</span><strong class="discount-value">1,000원 · 10%</strong></div><div class="discount-row unknown"><span class="discount-label">제주올패스 절감액</span><strong class="discount-value">현재 정확 금액 미공개</strong></div><div class="discount-row unknown"><span class="discount-label">최소합계 반영</span><strong class="discount-value">미반영</strong></div></div><p class="benefit-note">부스트업+LV2 등 별도 구성은 가격이 다릅니다. 현재 최소 혜택 합계에는 정확한 제주올패스 추가금이 확인되지 않아 넣지 않았습니다.</p></div>
-<div class="benefit-card conditional"><div class="benefit-title"><span>DAY 1</span><b>뷰 제주하늘</b></div><div class="benefit-price benefit-price-clear">ATV + 승마 기본코스</div><div class="discount-grid"><div class="discount-row"><span class="discount-label">ATV</span><strong class="discount-value">30,000원 → 19,000원</strong></div><div class="discount-row discount"><span class="discount-label">ATV 단품 할인</span><strong class="discount-value">11,000원 · 37%</strong></div><div class="discount-row"><span class="discount-label">승마 기본코스</span><strong class="discount-value">10,000원 → 9,000원</strong></div><div class="discount-row discount"><span class="discount-label">승마 단품 할인</span><strong class="discount-value">1,000원 · 10%</strong></div><div class="discount-row saving"><span class="discount-label">단품 합계 할인</span><strong class="discount-value">12,000원/인</strong></div><div class="discount-row unknown"><span class="discount-label">제주올패스 최소합계</span><strong class="discount-value">정확 적용가 미공개 · 미반영</strong></div></div><p class="benefit-note">현재 1일차 일정의 'ATV + 승마' 기준입니다. 위 금액은 브이패스 단품 할인이고, 제주올패스 실제 추가금과는 별도입니다.</p></div>
-<div class="benefit-card conditional"><div class="benefit-title"><span>DAY 2</span><b>더마파크</b></div><div class="benefit-price benefit-price-clear">더마파크 공연</div><div class="discount-grid"><div class="discount-row"><span class="discount-label">브이패스 단품</span><strong class="discount-value">22,000원 → 15,000원</strong></div><div class="discount-row discount"><span class="discount-label">단품 할인</span><strong class="discount-value">7,000원 · 32%</strong></div><div class="discount-row unknown"><span class="discount-label">제주올패스 절감액</span><strong class="discount-value">현재 정확 금액 미공개</strong></div><div class="discount-row unknown"><span class="discount-label">최소합계 반영</span><strong class="discount-value">미반영</strong></div></div><p class="benefit-note">제주올패스 이용 근거는 있으나 시기별 무료/추가금 조건이 달라 현재 최소합계에는 포함하지 않았습니다.</p></div>
-<div class="benefit-card confirmed"><div class="benefit-title"><span>DAY 3</span><b>글로시말차</b></div><div class="benefit-price benefit-price-clear">말차 스트레이트 또는 아메리카노 1잔</div><div class="discount-grid"><div class="discount-row"><span class="discount-label">말차 스트레이트</span><strong class="discount-value">약 6,500원 상당</strong></div><div class="discount-row"><span class="discount-label">아메리카노</span><strong class="discount-value">약 6,000원 상당</strong></div><div class="discount-row"><span class="discount-label">제주올패스 혜택</span><strong class="discount-value">선택 음료 1잔 제공</strong></div><div class="discount-row saving"><span class="discount-label">최소합계 반영 절감액</span><strong class="discount-value">6,000~6,500원/인</strong></div></div><p class="benefit-note">현재 최소합계에는 더 낮은 금액인 아메리카노 6,000원부터 반영했습니다.</p></div>
-</div>
-</article>
-<article class="pass-panel tour-panel">
-<div class="pass-panel-head">
-<span class="big-pass-badge t">제주투어패스</span>
-<div>
-<h3>제주투어패스 적용 일정</h3>
-<p>현재 일정에서 이용 가능한 항목과 인당 절감 금액 중심으로 정리</p>
-</div>
-</div>
-<div class="benefit-list">
-<div class="benefit-card confirmed"><div class="benefit-title"><span>DAY 1</span><b>뷰 제주하늘</b></div><div class="benefit-price benefit-price-clear">승마 기본코스 1회</div><div class="discount-grid"><div class="discount-row"><span class="discount-label">단품 대체구매가</span><strong class="discount-value">약 9,000원</strong></div><div class="discount-row"><span class="discount-label">제주투어패스</span><strong class="discount-value">패스 포함 이용</strong></div><div class="discount-row saving"><span class="discount-label">인당 절감액</span><strong class="discount-value">약 9,000원</strong></div><div class="discount-row saving"><span class="discount-label">최소합계 반영</span><strong class="discount-value">9,000원/인</strong></div></div><p class="benefit-note">사전예약 및 운영 조건은 별도로 확인해야 합니다.</p></div>
-<div class="benefit-card conditional"><div class="benefit-title"><span>DAY 2</span><b>더마파크</b></div><div class="benefit-price benefit-price-clear">승마/카트 체험</div><div class="discount-grid"><div class="discount-row"><span class="discount-label">제주투어패스</span><strong class="discount-value">이용처 포함</strong></div><div class="discount-row unknown"><span class="discount-label">현장 추가금</span><strong class="discount-value">상품·시점별 변동</strong></div><div class="discount-row unknown"><span class="discount-label">정확 절감액</span><strong class="discount-value">현재 공개 금액 미확인</strong></div><div class="discount-row unknown"><span class="discount-label">최소합계 반영</span><strong class="discount-value">미반영</strong></div></div><p class="benefit-note">어떤 체험까지 기본 포함되는지와 추가금이 고정되어 있지 않아 최소 할인 합계에서는 제외했습니다.</p></div>
-<div class="benefit-card confirmed"><div class="benefit-title"><span>DAY 2</span><b>시소 카이막 애월점</b></div><div class="benefit-price benefit-price-clear">카이막우유 1병</div><div class="discount-grid"><div class="discount-row"><span class="discount-label">일반 판매가</span><strong class="discount-value">4,000원</strong></div><div class="discount-row"><span class="discount-label">제주투어패스</span><strong class="discount-value">1병 무료</strong></div><div class="discount-row saving"><span class="discount-label">인당 절감액</span><strong class="discount-value">4,000원</strong></div><div class="discount-row saving"><span class="discount-label">최소합계 반영</span><strong class="discount-value">4,000원/인</strong></div></div><p class="benefit-note">패스 1매당 카이막우유 1병 기준입니다.</p></div>
-<div class="benefit-card confirmed"><div class="benefit-title"><span>DAY 3</span><b>상가리야자숲</b></div><div class="benefit-price benefit-price-clear">입장권 1인</div><div class="discount-grid"><div class="discount-row"><span class="discount-label">현재 단품 대체가</span><strong class="discount-value">약 5,500원</strong></div><div class="discount-row"><span class="discount-label">제주투어패스</span><strong class="discount-value">패스 포함 입장</strong></div><div class="discount-row saving"><span class="discount-label">인당 절감액</span><strong class="discount-value">약 5,500원</strong></div><div class="discount-row saving"><span class="discount-label">최소합계 반영</span><strong class="discount-value">5,500원/인</strong></div></div><p class="benefit-note">현재 확인 가능한 온라인 단품 판매가를 대체구매가로 사용했습니다.</p></div>
-<div class="benefit-card conditional"><div class="benefit-title"><span>DAY 3</span><b>본초족욕 · 석예원 성산 지점만</b></div><div class="benefit-price benefit-price-clear">족욕체험 1인</div><div class="discount-grid"><div class="discount-row"><span class="discount-label">현장 일반가</span><strong class="discount-value">12,000원</strong></div><div class="discount-row"><span class="discount-label">온라인 대체구매가</span><strong class="discount-value">약 9,000원</strong></div><div class="discount-row"><span class="discount-label">제주투어패스</span><strong class="discount-value">성산점 패스 포함</strong></div><div class="discount-row saving"><span class="discount-label">인당 절감액</span><strong class="discount-value">약 9,000원</strong></div></div><p class="benefit-note">현재 일정의 본초족욕이 '석예원 성산점'일 때만 적용합니다. 성산점이 아니라면 이 9,000원은 합계에서 제외해야 합니다.</p></div>
-</div>
-</article>
-</div>
-<div class="standalone-warning">
-<h3>⚠️ 브이패스 ‘단품 할인’과 제주올패스 사용처를 혼동하면 안 되는 곳</h3>
-<div class="standalone-grid">
-<div><b>산방산 탄산온천</b><span>브이패스 단품 7,000 → 6,800원 판매 확인</span><em>제주올패스 포함 근거는 이번 재검증에서 확인하지 못함</em></div>
-<div><b>도치돌알파카목장</b><span>9월 단품 특가 15,000 → 13,000원 판매 확인</span><em>제주올패스 포함 근거는 확인하지 못함</em></div>
-<div><b>본초족욕</b><span>브이패스에서 지점별 단품 할인권 판매</span><em>단품권 판매와 제주올패스 포함 여부는 별개</em></div>
-</div>
-</div>
-<section class="full-audit">
-<div class="audit-head">
-<h3>먹거리 · 놀거리 · 카페 33곳 전수검증 결과</h3>
-<p>‘없음’은 절대 영구 미제휴라는 뜻이 아니라, <b>2026-09-15 재검증 시점에 현재 패스 적용 근거를 확보하지 못했다</b>는 의미입니다.</p>
-</div>
-<div aria-label="제주 일정 32곳 패스 전수검증" class="audit-table" role="table">
-<div class="audit-row audit-header" role="row">
-<div>장소</div><div>브이패스</div><div>제주투어패스</div><div>최종 판정 메모</div>
-</div>
-<div class="audit-row"><div>먹돌고기국수 제주본점</div><div class="none">없음</div><div class="none">없음</div><div>패스 적용 근거 미확인</div></div>
-<div class="audit-row"><div>온평바다한그릇 성산본점</div><div class="none">없음</div><div class="none">없음</div><div>패스 적용 근거 미확인</div></div>
-<div class="audit-row"><div>문개어멍</div><div class="none">없음</div><div class="none">없음</div><div>패스 적용 근거 미확인</div></div>
-<div class="audit-row"><div>애월 갈치 암행어사</div><div class="none">없음</div><div class="none">없음</div><div>패스 적용 근거 미확인</div></div>
-<div class="audit-row"><div>성아시</div><div class="none">없음</div><div class="none">없음</div><div>패스 적용 근거 미확인</div></div>
-<div class="audit-row"><div>제주고기국수 모던돔베 공항본점</div><div class="none">없음</div><div class="none">없음</div><div>패스 적용 근거 미확인</div></div>
-<div class="audit-row"><div>반디파스타</div><div class="none">없음</div><div class="none">없음</div><div>패스 적용 근거 미확인</div></div><div class="audit-row">
-<div>사계흑돼지</div>
-<div class="none">없음</div>
-<div class="none">없음</div>
-<div>2026-09-15 재검색 기준 현재 두 패스 적용 근거 미확인</div>
-</div>
-<div class="audit-row"><div>사려니숲길</div><div class="none">없음</div><div class="none">없음</div><div>일반 산책 기준 별도 패스 표기 제거</div></div>
-<div class="audit-row"><div>제주 스카이워터쇼</div><div><span class="audit-chip v">확인</span></div><div class="none">현재 근거 미확인</div><div>제주올패스 공식 FAQ상 추가금 시설</div></div>
-<div class="audit-row"><div>다이나믹메이즈 제주</div><div><span class="audit-chip v">확인</span></div><div class="none">현재 근거 미확인</div><div>2026 공식 문의에 올패스 추가금 문의 존재</div></div>
-<div class="audit-row"><div>뷰 제주하늘</div><div><span class="audit-chip v">확인 필요</span></div><div><span class="audit-chip t">확인</span></div><div>올패스는 공개 가이드 ATV / 투어패스는 2026 승마 근거</div></div>
-<div class="audit-row"><div>천지연 폭포</div><div class="none">없음</div><div class="none">없음</div><div>현재 두 패스 적용 근거 미확인</div></div>
-<div class="audit-row"><div>산방산 탄산온천</div><div class="none">단품권만</div><div class="none">없음</div><div>브이패스 단품 할인은 있으나 제주올패스 포함과는 별개</div></div>
-<div class="audit-row"><div>도치돌알파카목장</div><div class="none">단품권만</div><div class="none">없음</div><div>브이패스 9월 특가는 있으나 제주올패스 포함 근거 미확인</div></div>
-<div class="audit-row"><div>9.81 파크 제주</div><div class="none">없음</div><div class="none">없음</div><div>현재 두 패스 적용 근거 미확인</div></div>
-<div class="audit-row"><div>더마파크</div><div><span class="audit-chip v">확인</span></div><div><span class="audit-chip t">확인</span></div><div>두 패스 모두 근거 확인. 상품/추가금은 최신 바코드 확인</div></div>
-<div class="audit-row"><div>은하 요가</div><div class="none">없음</div><div class="none">없음</div><div>패스 적용 근거 미확인</div></div>
-<div class="audit-row"><div>곽지해수욕장</div><div class="none">불필요</div><div class="none">불필요</div><div>공공 해변 방문 자체에 패스 불필요</div></div>
-<div class="audit-row"><div>상가리야자숲</div><div class="none">없음</div><div><span class="audit-chip t">확인</span></div><div>2026 제주투어패스 공개목록 확인</div></div>
-<div class="audit-row"><div>돈키쥬쥬</div><div class="none">없음</div><div class="none">없음</div><div>현재 패스 적용 근거 미확인</div></div>
-<div class="audit-row"><div>본초족욕</div><div class="none">단품권만</div><div><span class="audit-chip t">성산점만</span></div><div>투어패스는 석예원 본초족욕 성산 지점만 확인</div></div>
-<div class="audit-row"><div>닭머르</div><div class="none">불필요</div><div class="none">불필요</div><div>전망 명소 방문 자체에 패스 불필요</div></div>
-<div class="audit-row"><div>함덕해수욕장</div><div class="none">불필요</div><div class="none">불필요</div><div>공공 해변 방문 자체에 패스 불필요</div></div>
-<div class="audit-row"><div>동문재래시장</div><div class="none">없음</div><div class="none">시장 자체 없음</div><div>시장 자체 혜택은 미확인. 개별 입점 제휴처와는 구분</div></div>
-<div class="audit-row"><div>시소 카이막 애월점</div><div class="none">없음</div><div><span class="audit-chip t">확인</span></div><div>2026 실제 사용 · 카이막우유 1병</div></div>
-<div class="audit-row"><div>호텔 샌드</div><div class="none">없음</div><div class="none">없음</div><div>패스 적용 근거 미확인</div></div>
-<div class="audit-row"><div>우무 푸딩</div><div class="none">없음</div><div class="none">없음</div><div>패스 적용 근거 미확인</div></div>
-<div class="audit-row"><div>해지개</div><div class="none">없음</div><div class="none">없음</div><div>패스 적용 근거 미확인</div></div>
-<div class="audit-row"><div>점점</div><div class="none">없음</div><div class="none">없음</div><div>패스 적용 근거 미확인</div></div>
-<div class="audit-row"><div>링로드</div><div class="none">없음</div><div class="none">없음</div><div>패스 적용 근거 미확인</div></div>
-<div class="audit-row"><div>글로시말차</div><div><span class="audit-chip v">확인</span></div><div class="none">현재 근거 미확인</div><div>제주올패스 말차스트레이트/아메리카노 근거 확인</div></div>
-<div class="audit-row"><div>모찌마루</div><div class="none">없음</div><div class="none">없음</div><div>패스 적용 근거 미확인</div></div>
-</div>
-</section>
-<div class="pass-warning">
-<b>여행 직전 최종 체크</b>
-<span>제휴처와 추가금은 수시로 바뀔 수 있습니다. 브이패스는 구매 후 문자/카카오로 받은 최신 이용처 URL,
-    제주투어패스는 구매 바코드의 최신 이용관광지 목록을 최종 기준으로 사용하세요.</span>
-</div>
-</section>
+
+
+
+
+
+
+
+
+<div class="pass-image-summary"><div class="pass-image-summary-card v"><span class="summary-pass-label">브이패스 · 제주올패스</span><strong>7개 혜택</strong><p>스카이워터쇼 · 뷰 제주하늘 ATV · 도치돌알파카목장 · 본초족욕 · 애월 갈치 암행어사 · 하늘여행 행글라이더체험장 · 글로시말차</p></div><div class="pass-image-summary-card t"><span class="summary-pass-label">제주투어패스</span><strong>3개 혜택</strong><p>뷰 제주하늘 승마&amp;ATV · 시소 카이막 애월점 · 상가리야자숲</p></div></div><div class="pass-image-rule"><b>이번 목록 기준</b><span> 업로드한 10장의 패스 혜택 이미지에 있는 항목만 표시했습니다. 이미지에 금액이 적혀 있지 않은 혜택은 임의로 가격을 보완하지 않았습니다.</span></div><div class="pass-image-columns"><section class="pass-image-panel vpass-panel-new"><div class="pass-image-panel-head"><span class="big-pass-badge v">브이패스</span><div><h3>브이패스 · 제주올패스</h3><p>업로드 이미지에 표시된 현장 결제·할인 내용 기준</p></div></div><div class="benefit-media-list"><article class="benefit-media-card vpass"><div class="benefit-media-title"><span class="benefit-day-chip">DAY 1</span><div class="benefit-media-namewrap"><b class="benefit-media-name">제주 스카이워터쇼</b><span class="benefit-media-subtitle">공연 관람권</span></div></div><figure class="benefit-media-figure"><img alt="제주 스카이워터쇼 패스 혜택 안내 이미지" loading="lazy" src="./images/pass-benefits/vpass_sky_water_show.png"/></figure><div class="benefit-media-info"><div class="benefit-media-row"><span class="benefit-media-label">성인 기준 현장가</span><strong class="benefit-media-value">27,000원</strong></div><div class="benefit-media-row"><span class="benefit-media-label">제주올패스 이용 시</span><strong class="benefit-media-value">현장 5,000원 결제</strong></div><div class="benefit-media-row saving"><span class="benefit-media-label">할인액</span><strong class="benefit-media-value">22,000원</strong></div><p class="benefit-media-note">업로드 이미지 기준 성인 관람권 혜택입니다.</p></div></article><article class="benefit-media-card vpass"><div class="benefit-media-title"><span class="benefit-day-chip">DAY 1</span><div class="benefit-media-namewrap"><b class="benefit-media-name">뷰 제주하늘</b><span class="benefit-media-subtitle">ATV · 제주 오프로드 코스</span></div></div><figure class="benefit-media-figure"><img alt="뷰 제주하늘 패스 혜택 안내 이미지" loading="lazy" src="./images/pass-benefits/vpass_view_jeju_sky_atv.png"/></figure><div class="benefit-media-info"><div class="benefit-media-row"><span class="benefit-media-label">성인 기준 현장가</span><strong class="benefit-media-value">30,000원</strong></div><div class="benefit-media-row"><span class="benefit-media-label">제주올패스 이용 시</span><strong class="benefit-media-value">현장 14,000원 결제</strong></div><div class="benefit-media-row saving"><span class="benefit-media-label">할인액</span><strong class="benefit-media-value">16,000원</strong></div><p class="benefit-media-note">만 18세 이상 운전 가능. 현장 조건과 탑승 제한은 이미지의 유의사항을 확인하세요.</p></div></article><article class="benefit-media-card vpass"><div class="benefit-media-title"><span class="benefit-day-chip">DAY 2</span><div class="benefit-media-namewrap"><b class="benefit-media-name">도치돌알파카목장</b><span class="benefit-media-subtitle">입장권</span></div></div><figure class="benefit-media-figure"><img alt="도치돌알파카목장 패스 혜택 안내 이미지" loading="lazy" src="./images/pass-benefits/vpass_dochidol_alpaca.png"/></figure><div class="benefit-media-info"><div class="benefit-media-row"><span class="benefit-media-label">현장가</span><strong class="benefit-media-value">15,000원</strong></div><div class="benefit-media-row"><span class="benefit-media-label">제주올패스 이용 시</span><strong class="benefit-media-value">현장 5,000원 결제</strong></div><div class="benefit-media-row saving"><span class="benefit-media-label">할인액</span><strong class="benefit-media-value">10,000원</strong></div><p class="benefit-media-note">소인 기준 및 동물 먹이 관련 유의사항은 이미지 안내를 따릅니다.</p></div></article><article class="benefit-media-card vpass"><div class="benefit-media-title"><span class="benefit-day-chip">DAY 2</span><div class="benefit-media-namewrap"><b class="benefit-media-name">애월 갈치 암행어사</b><span class="benefit-media-subtitle">세트 메뉴 할인권</span></div></div><figure class="benefit-media-figure"><img alt="애월 갈치 암행어사 패스 혜택 안내 이미지" loading="lazy" src="./images/pass-benefits/vpass_aewol_galchi.png"/></figure><div class="benefit-media-info"><div class="benefit-media-row saving"><span class="benefit-media-label">혜택</span><strong class="benefit-media-value">1인 4,000원 할인</strong></div><div class="benefit-media-row"><span class="benefit-media-label">이용 횟수</span><strong class="benefit-media-value">고객 1인 1회</strong></div><div class="benefit-media-row"><span class="benefit-media-label">적용 메뉴</span><strong class="benefit-media-value">세트 메뉴</strong></div><p class="benefit-media-note">단품 메뉴·주류·음료·기념품은 4,000원 할인에서 제외됩니다.</p></div></article><article class="benefit-media-card vpass"><div class="benefit-media-title"><span class="benefit-day-chip">DAY 2</span><div class="benefit-media-namewrap"><b class="benefit-media-name">하늘여행 행글라이더체험장</b><span class="benefit-media-subtitle">행글라이더</span></div></div><figure class="benefit-media-figure"><img alt="하늘여행 행글라이더체험장 패스 혜택 안내 이미지" loading="lazy" src="./images/pass-benefits/vpass_hangglider.png"/></figure><div class="benefit-media-info"><div class="benefit-media-row"><span class="benefit-media-label">성인 기준 현장가</span><strong class="benefit-media-value">15,000원</strong></div><div class="benefit-media-row"><span class="benefit-media-label">제주올패스 이용 시</span><strong class="benefit-media-value">현장 6,000원 결제</strong></div><div class="benefit-media-row saving"><span class="benefit-media-label">할인액</span><strong class="benefit-media-value">9,000원</strong></div><p class="benefit-media-note">업로드 이미지 기준 40개월 이상 이용 조건이 표시되어 있습니다.</p></div></article><article class="benefit-media-card vpass"><div class="benefit-media-title"><span class="benefit-day-chip">DAY 3</span><div class="benefit-media-namewrap"><b class="benefit-media-name">본초족욕</b><span class="benefit-media-subtitle">족욕</span></div></div><figure class="benefit-media-figure"><img alt="본초족욕 패스 혜택 안내 이미지" loading="lazy" src="./images/pass-benefits/vpass_boncho_footbath.png"/></figure><div class="benefit-media-info"><div class="benefit-media-row"><span class="benefit-media-label">제주올패스 혜택</span><strong class="benefit-media-value">본초족욕 이용</strong></div><div class="benefit-media-row saving"><span class="benefit-media-label">연계 혜택</span><strong class="benefit-media-value">진돼지 10% 할인</strong></div><div class="benefit-media-row unknown"><span class="benefit-media-label">금액</span><strong class="benefit-media-value">이미지에 별도 표기 없음</strong></div><p class="benefit-media-note">업체 사전 전화 예약 후 이용 가능하며, 구매 2시간 이후부터 이용 가능합니다.</p></div></article><article class="benefit-media-card vpass"><div class="benefit-media-title"><span class="benefit-day-chip">DAY 3</span><div class="benefit-media-namewrap"><b class="benefit-media-name">글로시말차</b><span class="benefit-media-subtitle">말차스트레이트 또는 아메리카노</span></div></div><figure class="benefit-media-figure"><img alt="글로시말차 패스 혜택 안내 이미지" loading="lazy" src="./images/pass-benefits/vpass_glossy_matcha.png"/></figure><div class="benefit-media-info"><div class="benefit-media-row"><span class="benefit-media-label">기본 혜택</span><strong class="benefit-media-value">말차스트레이트 또는 아메리카노</strong></div><div class="benefit-media-row saving"><span class="benefit-media-label">변경 혜택</span><strong class="benefit-media-value">글로시말차라떼 변경 시 2,000원 할인</strong></div><div class="benefit-media-row"><span class="benefit-media-label">이용 방식</span><strong class="benefit-media-value">테이크아웃 전용</strong></div><p class="benefit-media-note">업로드 이미지에 표시된 메뉴와 변경 혜택 기준입니다.</p></div></article></div></section><section class="pass-image-panel tour-panel-new"><div class="pass-image-panel-head"><span class="big-pass-badge t">제주투어패스</span><div><h3>제주투어패스</h3><p>업로드 이미지에 표시된 이용권·추가 혜택 기준</p></div></div><div class="benefit-media-list"><article class="benefit-media-card tourpass"><div class="benefit-media-title"><span class="benefit-day-chip">DAY 1</span><div class="benefit-media-namewrap"><b class="benefit-media-name">뷰 제주하늘</b><span class="benefit-media-subtitle">승마 &amp; ATV</span></div></div><figure class="benefit-media-figure"><img alt="뷰 제주하늘 패스 혜택 안내 이미지" loading="lazy" src="./images/pass-benefits/tourpass_view_jeju_sky.png"/></figure><div class="benefit-media-info"><div class="benefit-media-row"><span class="benefit-media-label">기본 혜택</span><strong class="benefit-media-value">승마체험</strong></div><div class="benefit-media-row saving"><span class="benefit-media-label">추가 혜택</span><strong class="benefit-media-value">ATV 이용 시 현장 할인</strong></div><div class="benefit-media-row unknown"><span class="benefit-media-label">할인 금액</span><strong class="benefit-media-value">이미지에 별도 표기 없음</strong></div><p class="benefit-media-note">승마 체험과 ATV 현장 할인 안내가 함께 표시된 이용처 이미지입니다.</p></div></article><article class="benefit-media-card tourpass"><div class="benefit-media-title"><span class="benefit-day-chip">DAY 2</span><div class="benefit-media-namewrap"><b class="benefit-media-name">시소 카이막 애월점</b><span class="benefit-media-subtitle">카이막우유</span></div></div><figure class="benefit-media-figure"><img alt="시소 카이막 애월점 패스 혜택 안내 이미지" loading="lazy" src="./images/pass-benefits/tourpass_siso_kaymak.png"/></figure><div class="benefit-media-info"><div class="benefit-media-row"><span class="benefit-media-label">혜택 항목</span><strong class="benefit-media-value">카이막우유</strong></div><div class="benefit-media-row unknown"><span class="benefit-media-label">금액</span><strong class="benefit-media-value">이미지에 별도 표기 없음</strong></div><p class="benefit-media-note">애월점/동문시장점 안내 이미지이며, 세부 이용 조건은 이미지 하단 유의사항을 확인하세요.</p></div></article><article class="benefit-media-card tourpass"><div class="benefit-media-title"><span class="benefit-day-chip">DAY 3</span><div class="benefit-media-namewrap"><b class="benefit-media-name">상가리야자숲</b><span class="benefit-media-subtitle">입장권</span></div></div><figure class="benefit-media-figure"><img alt="상가리야자숲 패스 혜택 안내 이미지" loading="lazy" src="./images/pass-benefits/tourpass_sanggari_palm_forest.png"/></figure><div class="benefit-media-info"><div class="benefit-media-row"><span class="benefit-media-label">혜택 항목</span><strong class="benefit-media-value">입장권</strong></div><div class="benefit-media-row unknown"><span class="benefit-media-label">금액</span><strong class="benefit-media-value">이미지에 별도 표기 없음</strong></div><p class="benefit-media-note">업로드 이미지에 입장권 이용처로 표시되어 있습니다.</p></div></article></div></section></div><div class="pass-image-footer"><b>참고</b><span> 현장 운영·연령 조건·휴무·추가 결제 조건은 방문 당일 달라질 수 있으므로, 실제 사용 직전 패스 화면의 최신 안내를 함께 확인하세요.</span></div></section>
 </main>
 <footer class="wrap">🍊 JEJU TRIP · 3 DAYS · GITHUB PAGES EDITION</footer>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script defer="" src="./js/app.js?v=20"></script></body>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script defer="" src="./js/app.js?v=21"></script></body>
 </html>
