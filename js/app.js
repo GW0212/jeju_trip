@@ -349,29 +349,6 @@
       ensureRoadData(targetId, getInstantPoints(targetId));
     }));
 
-    const scheduleToggles = [...document.querySelectorAll('.schedule-card-toggle')];
-    scheduleToggles.forEach(button => button.addEventListener('click', async () => {
-      const targetId = button.dataset.collapseTarget;
-      const detailBody = targetId ? document.getElementById(targetId) : null;
-      const panel = button.closest('.schedule-panel');
-      const label = button.querySelector('.collapse-label');
-      if (!detailBody || !panel) return;
-      const nextExpanded = button.getAttribute('aria-expanded') !== 'true';
-      button.setAttribute('aria-expanded',String(nextExpanded));
-      detailBody.hidden = !nextExpanded;
-      panel.classList.toggle('collapsed',!nextExpanded);
-      if (label) {
-        label.textContent = nextExpanded ? '상세 일정 접기' : '상세 일정 펼치기';
-      }
-    }));
-
-    // Begin route-data warming shortly after the page is usable.
-    const warm = () => prewarmRoadCaches();
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(warm, {timeout:1600});
-    } else {
-      setTimeout(warm, 450);
-    }
 
     const topButton = document.createElement('button');
     topButton.type='button'; topButton.className='back-to-top';
@@ -384,20 +361,5 @@
       const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});
     });
-
-    document.addEventListener('keydown',event => {
-      if(event.key !== 'Escape') return;
-      scheduleToggles.forEach(button => {
-        if(button.getAttribute('aria-expanded') !== 'true') return;
-        const targetId=button.dataset.collapseTarget;
-        const detailBody=targetId?document.getElementById(targetId):null;
-        const panel=button.closest('.schedule-panel');
-        const label=button.querySelector('.collapse-label');
-        button.setAttribute('aria-expanded','false');
-        if(detailBody) detailBody.hidden=true;
-        if(panel) panel.classList.add('collapsed');
-        if(label) label.textContent='펼치기';
-      });
-    });
-  });
+});
 })();
