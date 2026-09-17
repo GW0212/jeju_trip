@@ -260,7 +260,30 @@
 
     if (maps.has(routeId)) {
       const existing = maps.get(routeId);
-      requestAnimationFrame(() => existing.resize());
+
+      // DAY 탭 재진입 시에도 드래그/줌 상태를 다시 보장합니다.
+      existing.dragPan.enable();
+      existing.scrollZoom.enable();
+      existing.boxZoom.enable();
+      existing.doubleClickZoom.enable();
+      existing.touchZoomRotate.enable();
+      existing.keyboard.enable();
+      existing.dragRotate.disable();
+      if (existing.touchPitch && typeof existing.touchPitch.disable === 'function') {
+        existing.touchPitch.disable();
+      }
+
+      const existingCanvas = existing.getCanvas();
+      const existingContainer = existing.getCanvasContainer();
+      existingCanvas.style.pointerEvents = 'auto';
+      existingCanvas.style.touchAction = 'none';
+      existingCanvas.style.cursor = 'grab';
+      existingContainer.style.pointerEvents = 'auto';
+      existingContainer.style.touchAction = 'none';
+
+      requestAnimationFrame(() => {
+        existing.resize();
+      });
       return;
     }
 
@@ -275,7 +298,44 @@
       center,
       zoom: 9.2,
       attributionControl: true,
-      scrollZoom: true
+      interactive: true,
+      dragPan: true,
+      scrollZoom: true,
+      boxZoom: true,
+      doubleClickZoom: true,
+      touchZoomRotate: true,
+      keyboard: true,
+      dragRotate: false,
+      touchPitch: false,
+      cooperativeGestures: false
+    });
+
+    // 일부 브라우저/GitHub Pages 환경에서도 지도 이동 입력이
+    // 확실히 활성화되도록 각 interaction handler를 명시적으로 켭니다.
+    map.dragPan.enable();
+    map.scrollZoom.enable();
+    map.boxZoom.enable();
+    map.doubleClickZoom.enable();
+    map.touchZoomRotate.enable();
+    map.keyboard.enable();
+    map.dragRotate.disable();
+    if (map.touchPitch && typeof map.touchPitch.disable === 'function') {
+      map.touchPitch.disable();
+    }
+
+    const canvas = map.getCanvas();
+    const canvasContainer = map.getCanvasContainer();
+    canvas.style.cursor = 'grab';
+    canvas.style.pointerEvents = 'auto';
+    canvas.style.touchAction = 'none';
+    canvasContainer.style.pointerEvents = 'auto';
+    canvasContainer.style.touchAction = 'none';
+
+    map.on('dragstart', () => {
+      canvas.style.cursor = 'grabbing';
+    });
+    map.on('dragend', () => {
+      canvas.style.cursor = 'grab';
     });
 
     map.addControl(

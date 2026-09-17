@@ -3253,3 +3253,42 @@ footer{
     font-size:9.5px;
   }
 }
+
+
+/* =========================================================
+   v33 · MAP DRAG / TOUCH INTERACTION FIX
+   ========================================================= */
+.route-map,
+.route-map.maplibregl-map,
+.route-map .maplibregl-canvas-container,
+.route-map .maplibregl-canvas{
+  pointer-events:auto !important;
+}
+
+.route-map,
+.route-map .maplibregl-canvas-container,
+.route-map .maplibregl-canvas{
+  touch-action:none !important;
+  -ms-touch-action:none !important;
+  user-select:none !important;
+  -webkit-user-select:none !important;
+}
+
+.route-map .maplibregl-canvas-container.maplibregl-interactive{
+  cursor:grab !important;
+}
+
+.route-map .maplibregl-canvas-container.maplibregl-interactive:active{
+  cursor:grabbing !important;
+}
+
+/* 로딩 메시지는 지도 입력을 절대로 막지 않음 */
+.route-map-status{
+  pointer-events:none !important;
+}
+
+/* 지도 컨테이너가 주변 카드/레이아웃 제스처에 먹히지 않게 분리 */
+.route-map-shell{
+  isolation:isolate;
+  overscroll-behavior:contain;
+}
