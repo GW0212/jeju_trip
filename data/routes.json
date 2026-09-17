@@ -121,10 +121,10 @@
       },
       {
         "seq": 6,
-        "name": "하늘여행 행글라이더체험장",
-        "lat": 33.3725,
-        "lng": 126.2985,
-        "naver": "https://naver.me/xBwWHSm6"
+        "name": "바인스테이",
+        "lat": 33.425,
+        "lng": 126.37,
+        "naver": "https://naver.me/F42RoD3p"
       },
       {
         "seq": 7,
@@ -217,69 +217,62 @@
       },
       {
         "seq": 5,
-        "name": "본초족욕",
-        "lat": 33.4685,
-        "lng": 126.483,
-        "naver": "https://naver.me/xKERgNDm"
-      },
-      {
-        "seq": 6,
         "name": "닭머르",
         "lat": 33.553,
         "lng": 126.643,
         "naver": "https://naver.me/5T4AvdCd"
       },
       {
-        "seq": 7,
+        "seq": 6,
         "name": "점점",
         "lat": 33.543,
         "lng": 126.66,
         "naver": "https://naver.me/GtURn7qG"
       },
       {
-        "seq": 8,
+        "seq": 7,
         "name": "링로드",
         "lat": 33.542,
         "lng": 126.665,
         "naver": "https://map.naver.com/p/search/%EC%A0%9C%EC%A3%BC%20%EB%A7%81%EB%A1%9C%EB%93%9C"
       },
       {
-        "seq": 9,
+        "seq": 8,
         "name": "함덕해수욕장",
         "lat": 33.5435,
         "lng": 126.6692,
         "naver": "https://naver.me/xBwJypFt"
       },
       {
-        "seq": 10,
+        "seq": 9,
         "name": "반디파스타",
         "lat": 33.535,
         "lng": 126.65,
         "naver": "https://naver.me/x2PkE7iU"
       },
       {
-        "seq": 11,
+        "seq": 10,
         "name": "글로시말차",
         "lat": 33.52,
         "lng": 126.6,
         "naver": "https://map.naver.com/p/search/%EC%A0%9C%EC%A3%BC%20%EA%B8%80%EB%A1%9C%EC%8B%9C%EB%A7%90%EC%B0%A8"
       },
       {
-        "seq": 12,
+        "seq": 11,
         "name": "동문재래시장",
         "lat": 33.5128,
         "lng": 126.528,
         "naver": "https://naver.me/xeAfYFPG"
       },
       {
-        "seq": 13,
+        "seq": 12,
         "name": "모찌마루",
         "lat": 33.51,
         "lng": 126.525,
         "naver": "https://m.place.naver.com/restaurant/1034190148/home"
       },
       {
-        "seq": 14,
+        "seq": 13,
         "name": "제주공항 · 렌터카 반납",
         "lat": 33.5066,
         "lng": 126.493,
