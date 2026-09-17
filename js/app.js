@@ -16,6 +16,60 @@
     }
   };
 
+  const showRouteValidationModal = (title, message) => {
+    let overlay = document.querySelector('.route-validation-modal-overlay');
+
+    if (!overlay) {
+      overlay = document.createElement('div');
+      overlay.className = 'route-validation-modal-overlay';
+      overlay.hidden = true;
+      overlay.innerHTML = `
+        <div class="route-validation-modal" role="dialog" aria-modal="true" aria-labelledby="route-validation-title" aria-describedby="route-validation-message">
+          <div class="route-validation-icon" aria-hidden="true">!</div>
+          <h3 id="route-validation-title"></h3>
+          <p id="route-validation-message"></p>
+          <button type="button" class="route-validation-confirm">확인</button>
+        </div>
+      `;
+      document.body.appendChild(overlay);
+
+      const closeModal = () => {
+        overlay.classList.remove('show');
+        setTimeout(() => {
+          overlay.hidden = true;
+        }, 160);
+      };
+
+      overlay.addEventListener('click', (event) => {
+        if (
+          event.target === overlay ||
+          event.target.closest('.route-validation-confirm')
+        ) {
+          closeModal();
+        }
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !overlay.hidden) {
+          closeModal();
+        }
+      });
+    }
+
+    const titleEl = overlay.querySelector('#route-validation-title');
+    const messageEl = overlay.querySelector('#route-validation-message');
+    const confirm = overlay.querySelector('.route-validation-confirm');
+
+    titleEl.textContent = title;
+    messageEl.textContent = message;
+
+    overlay.hidden = false;
+    requestAnimationFrame(() => {
+      overlay.classList.add('show');
+      confirm?.focus();
+    });
+  };
+
   const escapeHtml = (value) => String(value)
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
@@ -431,43 +485,27 @@
     start.value = String(route.points[0].seq);
     end.value = String(route.points[route.points.length - 1].seq);
 
-    const syncValidity = (changed) => {
-      const startIndex = route.points.findIndex(
-        (p) => p.seq === Number(start.value)
-      );
-      const endIndex = route.points.findIndex(
-        (p) => p.seq === Number(end.value)
-      );
-
-      if (startIndex < endIndex) return;
-
-      if (changed === 'start') {
-        const next = route.points[Math.min(startIndex + 1, route.points.length - 1)];
-        if (next) end.value = String(next.seq);
-        if (startIndex === route.points.length - 1) {
-          const prev = route.points[Math.max(0, startIndex - 1)];
-          start.value = String(prev.seq);
-          end.value = String(route.points[startIndex].seq);
-        }
-      } else {
-        const prev = route.points[Math.max(0, endIndex - 1)];
-        if (prev) start.value = String(prev.seq);
-        if (endIndex === 0) {
-          start.value = String(route.points[0].seq);
-          end.value = String(route.points[1].seq);
-        }
-      }
-    };
-
-    start.addEventListener('change', () => syncValidity('start'));
-    end.addEventListener('change', () => syncValidity('end'));
-
     const apply = document.querySelector(`[data-route-apply="${routeId}"]`);
     const reset = document.querySelector(`[data-route-reset="${routeId}"]`);
 
     apply?.addEventListener('click', () => {
-      syncValidity('start');
-      showRouteSegment(routeId, Number(start.value), Number(end.value));
+      const startSeq = Number(start.value);
+      const endSeq = Number(end.value);
+
+      const startIndex = route.points.findIndex((p) => p.seq === startSeq);
+      const endIndex = route.points.findIndex((p) => p.seq === endSeq);
+
+      if (startIndex < 0 || endIndex < 0) return;
+
+      if (startIndex >= endIndex) {
+        showRouteValidationModal(
+          '루트 설정 불가',
+          '출발 일정은 도착 일정보다 앞선 일정이어야 합니다.'
+        );
+        return;
+      }
+
+      showRouteSegment(routeId, startSeq, endSeq);
     });
 
     reset?.addEventListener('click', () => {
