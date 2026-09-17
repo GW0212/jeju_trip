@@ -3292,3 +3292,178 @@ footer{
   isolation:isolate;
   overscroll-behavior:contain;
 }
+
+
+/* =========================================================
+   v34 · DETAIL MAP ROUTE RANGE SELECTOR
+   ========================================================= */
+.route-range-controls{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:10px;
+  margin:0 0 10px;
+  padding:9px 10px;
+  border:1px solid #EEDACA;
+  border-radius:12px;
+  background:#FFF9F3;
+}
+
+.route-range-fields{
+  display:flex;
+  align-items:flex-end;
+  gap:8px;
+  min-width:0;
+  flex:1 1 auto;
+}
+
+.route-range-field{
+  display:grid;
+  gap:4px;
+  min-width:0;
+  flex:1 1 180px;
+}
+
+.route-range-field>span{
+  padding-left:2px;
+  color:#846B5B;
+  font-size:8.5px;
+  font-weight:900;
+  line-height:1.2;
+}
+
+.route-range-select{
+  width:100%;
+  min-width:0;
+  min-height:34px;
+  padding:6px 28px 6px 9px;
+  border:1px solid #E5CDB8;
+  border-radius:9px;
+  outline:none;
+  background:#FFF;
+  color:#422F24;
+  font-family:inherit;
+  font-size:9.5px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.route-range-select:hover{
+  border-color:#F1A45F;
+}
+
+.route-range-select:focus{
+  border-color:#F97316;
+  box-shadow:0 0 0 3px rgba(249,115,22,.10);
+}
+
+.route-range-arrow{
+  flex:0 0 auto;
+  display:grid;
+  place-items:center;
+  min-height:34px;
+  padding-bottom:1px;
+  color:#F97316;
+  font-size:17px;
+  font-weight:950;
+}
+
+.route-range-buttons{
+  display:flex;
+  flex:0 0 auto;
+  gap:6px;
+}
+
+.route-range-apply,
+.route-range-reset{
+  min-height:34px;
+  padding:7px 10px;
+  border-radius:9px;
+  font-family:inherit;
+  font-size:9px;
+  font-weight:950;
+  cursor:pointer;
+  transition:
+    transform .15s ease,
+    background .15s ease,
+    border-color .15s ease;
+}
+
+.route-range-apply{
+  border:1px solid #F97316;
+  background:#F97316;
+  color:#FFF;
+}
+
+.route-range-apply:hover{
+  background:#E8620B;
+  border-color:#E8620B;
+  transform:translateY(-1px);
+}
+
+.route-range-reset{
+  border:1px solid #E4C9B1;
+  background:#FFF;
+  color:#765744;
+}
+
+.route-range-reset:hover{
+  border-color:#F1A45F;
+  background:#FFF5EB;
+  transform:translateY(-1px);
+}
+
+.route-marker-wrap.range-hidden{
+  display:none !important;
+}
+
+@media(max-width:760px){
+  .route-range-controls{
+    align-items:stretch;
+    flex-direction:column;
+    gap:8px;
+    padding:8px;
+  }
+
+  .route-range-fields{
+    width:100%;
+  }
+
+  .route-range-buttons{
+    width:100%;
+  }
+
+  .route-range-apply,
+  .route-range-reset{
+    flex:1 1 50%;
+    min-height:38px;
+  }
+}
+
+@media(max-width:430px){
+  .route-range-fields{
+    gap:5px;
+  }
+
+  .route-range-field>span{
+    font-size:8px;
+  }
+
+  .route-range-select{
+    min-height:38px;
+    padding-left:7px;
+    font-size:8.4px;
+  }
+
+  .route-range-arrow{
+    min-height:38px;
+    font-size:15px;
+  }
+
+  .route-range-apply,
+  .route-range-reset{
+    padding-left:7px;
+    padding-right:7px;
+    font-size:8.3px;
+  }
+}

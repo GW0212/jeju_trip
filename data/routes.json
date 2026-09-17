@@ -10,6 +10,13 @@
         "naver": "https://naver.me/5TiWH09m"
       },
       {
+        "seq": 2,
+        "name": "짐 수령 · 렌터카 출발",
+        "lat": 33.5066,
+        "lng": 126.493,
+        "naver": "https://naver.me/5TiWH09m"
+      },
+      {
         "seq": 3,
         "name": "먹돌고기국수 제주본점",
         "lat": 33.5008,
@@ -277,6 +284,13 @@
         "lat": 33.5066,
         "lng": 126.493,
         "naver": "https://naver.me/5TiWH09m"
+      },
+      {
+        "seq": 14,
+        "name": "우무 & 우무솝 제주공항 출발점",
+        "lat": 33.5066,
+        "lng": 126.493,
+        "naver": "https://naver.me/GdlHw3qH"
       }
     ]
   }
