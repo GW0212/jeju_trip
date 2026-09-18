@@ -3575,3 +3575,873 @@ footer{
     min-height:42px;
   }
 }
+
+
+/* =========================================================
+   v38 · ORANGE LIGHTWEIGHT PREMIUM FX
+   지속 반복 애니메이션/대형 장식/블러를 제거한 경량 버전
+   ========================================================= */
+
+:root{
+  --fx38-orange:#F97316;
+  --fx38-orange-dark:#DF5607;
+  --fx38-orange-soft:#FFF1E5;
+  --fx38-gold:#F6B94A;
+  --fx38-shadow:0 9px 24px rgba(117,67,31,.08);
+  --fx38-shadow-hover:0 13px 30px rgba(117,67,31,.12);
+}
+
+/* 배경: 정적 그라데이션만 사용 */
+html{
+  scroll-behavior:smooth;
+  background:#FFF9F3 !important;
+}
+
+body{
+  background:
+    linear-gradient(180deg,#FFFDF9 0%,#FFF8F1 48%,#FFFDF9 100%) !important;
+}
+
+/* 히어로: 감귤 오렌지로 통일 */
+.hero{
+  isolation:isolate;
+  overflow:hidden;
+  background:
+    linear-gradient(132deg,#FF9B32 0%,#F97316 48%,#E65B09 100%) !important;
+  border:1px solid rgba(255,255,255,.32) !important;
+  box-shadow:0 16px 38px rgba(198,84,13,.17) !important;
+}
+
+/* 좌/우 대형 원형 장식 완전 제거 */
+.hero::before,
+.hero::after{
+  display:none !important;
+  content:none !important;
+}
+
+/* 제목도 반복 쉬머 없이 고정 */
+.hero h1{
+  color:#FFF8EB !important;
+  background:none !important;
+  -webkit-background-clip:initial !important;
+  background-clip:initial !important;
+  text-shadow:0 2px 8px rgba(112,43,5,.13) !important;
+  animation:none !important;
+}
+
+/* 상단 작은 배지 */
+.hero .eyebrow{
+  background:rgba(255,255,255,.16) !important;
+  border:1px solid rgba(255,255,255,.28) !important;
+  box-shadow:none !important;
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+  animation:none !important;
+}
+
+/* 통계 카드: 블러/광택 반복 제거 */
+.stat{
+  overflow:visible !important;
+  background:rgba(255,255,255,.14) !important;
+  border:1px solid rgba(255,255,255,.24) !important;
+  box-shadow:none !important;
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+  animation:none !important;
+  transition:transform .16s ease,background .16s ease !important;
+}
+
+.stat::before,
+.stat::after{
+  display:none !important;
+  content:none !important;
+}
+
+@media(hover:hover){
+  .stat:hover{
+    transform:translateY(-2px) !important;
+    background:rgba(255,255,255,.20) !important;
+  }
+}
+
+/* 메인 탭: glass blur 대신 단순 반투명 */
+.tabs{
+  background:rgba(255,251,247,.97) !important;
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+  box-shadow:0 7px 20px rgba(100,60,31,.07) !important;
+}
+
+.tab{
+  transition:
+    transform .15s ease,
+    border-color .15s ease,
+    background .15s ease,
+    box-shadow .15s ease !important;
+}
+
+.tab::before,
+.tab::after{
+  animation:none !important;
+}
+
+@media(hover:hover){
+  .tab:hover{
+    transform:translateY(-1px) !important;
+    box-shadow:0 4px 11px rgba(124,69,29,.06);
+  }
+}
+
+/* 아이콘: 반복 부유/펄스 없음 */
+.category-icon,
+.category-icon::after{
+  animation:none !important;
+}
+
+.category-icon::after{
+  display:none !important;
+  content:none !important;
+}
+
+/* 주요 카드: 짧은 hover만 */
+.day-card,
+.pass-image-summary-card,
+.pass-image-panel,
+.benefit-media-card,
+.real-map-visual,
+.route-range-controls{
+  transition:
+    transform .17s ease,
+    box-shadow .17s ease,
+    border-color .17s ease !important;
+}
+
+.day-card::before,
+.day-card::after,
+.pass-image-summary-card::after,
+.route-range-controls::after{
+  display:none !important;
+  content:none !important;
+}
+
+.day-card,
+.pass-image-summary-card,
+.pass-image-panel,
+.benefit-media-card{
+  box-shadow:var(--fx38-shadow) !important;
+}
+
+@media(hover:hover){
+  .day-card:hover,
+  .pass-image-summary-card:hover,
+  .benefit-media-card:hover{
+    transform:translateY(-2px) !important;
+    box-shadow:var(--fx38-shadow-hover) !important;
+  }
+}
+
+/* 장소 행: 위치 이동 대신 색상만 */
+.place,
+.place-link{
+  transition:background .14s ease,border-color .14s ease !important;
+}
+
+.place::before{
+  display:none !important;
+  content:none !important;
+}
+
+.dot{
+  transition:transform .14s ease !important;
+  box-shadow:none !important;
+}
+
+@media(hover:hover){
+  .place:hover .dot{
+    transform:scale(1.12) !important;
+    box-shadow:none !important;
+  }
+}
+
+/* 상세 일정 DAY 버튼 */
+.day-schedule-tab{
+  transition:
+    transform .15s ease,
+    box-shadow .15s ease,
+    border-color .15s ease !important;
+}
+
+.day-schedule-tab::before{
+  animation:none !important;
+}
+
+@media(hover:hover){
+  .day-schedule-tab:hover{
+    transform:translateY(-1px) !important;
+    box-shadow:0 6px 14px rgba(120,69,31,.07) !important;
+  }
+}
+
+/* 루트 설정: 화살표 반복 움직임 제거 */
+.route-range-arrow{
+  animation:none !important;
+}
+
+.route-range-select,
+.route-range-apply,
+.route-range-reset{
+  transition:
+    border-color .14s ease,
+    background .14s ease,
+    box-shadow .14s ease !important;
+}
+
+/* 지도: 정적 그림자만 */
+.real-map-visual{
+  box-shadow:0 9px 24px rgba(104,63,31,.07) !important;
+}
+
+.real-map-visual::before,
+.real-map-visual::after{
+  display:none !important;
+  content:none !important;
+}
+
+.route-map-shell{
+  box-shadow:0 5px 14px rgba(59,91,88,.07) !important;
+  transition:none !important;
+}
+
+/* 시작/도착 마커 반복 펄스 제거 */
+.route-marker-wrap.start .route-number-marker,
+.route-marker-wrap.end .route-number-marker{
+  animation:none !important;
+}
+
+/* 상세 일정 행: 이동 없이 배경/테두리만 */
+.timeline li,
+.timeline li.schedule-linked-item > .schedule-row-link{
+  transition:
+    border-color .14s ease,
+    background .14s ease,
+    box-shadow .14s ease !important;
+}
+
+@media(hover:hover){
+  .timeline li:not(.schedule-linked-item):hover{
+    transform:none !important;
+    border-color:#EAB989 !important;
+    box-shadow:0 5px 13px rgba(111,63,27,.055) !important;
+  }
+
+  .timeline li.schedule-linked-item > .schedule-row-link:hover{
+    transform:none !important;
+    box-shadow:0 5px 13px rgba(111,63,27,.055) !important;
+  }
+}
+
+.timeline li:hover .time{
+  transform:none !important;
+  box-shadow:none !important;
+}
+
+/* 패스 이미지: 매우 가벼운 hover 줌만 */
+.benefit-media-figure::after{
+  display:none !important;
+  content:none !important;
+}
+
+.benefit-media-figure img{
+  transition:transform .22s ease !important;
+  will-change:auto !important;
+}
+
+@media(hover:hover){
+  .benefit-media-card:hover .benefit-media-figure img{
+    transform:scale(1.012) !important;
+    filter:none !important;
+  }
+}
+
+/* 패스 버튼: 쉬머 제거 */
+.pass-official-link::before,
+.pass-official-link::after{
+  animation:none !important;
+}
+
+/* 메시지창 블러 제거 */
+.route-validation-modal-overlay{
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+  background:rgba(38,28,21,.30) !important;
+}
+
+/* 맨 위 버튼 펄스 제거 */
+.back-to-top::before,
+.back-to-top::after{
+  animation:none !important;
+}
+
+/* 경량 스크롤 등장: 한 번만 작동 */
+.fx38-reveal{
+  opacity:0;
+  transform:translateY(8px);
+}
+
+.fx38-reveal.fx38-visible{
+  opacity:1;
+  transform:none;
+  transition:
+    opacity .28s ease,
+    transform .28s ease;
+}
+
+/* 어떤 과거/브라우저 캐시 CSS가 남아도 반복 애니메이션 차단 */
+body,
+.hero,
+.hero *,
+.stat,
+.category-icon,
+.route-range-arrow,
+.route-number-marker,
+.back-to-top{
+  animation-duration:0s;
+}
+
+/* 사용자 조작 요소는 transition만 유지 */
+.tab,
+.day-card,
+.place,
+.place-link,
+.day-schedule-tab,
+.timeline li,
+.schedule-row-link,
+.benefit-media-card,
+.pass-official-link,
+.route-range-apply,
+.route-range-reset{
+  animation:none !important;
+}
+
+/* 모바일에서는 transform 효과까지 더 줄임 */
+@media(max-width:760px){
+  .fx38-reveal{
+    opacity:1;
+    transform:none;
+    transition:none;
+  }
+
+  .day-card,
+  .pass-image-summary-card,
+  .benefit-media-card,
+  .tab,
+  .day-schedule-tab{
+    transform:none !important;
+  }
+
+  .benefit-media-card:hover .benefit-media-figure img{
+    transform:none !important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,
+  *::before,
+  *::after{
+    animation:none !important;
+    scroll-behavior:auto !important;
+  }
+
+  .fx38-reveal{
+    opacity:1 !important;
+    transform:none !important;
+    transition:none !important;
+  }
+}
+
+
+/* =========================================================
+   v39 · BALANCED ORANGE VISUAL EFFECTS
+   눈에 보이는 효과는 유지하되 지속 반복/과도한 blur 없음
+   ========================================================= */
+
+/* ---- HERO: 주황색 + 작고 은은한 정적 광원 ---- */
+.hero{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  background:
+    linear-gradient(135deg,#FF9A32 0%,#F97316 47%,#E75B09 100%) !important;
+  box-shadow:
+    0 18px 42px rgba(202,88,15,.18),
+    inset 0 1px 0 rgba(255,255,255,.28) !important;
+}
+
+.hero::before{
+  content:"" !important;
+  display:block !important;
+  position:absolute;
+  width:170px;
+  height:170px;
+  left:-52px;
+  top:-64px;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 55% 58%,rgba(255,255,255,.20),rgba(255,222,181,.10) 46%,transparent 72%);
+  opacity:.8;
+  pointer-events:none;
+}
+
+.hero::after{
+  content:"" !important;
+  display:block !important;
+  position:absolute;
+  width:135px;
+  height:135px;
+  right:-42px;
+  bottom:-58px;
+  border-radius:50%;
+  background:
+    radial-gradient(circle,rgba(255,235,202,.16),transparent 70%);
+  opacity:.7;
+  pointer-events:none;
+}
+
+.hero > *{
+  position:relative;
+  z-index:2;
+}
+
+.hero h1{
+  color:#FFF9EF !important;
+  text-shadow:
+    0 2px 0 rgba(128,48,5,.10),
+    0 7px 22px rgba(135,49,4,.14) !important;
+}
+
+.hero .eyebrow{
+  background:rgba(255,255,255,.16) !important;
+  border:1px solid rgba(255,255,255,.32) !important;
+  box-shadow:
+    0 5px 14px rgba(120,46,6,.10),
+    inset 0 1px 0 rgba(255,255,255,.24) !important;
+}
+
+.stat{
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.18),rgba(255,255,255,.11)) !important;
+  border:1px solid rgba(255,255,255,.28) !important;
+  box-shadow:
+    0 6px 15px rgba(120,46,6,.075),
+    inset 0 1px 0 rgba(255,255,255,.20) !important;
+}
+
+@media(hover:hover){
+  .stat:hover{
+    transform:translateY(-3px) !important;
+    background:
+      linear-gradient(145deg,rgba(255,255,255,.23),rgba(255,255,255,.14)) !important;
+    box-shadow:0 10px 22px rgba(120,46,6,.11) !important;
+  }
+}
+
+/* ---- TOP TABS: active depth + hover glow ---- */
+.tabs{
+  border-color:#EFD2B5 !important;
+  box-shadow:
+    0 8px 22px rgba(106,63,31,.075),
+    inset 0 1px 0 rgba(255,255,255,.9) !important;
+}
+
+.tab{
+  position:relative;
+  overflow:hidden;
+}
+
+.tab::after{
+  content:"" !important;
+  display:block !important;
+  position:absolute;
+  left:22%;
+  right:22%;
+  bottom:4px;
+  height:2px;
+  border-radius:999px;
+  background:currentColor;
+  opacity:0;
+  transform:scaleX(.45);
+  transition:opacity .18s ease,transform .18s ease;
+}
+
+.tab.active::after{
+  opacity:.58;
+  transform:scaleX(1);
+}
+
+@media(hover:hover){
+  .tab:hover{
+    transform:translateY(-2px) !important;
+    box-shadow:0 7px 16px rgba(110,65,31,.08) !important;
+  }
+}
+
+/* ---- HEADINGS ---- */
+.category-icon{
+  box-shadow:
+    0 6px 15px rgba(117,68,31,.075),
+    inset 0 1px 0 rgba(255,255,255,.75) !important;
+}
+
+.category-head h2,
+.detail-head h3{
+  text-shadow:0 1px 0 rgba(255,255,255,.95);
+}
+
+/* ---- CARDS: subtle border glow + lift ---- */
+.day-card,
+.pass-image-summary-card,
+.pass-image-panel,
+.benefit-media-card{
+  position:relative;
+  border-color:#ECD8C4 !important;
+  box-shadow:
+    0 7px 18px rgba(105,63,33,.065),
+    inset 0 1px 0 rgba(255,255,255,.82) !important;
+}
+
+.day-card::before,
+.pass-image-summary-card::before,
+.benefit-media-card::before{
+  content:"" !important;
+  display:block !important;
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  pointer-events:none;
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.20),transparent 32%,transparent 70%,rgba(249,115,22,.04));
+  opacity:.65;
+}
+
+@media(hover:hover){
+  .day-card:hover,
+  .pass-image-summary-card:hover,
+  .benefit-media-card:hover{
+    transform:translateY(-4px) !important;
+    border-color:#E8B47F !important;
+    box-shadow:
+      0 14px 29px rgba(105,63,33,.115),
+      inset 0 1px 0 rgba(255,255,255,.88) !important;
+  }
+}
+
+/* ---- PLACE ROWS ---- */
+.place{
+  transition:
+    background .16s ease,
+    box-shadow .16s ease,
+    transform .16s ease !important;
+}
+
+@media(hover:hover){
+  .place:hover{
+    transform:translateX(2px);
+    background:linear-gradient(90deg,#FFFDFC,#FFF5EB) !important;
+    box-shadow:inset 3px 0 0 rgba(249,115,22,.42);
+  }
+}
+
+.place .dot{
+  transition:transform .16s ease,box-shadow .16s ease !important;
+}
+
+.place:hover .dot{
+  transform:scale(1.16) !important;
+  box-shadow:0 0 0 4px rgba(249,115,22,.08) !important;
+}
+
+/* ---- DAY SELECTOR ---- */
+.day-schedule-tab{
+  position:relative;
+  overflow:hidden;
+}
+
+.day-schedule-tab::after{
+  content:"";
+  position:absolute;
+  left:25%;
+  right:25%;
+  bottom:0;
+  height:3px;
+  border-radius:999px 999px 0 0;
+  background:linear-gradient(90deg,#F8B45D,#F97316);
+  opacity:0;
+  transform:scaleX(.5);
+  transition:opacity .18s ease,transform .18s ease;
+}
+
+.day-schedule-tab.active::after{
+  opacity:1;
+  transform:scaleX(1);
+}
+
+@media(hover:hover){
+  .day-schedule-tab:hover{
+    transform:translateY(-2px) !important;
+    box-shadow:0 8px 17px rgba(116,67,31,.08) !important;
+  }
+}
+
+/* ---- ROUTE SELECTOR ---- */
+.route-range-controls{
+  border-color:#EBCFAF !important;
+  background:
+    linear-gradient(135deg,#FFF9F3 0%,#FFFEFC 100%) !important;
+  box-shadow:
+    0 6px 15px rgba(110,65,31,.055),
+    inset 0 1px 0 #FFF !important;
+}
+
+.route-range-select{
+  background:#FFFDFC !important;
+}
+
+.route-range-select:focus{
+  border-color:#F97316 !important;
+  box-shadow:0 0 0 3px rgba(249,115,22,.10) !important;
+}
+
+.route-range-apply{
+  box-shadow:0 5px 12px rgba(217,82,6,.13);
+}
+
+@media(hover:hover){
+  .route-range-apply:hover{
+    transform:translateY(-1px);
+    box-shadow:0 8px 16px rgba(217,82,6,.16);
+  }
+
+  .route-range-reset:hover{
+    transform:translateY(-1px);
+    box-shadow:0 6px 14px rgba(103,62,31,.075);
+  }
+}
+
+/* ---- MAP FRAME ---- */
+.real-map-visual{
+  border-color:#EAC8A6 !important;
+  box-shadow:
+    0 11px 27px rgba(100,62,33,.085),
+    inset 0 1px 0 rgba(255,255,255,.9) !important;
+}
+
+.route-map-shell{
+  border-color:#E5CDB7 !important;
+  box-shadow:
+    0 7px 17px rgba(65,89,83,.08),
+    inset 0 0 0 1px rgba(255,255,255,.50) !important;
+}
+
+.route-number-marker{
+  transition:transform .16s ease,box-shadow .16s ease !important;
+}
+
+@media(hover:hover){
+  .route-marker-wrap:hover .route-number-marker{
+    transform:scale(1.10);
+  }
+}
+
+/* ---- TIMELINE ROWS ---- */
+.timeline li:not(.schedule-linked-item),
+.timeline li.schedule-linked-item > .schedule-row-link{
+  box-shadow:0 2px 7px rgba(104,62,31,.035) !important;
+}
+
+@media(hover:hover){
+  .timeline li:not(.schedule-linked-item):hover{
+    background:#FFF9F3 !important;
+    border-color:#E9BC91 !important;
+    box-shadow:0 7px 15px rgba(104,62,31,.07) !important;
+  }
+
+  .timeline li.schedule-linked-item > .schedule-row-link:hover{
+    background:#FFF9F3 !important;
+    border-color:#E9BC91 !important;
+    box-shadow:0 7px 15px rgba(104,62,31,.07) !important;
+  }
+}
+
+.timeline .time{
+  transition:background .16s ease,color .16s ease,transform .16s ease !important;
+}
+
+.timeline li:hover .time{
+  transform:scale(1.025) !important;
+}
+
+/* ---- PASS IMAGE CARDS ---- */
+.benefit-media-figure{
+  overflow:hidden;
+}
+
+.benefit-media-figure img{
+  transition:transform .28s ease,filter .22s ease !important;
+}
+
+@media(hover:hover){
+  .benefit-media-card:hover .benefit-media-figure img{
+    transform:scale(1.022) !important;
+    filter:saturate(1.025) contrast(1.01) !important;
+  }
+}
+
+/* hover-only image highlight: no looping animation */
+.benefit-media-figure::after{
+  content:"";
+  display:block !important;
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(115deg,transparent 36%,rgba(255,255,255,.20) 50%,transparent 64%);
+  opacity:0;
+  transform:translateX(-45%);
+  transition:opacity .18s ease,transform .38s ease;
+}
+
+@media(hover:hover){
+  .benefit-media-card:hover .benefit-media-figure::after{
+    opacity:1;
+    transform:translateX(45%);
+  }
+}
+
+/* ---- PASS CTA: hover-only shine ---- */
+.pass-official-link{
+  overflow:hidden;
+}
+
+.pass-official-link::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(110deg,transparent 38%,rgba(255,255,255,.58) 50%,transparent 62%);
+  opacity:0;
+  transform:translateX(-75%);
+  transition:transform .36s ease,opacity .15s ease;
+}
+
+@media(hover:hover){
+  .pass-official-link:hover::after{
+    opacity:1;
+    transform:translateX(75%);
+  }
+}
+
+/* ---- BUTTON FEEDBACK ---- */
+.route-range-apply,
+.route-range-reset,
+.pass-official-link,
+.route-validation-confirm,
+.back-to-top{
+  transition:
+    transform .14s ease,
+    box-shadow .14s ease,
+    background .14s ease,
+    border-color .14s ease !important;
+}
+
+.route-range-apply:active,
+.route-range-reset:active,
+.pass-official-link:active,
+.route-validation-confirm:active,
+.back-to-top:active{
+  transform:scale(.985) !important;
+}
+
+/* ---- ONE-SHOT ENTRANCE ---- */
+.fx39-enter{
+  opacity:0;
+  transform:translateY(10px);
+}
+
+.fx39-enter.fx39-visible{
+  opacity:1;
+  transform:none;
+  transition:
+    opacity .32s ease,
+    transform .32s cubic-bezier(.2,.72,.25,1);
+}
+
+.fx39-tab-pop{
+  animation:fx39TabPop .26s ease-out 1;
+}
+
+@keyframes fx39TabPop{
+  0%{opacity:.72;transform:translateY(4px)}
+  100%{opacity:1;transform:none}
+}
+
+/* ---- PERFORMANCE GUARD ---- */
+@media(max-width:760px){
+  .hero::before{
+    width:110px;
+    height:110px;
+    left:-42px;
+    top:-44px;
+    opacity:.58;
+  }
+
+  .hero::after{
+    width:90px;
+    height:90px;
+    right:-32px;
+    bottom:-38px;
+    opacity:.5;
+  }
+
+  .fx39-enter{
+    opacity:1;
+    transform:none;
+    transition:none;
+  }
+
+  .day-card:hover,
+  .pass-image-summary-card:hover,
+  .benefit-media-card:hover,
+  .place:hover,
+  .day-schedule-tab:hover{
+    transform:none !important;
+  }
+
+  .benefit-media-card:hover .benefit-media-figure img{
+    transform:none !important;
+    filter:none !important;
+  }
+
+  .benefit-media-card:hover .benefit-media-figure::after,
+  .pass-official-link:hover::after{
+    opacity:0 !important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .fx39-enter{
+    opacity:1 !important;
+    transform:none !important;
+    transition:none !important;
+  }
+
+  .fx39-tab-pop{
+    animation:none !important;
+  }
+
+  *,
+  *::before,
+  *::after{
+    scroll-behavior:auto !important;
+  }
+}

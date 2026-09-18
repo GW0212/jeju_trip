@@ -683,3 +683,120 @@
     });
   });
 })();
+
+/* =========================================================
+   v38 · LIGHTWEIGHT VISUAL REVEAL
+   반복 프레임/스크롤 계산 없이 IntersectionObserver 1회만 사용
+   ========================================================= */
+(() => {
+  'use strict';
+
+  const initLightFx = () => {
+    const reduceMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
+
+    const targets = [
+      ...document.querySelectorAll(
+        '.day-card, .real-map-visual, ' +
+        '.pass-image-summary-card, .pass-image-panel'
+      )
+    ];
+
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      targets.forEach((el) => el.classList.add('fx38-visible'));
+      return;
+    }
+
+    targets.forEach((el) => el.classList.add('fx38-reveal'));
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('fx38-visible');
+        observer.unobserve(entry.target);
+      });
+    }, {
+      threshold: 0.05,
+      rootMargin: '0px 0px -2% 0px'
+    });
+
+    targets.forEach((el) => observer.observe(el));
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLightFx, { once:true });
+  } else {
+    initLightFx();
+  }
+})();
+
+/* =========================================================
+   v39 · BALANCED EFFECTS BEHAVIOR
+   스크롤/마우스 지속 계산 없음
+   ========================================================= */
+(() => {
+  'use strict';
+
+  const initBalancedEffects = () => {
+    const reduceMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
+
+    const targets = [
+      ...document.querySelectorAll(
+        '.day-card, .real-map-visual, .pass-image-summary-card, ' +
+        '.pass-image-panel, .benefit-media-card'
+      )
+    ];
+
+    if (!reduceMotion && 'IntersectionObserver' in window) {
+      targets.forEach((el) => el.classList.add('fx39-enter'));
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('fx39-visible');
+          observer.unobserve(entry.target);
+        });
+      }, {
+        threshold: 0.06,
+        rootMargin: '0px 0px -3% 0px'
+      });
+
+      targets.forEach((el) => observer.observe(el));
+    } else {
+      targets.forEach((el) => el.classList.add('fx39-visible'));
+    }
+
+    document.addEventListener('click', (event) => {
+      const tab = event.target.closest('.tab, .day-schedule-tab');
+      if (!tab || reduceMotion) return;
+
+      const targetId = tab.classList.contains('tab')
+        ? tab.dataset.target
+        : tab.dataset.schedule;
+
+      setTimeout(() => {
+        const section = targetId ? document.getElementById(targetId) : null;
+        if (!section) return;
+
+        section.classList.remove('fx39-tab-pop');
+        void section.offsetWidth;
+        section.classList.add('fx39-tab-pop');
+
+        section.querySelectorAll('.fx39-enter:not(.fx39-visible)')
+          .forEach((el) => el.classList.add('fx39-visible'));
+      }, 25);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initBalancedEffects, {
+      once:true
+    });
+  } else {
+    initBalancedEffects();
+  }
+})();
+
