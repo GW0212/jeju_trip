@@ -1,0 +1,512 @@
+[
+  {
+    "day": "schedule-day1",
+    "seq": 3,
+    "name": "먹돌고기국수 제주본점",
+    "old": [
+      33.5008,
+      126.512
+    ],
+    "new": [
+      33.5019768,
+      126.5047472
+    ],
+    "distance_km": 0.69,
+    "confidence": "verified"
+  },
+  {
+    "day": "schedule-day1",
+    "seq": 4,
+    "name": "사려니숲길",
+    "old": [
+      33.4223,
+      126.6277
+    ],
+    "new": [
+      33.4180631,
+      126.6534847
+    ],
+    "distance_km": 2.44,
+    "confidence": "verified"
+  },
+  {
+    "day": "schedule-day1",
+    "seq": 5,
+    "name": "제주 스카이워터쇼",
+    "old": [
+      33.448,
+      126.748
+    ],
+    "new": [
+      33.4241015,
+      126.7430557
+    ],
+    "distance_km": 2.7,
+    "confidence": "verified"
+  },
+  {
+    "day": "schedule-day1",
+    "seq": 6,
+    "name": "다이나믹메이즈 제주",
+    "old": [
+      33.449,
+      126.806
+    ],
+    "new": [
+      33.399128,
+      126.785194
+    ],
+    "distance_km": 5.87,
+    "confidence": "verified"
+  },
+  {
+    "day": "schedule-day1",
+    "seq": 7,
+    "name": "온평바다한그릇 성산본점",
+    "old": [
+      33.4,
+      126.872
+    ],
+    "new": [
+      33.3987534372,
+      126.9050957338
+    ],
+    "distance_km": 3.08,
+    "confidence": "verified"
+  },
+  {
+    "day": "schedule-day1",
+    "seq": 8,
+    "name": "뷰 제주하늘",
+    "old": [
+      33.391,
+      126.858
+    ],
+    "new": [
+      33.4131403,
+      126.8327167
+    ],
+    "distance_km": 3.4,
+    "confidence": "verified"
+  },
+  {
+    "day": "schedule-day1",
+    "seq": 10,
+    "name": "산방산 탄산온천",
+    "old": [
+      33.2361,
+      126.3042
+    ],
+    "new": [
+      33.2490188,
+      126.2988035
+    ],
+    "distance_km": 1.52,
+    "confidence": "verified"
+  },
+  {
+    "day": "schedule-day1",
+    "seq": 11,
+    "name": "사계흑돼지",
+    "old": [
+      33.2285,
+      126.306
+    ],
+    "new": [
+      33.2481456009,
+      126.3024268581
+    ],
+    "distance_km": 2.21,
+    "confidence": "verified"
+  },
+  {
+    "day": "schedule-day1",
+    "seq": 12,
+    "name": "바인스테이",
+    "old": [
+      33.425,
+      126.37
+    ],
+    "new": [
+      33.4302836,
+      126.3779968
+    ],
+    "distance_km": 0.95,
+    "confidence": "verified"
+  },
+  {
+    "day": "schedule-day2",
+    "seq": 1,
+    "name": "바인스테이",
+    "old": [
+      33.425,
+      126.37
+    ],
+    "new": [
+      33.4302836,
+      126.3779968
+    ],
+    "distance_km": 0.95,
+    "confidence": "verified"
+  },
+  {
+    "day": "schedule-day2",
+    "seq": 2,
+    "name": "문개어멍",
+    "old": [
+      33.42,
+      126.27
+    ],
+    "new": [
+      33.485775692936,
+      126.392436448386
+    ],
+    "distance_km": 13.51,
+    "confidence": "verified"
+  },
+  {
+    "day": "schedule-day2",
+    "seq": 3,
+    "name": "시소 카이막 애월점",
+    "old": [
+      33.466,
+      126.337
+    ],
+    "new": [
+      33.4779475,
+      126.3643057
+    ],
+    "distance_km": 2.86,
+    "confidence": "verified"
+  },
+  {
+    "day": "schedule-day2",
+    "seq": 4,
+    "name": "성이시돌목장",
+    "old": [
+      33.407,
+      126.368
+    ],
+    "new": [
+      33.3459727,
+      126.3215552
+    ],
+    "distance_km": 8.04,
+    "confidence": "verified"
+  },
+  {
+    "day": "schedule-day2",
+    "seq": 5,
+    "name": "9.81 파크 제주",
+    "old": [
+      33.3898,
+      126.3664
+    ],
+    "new": [
+      33.3928867,
+      126.3586318
+    ],
+    "distance_km": 0.8,
+    "confidence": "verified"
+  },
+  {
+    "day": "schedule-day2",
+    "seq": 6,
+    "name": "바인스테이",
+    "old": [
+      33.425,
+      126.37
+    ],
+    "new": [
+      33.4302836,
+      126.3779968
+    ],
+    "distance_km": 0.95,
+    "confidence": "verified"
+  },
+  {
+    "day": "schedule-day2",
+    "seq": 7,
+    "name": "은하 요가",
+    "old": [
+      33.397,
+      126.3
+    ],
+    "new": [
+      33.3902,
+      126.2352
+    ],
+    "distance_km": 6.06,
+    "confidence": "address"
+  },
+  {
+    "day": "schedule-day2",
+    "seq": 8,
+    "name": "성아시",
+    "old": [
+      33.3907,
+      126.228
+    ],
+    "new": [
+      33.38842,
+      126.230446
+    ],
+    "distance_km": 0.34,
+    "confidence": "verified"
+  },
+  {
+    "day": "schedule-day2",
+    "seq": 9,
+    "name": "호텔 샌드",
+    "old": [
+      33.394,
+      126.239
+    ],
+    "new": [
+      33.3940486,
+      126.2405962
+    ],
+    "distance_km": 0.15,
+    "confidence": "verified"
+  },
+  {
+    "day": "schedule-day2",
+    "seq": 10,
+    "name": "우무 푸딩",
+    "old": [
+      33.416,
+      126.265
+    ],
+    "new": [
+      33.4059055,
+      126.2565392
+    ],
+    "distance_km": 1.37,
+    "confidence": "verified"
+  },
+  {
+    "day": "schedule-day2",
+    "seq": 11,
+    "name": "곽지해수욕장",
+    "old": [
+      33.4509,
+      126.3047
+    ],
+    "new": [
+      33.4537851,
+      126.3066118
+    ],
+    "distance_km": 0.37,
+    "confidence": "verified"
+  },
+  {
+    "day": "schedule-day2",
+    "seq": 12,
+    "name": "애월 갈치 암행어사",
+    "old": [
+      33.463,
+      126.311
+    ],
+    "new": [
+      33.4668883964,
+      126.3206079295
+    ],
+    "distance_km": 0.99,
+    "confidence": "verified"
+  },
+  {
+    "day": "schedule-day2",
+    "seq": 13,
+    "name": "해지개",
+    "old": [
+      33.4635,
+      126.309
+    ],
+    "new": [
+      33.4642136,
+      126.3089572
+    ],
+    "distance_km": 0.08,
+    "confidence": "verified"
+  },
+  {
+    "day": "schedule-day2",
+    "seq": 14,
+    "name": "바인스테이",
+    "old": [
+      33.425,
+      126.37
+    ],
+    "new": [
+      33.4302836,
+      126.3779968
+    ],
+    "distance_km": 0.95,
+    "confidence": "verified"
+  },
+  {
+    "day": "schedule-day3",
+    "seq": 1,
+    "name": "바인스테이",
+    "old": [
+      33.425,
+      126.37
+    ],
+    "new": [
+      33.4302836,
+      126.3779968
+    ],
+    "distance_km": 0.95,
+    "confidence": "verified"
+  },
+  {
+    "day": "schedule-day3",
+    "seq": 2,
+    "name": "상가리야자숲",
+    "old": [
+      33.436,
+      126.358
+    ],
+    "new": [
+      33.4394445,
+      126.3584816
+    ],
+    "distance_km": 0.39,
+    "confidence": "verified"
+  },
+  {
+    "day": "schedule-day3",
+    "seq": 3,
+    "name": "제주고기국수 모던돔베 공항본점",
+    "old": [
+      33.5,
+      126.5
+    ],
+    "new": [
+      33.4571472,
+      126.4861316
+    ],
+    "distance_km": 4.94,
+    "confidence": "verified"
+  },
+  {
+    "day": "schedule-day3",
+    "seq": 5,
+    "name": "닭머르",
+    "old": [
+      33.553,
+      126.643
+    ],
+    "new": [
+      33.5367354,
+      126.6173448
+    ],
+    "distance_km": 2.99,
+    "confidence": "verified"
+  },
+  {
+    "day": "schedule-day3",
+    "seq": 6,
+    "name": "점점",
+    "old": [
+      33.543,
+      126.66
+    ],
+    "new": [
+      33.5371364,
+      126.6152005
+    ],
+    "distance_km": 4.2,
+    "confidence": "verified"
+  },
+  {
+    "day": "schedule-day3",
+    "seq": 7,
+    "name": "링로드",
+    "old": [
+      33.542,
+      126.665
+    ],
+    "new": [
+      33.5408,
+      126.636
+    ],
+    "distance_km": 2.69,
+    "confidence": "address"
+  },
+  {
+    "day": "schedule-day3",
+    "seq": 8,
+    "name": "함덕해수욕장",
+    "old": [
+      33.5435,
+      126.6692
+    ],
+    "new": [
+      33.5441309,
+      126.6714921
+    ],
+    "distance_km": 0.22,
+    "confidence": "verified"
+  },
+  {
+    "day": "schedule-day3",
+    "seq": 9,
+    "name": "반디파스타",
+    "old": [
+      33.535,
+      126.65
+    ],
+    "new": [
+      33.5424880729,
+      126.6692088181
+    ],
+    "distance_km": 1.97,
+    "confidence": "verified"
+  },
+  {
+    "day": "schedule-day3",
+    "seq": 10,
+    "name": "글로시말차",
+    "old": [
+      33.52,
+      126.6
+    ],
+    "new": [
+      33.54579795,
+      126.6397881621
+    ],
+    "distance_km": 4.67,
+    "confidence": "verified"
+  },
+  {
+    "day": "schedule-day3",
+    "seq": 11,
+    "name": "동문재래시장",
+    "old": [
+      33.5128,
+      126.528
+    ],
+    "new": [
+      33.5115624162,
+      126.5260587646
+    ],
+    "distance_km": 0.23,
+    "confidence": "verified"
+  },
+  {
+    "day": "schedule-day3",
+    "seq": 12,
+    "name": "모찌마루",
+    "old": [
+      33.51,
+      126.525
+    ],
+    "new": [
+      33.5019768,
+      126.5047472
+    ],
+    "distance_km": 2.08,
+    "confidence": "verified"
+  }
+]
